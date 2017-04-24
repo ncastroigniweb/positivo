@@ -17,7 +17,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://pos.guitarraandcoffee.com/';
+
+switch ($_SERVER['SERVER_NAME']) {
+    case 'dev.positivo.co':
+            $config['base_url'] = 'http://dev.positivo.co/';
+        break;
+
+    case 'positivo.co':
+            $config['base_url'] = 'http://positivo.co/';
+        break;
+
+   default:
+            $config['base_url'] = '';
+        break;
+}
 
 /*
 |--------------------------------------------------------------------------

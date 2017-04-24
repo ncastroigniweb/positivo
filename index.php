@@ -40,8 +40,19 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-	define('ENVIRONMENT', 'production');
+switch ($_SERVER['SERVER_NAME']) {
+    case 'dev.positivo.co':
+            define('ENVIRONMENT', 'development');
+        break;
 
+    case 'positivo.co':
+            define('ENVIRONMENT', 'production');
+        break;
+
+   default:
+            define('ENVIRONMENT', 'production');
+        break;
+}
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -53,8 +64,9 @@
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
 		ini_set('display_errors', 1);
+                ini_set('display_startup_errors', 1);
+                error_reporting(-1);
 	break;
 
 	case 'testing':
