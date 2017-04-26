@@ -484,6 +484,7 @@ $lang['delete_brands'] = "Eliminar marcas";
 $lang['edit_brand'] = "Editar marca";
 $lang['expenses_report'] = "Reporte de gastos";
 $lang['monthly_purchases'] = "Compras mensuales";
+$lang['daily_purchases']                    = "Compras Diarias";
 
 /*Otros ingresos*/
 $lang['other_profits'] = "Otros Ingresos";

@@ -71,6 +71,71 @@ $(document).ready(function(){
                     }
                 }
             });
+        } else{
+            
+            $.ajax({
+                type: "get",
+                url: 'pos/ajax/charge_info_localstorage/'+table,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    //clear storage without table
+                    if (localStorage.getItem('positems')) {
+                            localStorage.removeItem('positems');
+                    }
+                    if (localStorage.getItem('posdiscount')) {
+                            localStorage.removeItem('posdiscount');
+                    }
+                    if (localStorage.getItem('postax2')) {
+                            localStorage.removeItem('postax2');
+                    }
+                    if (localStorage.getItem('order_tip')) {
+                            localStorage.removeItem('order_tip');
+                    }
+                    if (localStorage.getItem('posshipping')) {
+                            localStorage.removeItem('posshipping');
+                    }
+                    if (localStorage.getItem('posref')) {
+                            localStorage.removeItem('posref');
+                    }
+                    if (localStorage.getItem('posnote')) {
+                            localStorage.removeItem('posnote');
+                    }
+                    if (localStorage.getItem('posinnote')) {
+                            localStorage.removeItem('posinnote');
+                    }
+                    if (localStorage.getItem('poscurrency')) {
+                            localStorage.removeItem('poscurrency');
+                    }
+                    if (localStorage.getItem('posdate')) {
+                            localStorage.removeItem('posdate');
+                    }
+                    if (localStorage.getItem('posstatus')) {
+                            localStorage.removeItem('posstatus');
+                    }
+            
+                    if (data){
+                        localStorage.setItem('poswarehouse', data.warehouse );
+                        localStorage.setItem('poscustomer', data.customer );
+                        localStorage.setItem('poslangcustomer', data.lang_customer );
+                        localStorage.setItem('posbiller', data.biller_id );
+                        localStorage.setItem('postable', table );
+                        localStorage.setItem('postablename', data.table_name );
+                        localStorage.setItem('postablelang', data.table_lang );
+                        localStorage.setItem('posbilltitle', data.bill_title );
+                        localStorage.setItem('posmessagebill', data.message_bill );
+                        localStorage.setItem('poswaiter', data.waiter_name );
+                        localStorage.setItem('poslangwaiter', data.lang_waiter_name );
+                        localStorage.setItem('posinfobiller', data.biller );
+                        localStorage.setItem('posbillertel', data.biller_tel );
+                        localStorage.setItem('poslogo', data.biller_logo );
+                        
+                        $('#modal-loading').show();
+
+                        window.location.href = site.base_url + 'pos';
+                    }
+                }
+            });
         }
     });
     

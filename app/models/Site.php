@@ -463,7 +463,9 @@ class Site extends CI_Model
             } else {
                 if( ! $wh_balance_qty) { $wh_balance_qty = 0; }
                 $product = $this->site->getProductByID($product_id);
-                $this->db->insert('warehouses_products', array('quantity' => $wh_balance_qty, 'product_id' => $product_id, 'warehouse_id' => $warehouse_id, 'avg_cost' => $product->cost));
+                if(!empty($product)){
+                    $this->db->insert('warehouses_products', array('quantity' => $wh_balance_qty, 'product_id' => $product_id, 'warehouse_id' => $warehouse_id, 'avg_cost' => $product->cost));
+                }
             }
             return TRUE;
         }

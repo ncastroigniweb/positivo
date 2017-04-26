@@ -23,7 +23,7 @@
                 <?= lang("reference", "reference"); ?>
                 <?= form_input('reference', (isset($_POST['reference']) ? $_POST['reference'] : $exnumber), 'class="form-control tip" id="reference"'); ?>
             </div>
-
+            <?php if(!empty($categories)){ ?>
             <div class="form-group">
                 <?= lang('category', 'category'); ?>
                 <?php
@@ -34,7 +34,7 @@
                 ?>
                 <?= form_dropdown('category', $ct, set_value('category'), 'class="form-control tip" id="category"'); ?>
             </div>
-
+            <?php } ?>
             <div class="form-group">
                 <?= lang("amount", "amount"); ?>
                 <input name="amount" type="text" id="amount" value="" class="pa form-control kb-pad amount"

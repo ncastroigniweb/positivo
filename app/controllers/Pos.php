@@ -1079,49 +1079,52 @@ class Pos extends MY_Controller
         $sales = array();
         $total_cash = 0;
         $total_CC = 0;
-        foreach ($get_references as $reference_key => $reference_value){
-            $number = str_replace("SALE/POS/","", $reference_value->reference_no);
-            $reference_list[] = $number;
-            
-            if(isset($sales[$reference_value->reference_no])){
-                if(strcmp($reference_value->paid_by, "cash") == 0){
-                    $total_cash += $reference_value->amount;
-                    
-                    if(isset($sales[$reference_value->reference_no]['paymentCash'])){
-                        $new_total = $sales[$reference_value->reference_no]['paymentCash']['total'];
-                        $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount + $new_total);
-                    }else{
+        
+        if(!empty($get_references)){
+            foreach ($get_references as $reference_key => $reference_value){
+                $number = str_replace("SALE/POS/","", $reference_value->reference_no);
+                $reference_list[] = $number;
+
+                if(isset($sales[$reference_value->reference_no])){
+                    if(strcmp($reference_value->paid_by, "cash") == 0){
+                        $total_cash += $reference_value->amount;
+
+                        if(isset($sales[$reference_value->reference_no]['paymentCash'])){
+                            $new_total = $sales[$reference_value->reference_no]['paymentCash']['total'];
+                            $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount + $new_total);
+                        }else{
+                            $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
+                        }
+                    }else if(strcmp($reference_value->paid_by, "CC") == 0){
+                        $total_CC += $reference_value->amount;
+
+                        if(isset($sales[$reference_value->reference_no]['paymentCC'])){
+                            $new_total = $sales[$reference_value->reference_no]['paymentCC']['total'];
+                            $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount + $new_total);
+                        }else{
+                            $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
+                        }
+                    }
+                }else{
+                    $sales[$reference_value->reference_no]['id'] = $reference_value->id;
+                    $sales[$reference_value->reference_no]['reference'] = $number;
+
+                    if(strcmp($reference_value->paid_by, "cash") == 0){
+                        $total_cash += $reference_value->amount;
                         $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
-                    }
-                }else if(strcmp($reference_value->paid_by, "CC") == 0){
-                    $total_CC += $reference_value->amount;
-                    
-                    if(isset($sales[$reference_value->reference_no]['paymentCC'])){
-                        $new_total = $sales[$reference_value->reference_no]['paymentCC']['total'];
-                        $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount + $new_total);
-                    }else{
+
+                    }else if(strcmp($reference_value->paid_by, "CC") == 0){
+                        $total_CC += $reference_value->amount;
                         $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
+
                     }
+
                 }
-            }else{
-                $sales[$reference_value->reference_no]['id'] = $reference_value->id;
-                $sales[$reference_value->reference_no]['reference'] = $number;
-                
-                if(strcmp($reference_value->paid_by, "cash") == 0){
-                    $total_cash += $reference_value->amount;
-                    $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
-                    
-                }else if(strcmp($reference_value->paid_by, "CC") == 0){
-                    $total_CC += $reference_value->amount;
-                    $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
-                    
-                }
-                
             }
         }
 
-        $this->data['min_reference'] = min($reference_list);
-        $this->data['max_reference'] = max($reference_list);
+        $this->data['min_reference'] = $reference_list ? min($reference_list) : 0;
+        $this->data['max_reference'] = $reference_list ? max($reference_list) : 0;
         $this->data['num_reference'] = count($sales);
         $this->data['sales'] = $sales;
         $this->data['total_cash'] = $total_cash;
@@ -1158,49 +1161,52 @@ class Pos extends MY_Controller
         $sales = array();
         $total_cash = 0;
         $total_CC = 0;
-        foreach ($get_references as $reference_key => $reference_value){
-            $number = str_replace("SALE/POS/","", $reference_value->reference_no);
-            $reference_list[] = $number;
+        
+        if(!empty($get_references)){
+            foreach ($get_references as $reference_key => $reference_value){
+                $number = str_replace("SALE/POS/","", $reference_value->reference_no);
+                $reference_list[] = $number;
 
-            if(isset($sales[$reference_value->reference_no])){
-                if(strcmp($reference_value->paid_by, "cash") == 0){
-                    $total_cash += $reference_value->amount;
+                if(isset($sales[$reference_value->reference_no])){
+                    if(strcmp($reference_value->paid_by, "cash") == 0){
+                        $total_cash += $reference_value->amount;
 
-                    if(isset($sales[$reference_value->reference_no]['paymentCash'])){
-                        $new_total = $sales[$reference_value->reference_no]['paymentCash']['total'];
-                        $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount + $new_total);
-                    }else{
+                        if(isset($sales[$reference_value->reference_no]['paymentCash'])){
+                            $new_total = $sales[$reference_value->reference_no]['paymentCash']['total'];
+                            $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount + $new_total);
+                        }else{
+                            $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
+                        }
+                    }else if(strcmp($reference_value->paid_by, "CC") == 0){
+                        $total_CC += $reference_value->amount;
+
+                        if(isset($sales[$reference_value->reference_no]['paymentCC'])){
+                            $new_total = $sales[$reference_value->reference_no]['paymentCC']['total'];
+                            $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount + $new_total);
+                        }else{
+                            $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
+                        }
+                    }
+                }else{
+                    $sales[$reference_value->reference_no]['id'] = $reference_value->id;
+                    $sales[$reference_value->reference_no]['reference'] = $number;
+
+                    if(strcmp($reference_value->paid_by, "cash") == 0){
+                        $total_cash += $reference_value->amount;
                         $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
-                    }
-                }else if(strcmp($reference_value->paid_by, "CC") == 0){
-                    $total_CC += $reference_value->amount;
 
-                    if(isset($sales[$reference_value->reference_no]['paymentCC'])){
-                        $new_total = $sales[$reference_value->reference_no]['paymentCC']['total'];
-                        $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount + $new_total);
-                    }else{
+                    }else if(strcmp($reference_value->paid_by, "CC") == 0){
+                        $total_CC += $reference_value->amount;
                         $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
+
                     }
-                }
-            }else{
-                $sales[$reference_value->reference_no]['id'] = $reference_value->id;
-                $sales[$reference_value->reference_no]['reference'] = $number;
-
-                if(strcmp($reference_value->paid_by, "cash") == 0){
-                    $total_cash += $reference_value->amount;
-                    $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
-
-                }else if(strcmp($reference_value->paid_by, "CC") == 0){
-                    $total_CC += $reference_value->amount;
-                    $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
 
                 }
-
             }
         }
 
-        $this->data['min_reference'] = min($reference_list);
-        $this->data['max_reference'] = max($reference_list);
+        $this->data['min_reference'] = $reference_list ? min($reference_list) : 0;
+        $this->data['max_reference'] = $reference_list ? max($reference_list) : 0;
         $this->data['num_reference'] = count($sales);
         $this->data['sales'] = $sales;
         $this->data['total_cash'] = $total_cash;
@@ -1729,6 +1735,8 @@ class Pos extends MY_Controller
                     $status = false;
                 }
                 
+                $data[0] = lang('no_table');
+                
                 if($this->restaurant->updateOnlyTables($this->session->userdata('user_id'), $status)){
                     $all_waiters = $this->restaurant->getWaiters();
 
@@ -1743,22 +1751,47 @@ class Pos extends MY_Controller
                     }
                     
                     if($tables){
-                        $data[0] = lang('no_table');
-
                         foreach($tables as $table){
-                            $data[$table->id] = ($waiters[$table->waiter]) ? lang('table')." : {$table->name} ({$waiters[$table->waiter]})" : lang('table')." : {$table->name}";
+                            $data[$table->id] = (!empty($waiters)) ? lang('table') . " : {$table->name} ({$waiters[$table->waiter]})" : lang('table')." : {$table->name}";
                         }
-
-                        echo json_encode($data);
-                    }else {
-                        echo NULL;
                     }
-                }else{
-                    echo null;
                 }
                 
+                echo json_encode($data);
+                
                 break;
+                
+            case "charge_info_localstorage":
+                    
+                $info = (object)[];
 
+                // set table local storage
+                $info->table_lang = lang('table');
+                $info->table_name = $this->restaurant->get_table($param1)->name;
+                
+                // set waiter name local storage
+                $info->lang_waiter_name = lang("waiter_name");
+                $info->waiter_name = $this->site->getUser()->first_name . " " . $this->site->getUser()->last_name;
+                $info->lang_customer = lang("customer");
+                $info->customer = $this->pos_settings->default_customer;
+                
+                // set message to bill
+                $info->bill_title = lang("bill");
+                $info->message_bill = $this->pos_settings->cf_value1 . "<br>";
+                $info_biller = $this->pos_model->getCompanyByID($this->pos_settings->default_biller);
+                $info->biller = $info_biller->name . "<br>" . lang("NIT"). ": " . $info_biller->cf1 . "<br>" .$info_biller->address . " " . $info_biller->city . " " . $info_biller->postal_code . " " . $info_biller->state . " " . $info_biller->country .
+                    "<br>" . lang("tel") . ": " . $info_biller->phone . "<br>";
+                $info->biller_tel = lang("tel") . ": " . $info_biller->phone;
+                $info->biller_logo = base_url() . 'assets/uploads/logos/' . $info_biller->logo;
+                $info->biller_id = $this->pos_settings->default_biller;
+                
+                // set message to warehouse
+                $info->warehouse = $this->Settings->default_warehouse;
+                    
+                echo json_encode($info);
+                
+                break;
+            
             default :
                 break;
         }
