@@ -355,8 +355,16 @@ $ps = array('0' => lang("disable"), '1' => lang("enable"));
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <?= lang("send_to", "send_to"); ?>
+                            <?= lang("dealy_send_to", "send_to"); ?>
                             <?= form_input('send_to', $Settings->send_to, 'class="form-control tip" id="send_to"  required="required"'); ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="status_premium_price"><?= lang("status_premium_price"); ?></label>
+                            <?php
+                            echo form_dropdown('status_premium_price', $ps, $settings->status_premium_price, 'class="form-control tip" id="status_premium_price" required="required" style="width:100%;"');
+                            ?>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -372,14 +380,6 @@ $ps = array('0' => lang("disable"), '1' => lang("enable"));
                                     ?>
                                 </div>
                         <?php } ?>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label" for="status_premium_price"><?= lang("status_premium_price"); ?></label>
-                            <?php
-                            echo form_checkbox(array('name' => 'status_premium_price', 'id' => 'status_premium_price', 'value' => TRUE, 'checked' => $settings->status_premium_price, 'class' => 'form-control tip'));
-                            ?>
                         </div>
                     </div>
                     </fieldset>

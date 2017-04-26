@@ -312,5 +312,6 @@ $lang['seconds']                         = "seg";
 $lang['date_format_chef']                = "Formato fecha chef";
 $lang['delay_product']                   = "Tiempo de producto demorado";
 $lang['send_to']                         = "Enviar correo a:";
+$lang['dealy_send_to']                   = "En producto demorado, enviar correo a:";
 $lang['days_active_premium_price']       = "Días en los que se activara el precio premium de los productos automaticamente al abrir la caja";
 $lang['status_premium_price']            = "Estado del precio premium";

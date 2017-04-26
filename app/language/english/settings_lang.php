@@ -382,5 +382,6 @@ $lang['seconds']                         = "sec";
 $lang['date_format_chef']                = "Chef date format";
 $lang['delay_product']                   = "Delay product time";
 $lang['send_to']                         = "Send email to:";
+$lang['dealy_send_to']                   = "On delay product, send email to:";
 $lang['days_active_premium_price']       = "Days in which the premium price of the products will be activated automatically when opening register";
 $lang['status_premium_price']            = "Status Premium price";
