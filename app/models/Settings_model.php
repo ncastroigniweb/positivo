@@ -579,6 +579,62 @@ class Settings_model extends CI_Model
         }
         return FALSE;
     }
+    
+    public function getOtherProfitCategoryByID($id)
+    {
+        $q = $this->db->get_where("other_profits_categories", array('id' => $id), 1);
+        if ($q->num_rows() > 0) {
+            return $q->row();
+        }
+        return FALSE;
+    }
+
+    public function getOtherProfitCategoryByCode($code)
+    {
+        $q = $this->db->get_where("other_profits_categories", array('code' => $code), 1);
+        if ($q->num_rows() > 0) {
+            return $q->row();
+        }
+        return FALSE;
+    }
+
+    public function addOtherProfitCategory($data)
+    {
+        if ($this->db->insert("other_profits_categories", $data)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function addOtherProfitCategories($data)
+    {
+        if ($this->db->insert_batch("other_profits_categories", $data)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function updateOtherProfitCategory($id, $data = array())
+    {
+        if ($this->db->update("other_profits_categories", $data, array('id' => $id))) {
+            return true;
+        }
+        return false;
+    }
+
+    public function hasOtherProfitCategoryRecord($id)
+    {
+        $this->db->where('category_id', $id);
+        return $this->db->count_all_results('other_profits');
+    }
+
+    public function deleteOtherProfitCategory($id)
+    {
+        if ($this->db->delete("other_profits_categories", array('id' => $id))) {
+            return true;
+        }
+        return FALSE;
+    }
 
     public function addUnit($data)
     {

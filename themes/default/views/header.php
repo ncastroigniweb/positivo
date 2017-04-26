@@ -588,6 +588,11 @@
                                                 <i class="fa fa-folder-open"></i><span class="text"> <?= lang('expense_categories'); ?></span>
                                             </a>
                                         </li>
+                                        <li id="system_settings_other_profits_categories">
+                                            <a href="<?= site_url('system_settings/other_profits_categories') ?>">
+                                                <i class="fa fa-folder-open"></i><span class="text"> <?= lang('other_profits_categories'); ?></span>
+                                            </a>
+                                        </li>
                                         <li id="system_settings_units">
                                             <a href="<?= site_url('system_settings/units') ?>">
                                                 <i class="fa fa-wrench"></i><span class="text"> <?= lang('units'); ?></span>

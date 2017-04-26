@@ -2367,6 +2367,180 @@ class system_settings extends MY_Controller
             redirect($_SERVER["HTTP_REFERER"]);
         }
     }
+    
+    function other_profits_categories()
+    {
+
+        $this->data['error'] = validation_errors() ? validation_errors() : $this->session->flashdata('error');
+        $bc = array(array('link' => base_url(), 'page' => lang('home')), array('link' => site_url('system_settings'), 'page' => lang('system_settings')), array('link' => '#', 'page' => lang('other_profits_categories')));
+        $meta = array('page_title' => lang('categories'), 'bc' => $bc);
+        $this->page_construct('settings/other_profits_categories', $meta, $this->data);
+    }
+
+    function getOtherProfitsCategories()
+    {
+
+        $this->load->library('datatables');
+        $this->datatables
+            ->select("id, code, name")
+            ->from("other_profits_categories")
+            ->add_column("Actions", "<div class=\"text-center\"><a href='" . site_url('system_settings/edit_other_profit_category/$1') . "' data-toggle='modal' data-target='#myModal' class='tip' title='" . lang("edit_other_profit_category") . "'><i class=\"fa fa-edit\"></i></a> <a href='#' class='tip po' title='<b>" . lang("delete_other_profit_category") . "</b>' data-content=\"<p>" . lang('r_u_sure') . "</p><a class='btn btn-danger po-delete' href='" . site_url('system_settings/delete_other_profit_category/$1') . "'>" . lang('i_m_sure') . "</a> <button class='btn po-close'>" . lang('no') . "</button>\"  rel='popover'><i class=\"fa fa-trash-o\"></i></a></div>", "id");
+
+        echo $this->datatables->generate();
+    }
+
+    function add_other_profit_category()
+    {
+
+        $this->form_validation->set_rules('code', lang("category_code"), 'trim|is_unique[categories.code]|required');
+        $this->form_validation->set_rules('name', lang("name"), 'required|min_length[3]');
+
+        if ($this->form_validation->run() == true) {
+
+            $data = array(
+                'name' => $this->input->post('name'),
+                'code' => $this->input->post('code'),
+            );
+
+        } elseif ($this->input->post('add_other_profit_category')) {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect("system_settings/other_profits_categories");
+        }
+
+        if ($this->form_validation->run() == true && $this->settings_model->addOtherProfitCategory($data)) {
+            $this->session->set_flashdata('message', lang("profit_category_added"));
+            redirect("system_settings/other_profits_categories");
+        } else {
+            $this->data['error'] = validation_errors() ? validation_errors() : $this->session->flashdata('error');
+            $this->data['modal_js'] = $this->site->modal_js();
+            $this->load->view($this->theme . 'settings/add_other_profit_category', $this->data);
+        }
+    }
+
+    function edit_other_profit_category($id = NULL)
+    {
+        $this->form_validation->set_rules('code', lang("category_code"), 'trim|required');
+        $category = $this->settings_model->getOtherProfitCategoryByID($id);
+        if ($this->input->post('code') != $category->code) {
+            $this->form_validation->set_rules('code', lang("category_code"), 'is_unique[expense_categories.code]');
+        }
+        $this->form_validation->set_rules('name', lang("category_name"), 'required|min_length[3]');
+
+        if ($this->form_validation->run() == true) {
+
+            $data = array(
+                'code' => $this->input->post('code'),
+                'name' => $this->input->post('name')
+            );
+
+        } elseif ($this->input->post('edit_other_profit_category')) {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect("system_settings/other_profit_category");
+        }
+
+        if ($this->form_validation->run() == true && $this->settings_model->updateOtherProfitCategory($id, $data)) {
+            $this->session->set_flashdata('message', lang("other_profit_category_updated"));
+            redirect("system_settings/other_profits_categories");
+        } else {
+            $this->data['error'] = validation_errors() ? validation_errors() : $this->session->flashdata('error');
+            $this->data['category'] = $category;
+            $this->data['modal_js'] = $this->site->modal_js();
+            $this->load->view($this->theme . 'settings/edit_other_profit_category', $this->data);
+        }
+    }
+
+    function delete_other_profit_category($id = NULL)
+    {
+
+        if ($this->settings_model->hasOtherProfitCategoryRecord($id)) {
+            $this->session->set_flashdata('error', lang("category_has_other_profits"));
+            redirect("system_settings/other_profits_categories", 'refresh');
+        }
+
+        if ($this->settings_model->deleteOtherProfitCategory($id)) {
+            echo lang("other_profit_category_deleted");
+        }
+    }
+
+    function other_profits_category_actions()
+    {
+
+        $this->form_validation->set_rules('form_action', lang("form_action"), 'required');
+
+        if ($this->form_validation->run() == true) {
+
+            if (!empty($_POST['val'])) {
+                if ($this->input->post('form_action') == 'delete') {
+                    foreach ($_POST['val'] as $id) {
+                        if ($this->settings_model->hasOtherProfitCategoryRecord($id)) {
+                            $this->session->set_flashdata('error', lang("category_has_other_profits"));
+                            redirect("system_settings/other_profits_categories", 'refresh');
+                        }
+                        $this->settings_model->deleteOtherProfitCategory($id);
+                    }
+                    $this->session->set_flashdata('message', lang("categories_deleted"));
+                    redirect($_SERVER["HTTP_REFERER"]);
+                }
+
+                if ($this->input->post('form_action') == 'export_excel' || $this->input->post('form_action') == 'export_pdf') {
+
+                    $this->load->library('excel');
+                    $this->excel->setActiveSheetIndex(0);
+                    $this->excel->getActiveSheet()->setTitle(lang('categories'));
+                    $this->excel->getActiveSheet()->SetCellValue('A1', lang('code'));
+                    $this->excel->getActiveSheet()->SetCellValue('B1', lang('name'));
+
+                    $row = 2;
+                    foreach ($_POST['val'] as $id) {
+                        $sc = $this->settings_model->getOtherProfitCategoryByID($id);
+                        $this->excel->getActiveSheet()->SetCellValue('A' . $row, $sc->code);
+                        $this->excel->getActiveSheet()->SetCellValue('B' . $row, $sc->name);
+                        $row++;
+                    }
+
+                    $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
+                    $this->excel->getDefaultStyle()->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+                    $filename = 'categories_other_profits_' . date('Y_m_d_H_i_s');
+                    if ($this->input->post('form_action') == 'export_pdf') {
+                        $styleArray = array('borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN)));
+                        $this->excel->getDefaultStyle()->applyFromArray($styleArray);
+                        $this->excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+                        require_once(APPPATH . "third_party" . DIRECTORY_SEPARATOR . "MPDF" . DIRECTORY_SEPARATOR . "mpdf.php");
+                        $rendererName = PHPExcel_Settings::PDF_RENDERER_MPDF;
+                        $rendererLibrary = 'MPDF';
+                        $rendererLibraryPath = APPPATH . 'third_party' . DIRECTORY_SEPARATOR . $rendererLibrary;
+                        if (!PHPExcel_Settings::setPdfRenderer($rendererName, $rendererLibraryPath)) {
+                            die('Please set the $rendererName: ' . $rendererName . ' and $rendererLibraryPath: ' . $rendererLibraryPath . ' values' .
+                                PHP_EOL . ' as appropriate for your directory structure');
+                        }
+
+                        header('Content-Type: application/pdf');
+                        header('Content-Disposition: attachment;filename="' . $filename . '.pdf"');
+                        header('Cache-Control: max-age=0');
+
+                        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'PDF');
+                        return $objWriter->save('php://output');
+                    }
+                    if ($this->input->post('form_action') == 'export_excel') {
+                        header('Content-Type: application/vnd.ms-excel');
+                        header('Content-Disposition: attachment;filename="' . $filename . '.xls"');
+                        header('Cache-Control: max-age=0');
+
+                        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+                        return $objWriter->save('php://output');
+                    }
+
+                    redirect($_SERVER["HTTP_REFERER"]);
+                }
+            } else {
+                $this->session->set_flashdata('error', lang("no_record_selected"));
+                redirect($_SERVER["HTTP_REFERER"]);
+            }
+        } else {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect($_SERVER["HTTP_REFERER"]);
+        }
+    }
 
     function import_categories()
     {
@@ -2585,6 +2759,76 @@ class system_settings extends MY_Controller
         }
 
         if ($this->form_validation->run() == true && $this->settings_model->addExpenseCategories($data)) {
+            $this->session->set_flashdata('message', lang("categories_added"));
+            redirect('system_settings/expense_categories');
+        } else {
+
+            $this->data['error'] = (validation_errors() ? validation_errors() : $this->session->flashdata('error'));
+            $this->data['userfile'] = array('name' => 'userfile',
+                'id' => 'userfile',
+                'type' => 'text',
+                'value' => $this->form_validation->set_value('userfile')
+            );
+            $this->data['modal_js'] = $this->site->modal_js();
+            $this->load->view($this->theme.'settings/import_expense_categories', $this->data);
+
+        }
+    }
+    
+    function import_other_profits_categories()
+    {
+
+        $this->load->helper('security');
+        $this->form_validation->set_rules('userfile', lang("upload_file"), 'xss_clean');
+
+        if ($this->form_validation->run() == true) {
+
+            if (isset($_FILES["userfile"])) {
+
+                $this->load->library('upload');
+                $config['upload_path'] = 'files/';
+                $config['allowed_types'] = 'csv';
+                $config['max_size'] = $this->allowed_file_size;
+                $config['overwrite'] = TRUE;
+                $this->upload->initialize($config);
+
+                if (!$this->upload->do_upload()) {
+                    $error = $this->upload->display_errors();
+                    $this->session->set_flashdata('error', $error);
+                    redirect("system_settings/expense_categories");
+                }
+
+                $csv = $this->upload->file_name;
+
+                $arrResult = array();
+                $handle = fopen('files/' . $csv, "r");
+                if ($handle) {
+                    while (($row = fgetcsv($handle, 5000, ",")) !== FALSE) {
+                        $arrResult[] = $row;
+                    }
+                    fclose($handle);
+                }
+                $titles = array_shift($arrResult);
+                $keys = array('code', 'name');
+                $final = array();
+                foreach ($arrResult as $key => $value) {
+                    $final[] = array_combine($keys, $value);
+                }
+
+                foreach ($final as $csv_ct) {
+                    if ( ! $this->settings_model->getOtherProfitCategoryByCode(trim($csv_ct['code']))) {
+                        $data[] = array(
+                            'code' => trim($csv_ct['code']),
+                            'name' => trim($csv_ct['name']),
+                            );
+                    }
+                }
+            }
+
+            // $this->sma->print_arrays($data);
+        }
+
+        if ($this->form_validation->run() == true && $this->settings_model->addOtherProfitCategories($data)) {
             $this->session->set_flashdata('message', lang("categories_added"));
             redirect('system_settings/expense_categories');
         } else {

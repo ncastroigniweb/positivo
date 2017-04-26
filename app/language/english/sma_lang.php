@@ -531,3 +531,4 @@ $lang['add_other_profits']                  = "Add profits";
 $lang['other_profits_report']               = "Other profits report";
 $lang['total_profit']                       = "Total Profit";
 $lang['balance']                            = "Balance";
+$lang['other_profits_categories']           = "Other profits categories";
