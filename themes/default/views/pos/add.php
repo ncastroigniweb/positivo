@@ -1145,7 +1145,7 @@
                 <div class="form-group">
                     <label class="control-label" for="waiter"><?= lang("waiter"); ?></label>
                     <?php
-                        $waiters = array("No asignar");
+                        $waiters = array(lang('no_waiter'));
                         if(!empty($all_waiters)){
                             foreach ($all_waiters as $waiter){
                                 $waiters[$waiter->id] = $waiter->first_name . " " . $waiter->last_name;
