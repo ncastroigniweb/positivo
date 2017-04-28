@@ -1463,8 +1463,21 @@ class Pos_model extends CI_Model
             $this->db->delete('suspended_items', array('suspend_id' => $did));
                     
             if ($this->db->update('suspended_bills', $sData, array('id' => $did))) {
+                
+                $this->load->model('tables_model');
+                if($table = $this->tables_model->get_table($data['id_table'])){
+                    if($table->status != 0){
+                        // Update table details
+                        $table_info = array(
+                           'waiter' => $data['id_waiter'],
+                        );
+
+                        $this->tables_model->update_table($data['id_table'], $table_info);
+                    }
+                }
+                
                 if ($this->db->insert_batch('suspended_items', $items)) {
-                    return TRUE;
+                    return $did;
                 }
             }
 
@@ -1472,13 +1485,29 @@ class Pos_model extends CI_Model
 
             if ($this->db->insert('suspended_bills', $sData)) {
                 $suspend_id = $this->db->insert_id();
+                
+                $this->load->model('tables_model');
+                if($table = $this->tables_model->get_table($data['id_table'])){
+                    if(!$table->status){
+                        // Update table details
+                        $table_info = array(
+                           'status' => 1,
+                           'waiter' => $data['id_waiter'],
+                           'guests' => $table->guests,
+                           'bill'   => $suspend_id
+                        );
+
+                        $this->tables_model->update_table($data['id_table'], $table_info);
+                    }
+                }
+                
                 $addOn = array('suspend_id' => $suspend_id);
-                end($addOn);
+//                end($addOn);
                 foreach ($items as &$var) {
-                    $var = array_merge($addOn, $var);
+                    $var = array_merge($var, $addOn);
                 }
                 if ($this->db->insert_batch('suspended_items', $items)) {
-                    return TRUE;
+                    return $suspend_id;
                 }
             }
 
@@ -1773,5 +1802,19 @@ class Pos_model extends CI_Model
             return true;
         }
         return false;
+    }
+    
+    public function getWaiters() {
+//        $group->name == "waiter" || $group->name == "mozo"
+        $group = $this->sma->getGroupByName("mozo")->id;
+        $q = $this->db->get_where('users', array('group_id' => $group));
+        
+        if ($q->num_rows() > 0) {
+            foreach (($q->result()) as $row) {
+                $data[$row->id] = $row->first_name . " " . $row->last_name;
+            }
+            return $data;
+        }
+        return FALSE;
     }
 }

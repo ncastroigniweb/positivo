@@ -7,7 +7,9 @@
  */
 ?>
 <ul id="js_imgBox" class="clearfix cateList mt5 u_list_type_none">
-    <?php foreach ($top_10_products as $key => $product) { ?>
+    <?php
+    if(!empty($top_10_products)) {
+        foreach ($top_10_products as $key => $product) { ?>
     <li>
         <?php 
             $onclick = '';
@@ -52,5 +54,6 @@
             <?php } ?>
         </div>
     </li>
-    <?php } ?>
+    <?php }
+    } ?>
 </ul>

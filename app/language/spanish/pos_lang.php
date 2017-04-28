@@ -285,3 +285,5 @@ $lang['sales_tocredit']                     = "Ventas a Credito";
 $lang['bonds']                              = "Bonos";
 $lang['no_transactions']                    = "No de Transacciones";
 $lang['registered']                         = "Valor Registrado";
+$lang['default_waiter']                     = "Mesero por defecto";
+$lang['no_waiter']                          = "Sin mesero";

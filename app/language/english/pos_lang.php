@@ -293,3 +293,5 @@ $lang['sales_tocredit']                     = "Sales to Credit";
 $lang['bonds']                              = "Bonds";
 $lang['no_transactions']                    = "No-Transactions";
 $lang['registered']                         = "Registered";
+$lang['default_waiter']                     = "Default waiter";
+$lang['no_waiter']                          = "Without waiter";

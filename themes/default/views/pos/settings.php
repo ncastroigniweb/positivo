@@ -136,6 +136,16 @@
                             <?= form_dropdown('enable_java_applet', $yn, $pos->java_applet, 'class="form-control" id="enable_java_applet" required="required"'); ?>
                         </div>
                     </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="form-group">
+                            <?= lang('default_waiter', 'default_waiter'); ?>
+                            <?php
+                                $waiters[0] = lang('no_waiter');
+                                ksort($waiters);
+                            ?>
+                            <?= form_dropdown('default_waiter', $waiters, !empty($pos->default_waiter) ? $pos->default_waiter : 0, 'class="form-control" id="default_waiter" required="required"'); ?>
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                     <div id="jac" class="col-md-12" style="display: none;">
                         <div class="col-md-3 col-sm-3">

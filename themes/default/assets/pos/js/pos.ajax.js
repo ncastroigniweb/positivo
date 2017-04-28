@@ -78,7 +78,6 @@ $(document).ready(function(){
                 url: 'pos/ajax/charge_info_localstorage/'+table,
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
                     //clear storage without table
                     if (localStorage.getItem('positems')) {
                             localStorage.removeItem('positems');
@@ -1226,7 +1225,7 @@ function loadItems() {
 
 			var row_no = (new Date).getTime();
 			var newTr = $('<tr id="row_' + row_no + '" class="row_' + item_id + '" data-item-id="' + item_id + '"></tr>');
-			tr_html = '<td><input name="product_sid[]" type="hidden" class="rid" value="' + item.sid + '"><input name="product_id[]" type="hidden" class="rid" value="' + product_id + '"><input name="product_type[]" type="hidden" class="rtype" value="' + item_type + '"><input name="product_code[]" type="hidden" class="rcode" value="' + item_code + '"><input name="product_name[]" type="hidden" class="rname" value="' + item_name + '"><input name="product_option[]" type="hidden" class="roption" value="' + item_option + '"><span class="sname" id="name_' + row_no + '">' + item_code +' - '+ item_name +(sel_opt != '' ? ' ('+sel_opt+')' : '')+'</span></td>';
+			tr_html = '<td><input name="product_sid[]" type="hidden" class="srid" value="' + item.sid + '"><input name="product_id[]" type="hidden" class="rid" value="' + product_id + '"><input name="product_type[]" type="hidden" class="rtype" value="' + item_type + '"><input name="product_code[]" type="hidden" class="rcode" value="' + item_code + '"><input name="product_name[]" type="hidden" class="rname" value="' + item_name + '"><input name="product_option[]" type="hidden" class="roption" value="' + item_option + '"><span class="sname" id="name_' + row_no + '">' + item_code +' - '+ item_name +(sel_opt != '' ? ' ('+sel_opt+')' : '')+'</span></td>';
 			tr_html += '<td class="text-right">';
 			if (site.settings.product_serial == 1) {
 				tr_html += '<input class="form-control input-sm rserial" name="serial[]" type="hidden" id="serial_' + row_no + '" value="'+item_serial+'">';

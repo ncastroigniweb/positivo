@@ -354,6 +354,11 @@ class Pos extends MY_Controller
                 $round_total = $this->sma->roundNumber($grand_total, $this->pos_settings->rounding);
                 $rounding = $this->sma->formatMoney($round_total - $grand_total);
             }
+            $waiter_on_sale = $this->sma->get_Waiter_On_Sale($this->input->post('id_suspended_sale'));
+            if(!$waiter_on_sale && $this->pos_settings->default_waiter != null ){
+                $waiter_on_sale = $this->pos_settings->default_waiter;
+            }
+            
             $data = array('date'              => $date,
                           'reference_no'      => $reference,
                           'customer_id'       => $customer_id,
@@ -383,7 +388,7 @@ class Pos extends MY_Controller
                           'paid'              => $this->input->post('amount-paid') ? $this->input->post('amount-paid') : 0,
                           'created_by'        => $this->session->userdata('user_id'),
                           'id_table'          => $table_id,
-                          'id_waiter'         => $this->sma->get_Waiter_On_Sale($this->input->post('id_suspended_sale')),
+                          'id_waiter'         => $waiter_on_sale,
                           'guests'            => $this->sma->getGuest($table_id),
                           'order_tip_id'      => $order_tip_id,
                           'order_tip'         => $order_tip,
@@ -464,10 +469,16 @@ class Pos extends MY_Controller
         if ($this->form_validation->run() == TRUE && !empty($products) && !empty($data)) {
             if ($suspend) {
                 $data['suspend_note'] = $this->input->post('suspend_note');
-                if ($this->pos_model->suspendSale($data, $products, $did)) {
-                    $this->session->set_userdata('remove_posls', 1);
+                if(!empty($this->input->post('waiter'))){
+                    $data['id_waiter'] = $this->input->post('waiter');
+                }
+                if ($suspend_id = $this->pos_model->suspendSale($data, $products, $did)) {
+//                    $this->session->set_userdata('remove_posls', 1);
                     $this->session->set_flashdata('message', $this->lang->line("sale_suspended"));
-                    $this->sma->clean_Storage('pos');
+                    if(!empty($suspend_id)){
+                        redirect("pos/index/{$suspend_id}");
+                    }
+//                    $this->sma->clean_Storage('pos');
 //                    redirect("pos");
                 }
             } else {
@@ -611,6 +622,7 @@ class Pos extends MY_Controller
             $this->data['pos_settings'] = $this->pos_settings;
 
             $waiters = $this->restaurant->getWaiters();
+            $this->data['all_waiters'] = $waiters;
 
             foreach($waiters as $waiter){
                 $this->data['waiters'][$waiter->id] = "{$waiter->first_name} {$waiter->last_name}";
@@ -625,7 +637,20 @@ class Pos extends MY_Controller
             $this->data['tables'][0] = lang('no_table');
 
             foreach($tables as $table){
-                $this->data['tables'][$table->id] = (isset($this->data['waiters'][$table->waiter])) ? lang('table')." : {$table->name} ({$this->data['waiters'][$table->waiter]})" : lang('table')." : {$table->name}";
+                if(!empty($waiters) && $table->waiter != null ){
+                    if($table->waiter == 0 && $table->status != 0){
+                        $table_name = lang('table') . " : {$table->name} (" . lang('no_waiter') . ")";
+                    }else if($table->waiter != 0){
+                        $table_name = lang('table') . " : {$table->name} ({$this->data['waiters'][$table->waiter]})";
+                    }else{
+                        $table_name = lang('table')." : {$table->name}";
+                    }
+                }
+                else{
+                    $table_name = lang('table')." : {$table->name}";
+                }
+                $this->data['tables'][$table->id] = $table_name;
+//                $this->data['tables'][$table->id] = (isset($this->data['waiters'][$table->waiter])) ? lang('table')." : {$table->name} ({$this->data['waiters'][$table->waiter]})" : lang('table')." : {$table->name}";
             }
 
             $this->load->view($this->theme . 'pos/add', $this->data);
@@ -1302,6 +1327,7 @@ class Pos extends MY_Controller
                 'rounding'                  => $this->input->post('rounding'),
                 'item_order'                => $this->input->post('item_order'),
                 'after_sale_page'           => $this->input->post('after_sale_page'),
+                'default_waiter'            => $this->input->post('default_waiter')
             );
             $payment_config = array(
                 'APIUsername'            => $this->input->post('APIUsername'),
@@ -1344,6 +1370,7 @@ class Pos extends MY_Controller
             $this->data['APISignature'] = $this->config->item('APISignature');
             $this->data['paypal_balance'] = NULL; // $this->pos_settings->paypal_pro ? $this->paypal_balance() : NULL;
             $this->data['stripe_balance'] = NULL; // $this->pos_settings->stripe ? $this->stripe_balance() : NULL;
+            $this->data['waiters'] = $this->pos_model->getWaiters();
             $bc = array(array('link' => base_url(), 'page' => lang('home')), array('link' => '#', 'page' => lang('pos_settings')));
             $meta = array('page_title' => lang('pos_settings'), 'bc' => $bc);
             $this->page_construct('pos/settings', $meta, $this->data);
@@ -1743,7 +1770,7 @@ class Pos extends MY_Controller
                     foreach($all_waiters as $waiter){
                         $waiters[$waiter->id] = "{$waiter->first_name} {$waiter->last_name}";
                     }
-
+                    
                     if($status){
                         $tables = $this->restaurant->getTablesTaken();
                     } else {
@@ -1752,7 +1779,20 @@ class Pos extends MY_Controller
                     
                     if($tables){
                         foreach($tables as $table){
-                            $data[$table->id] = (!empty($waiters)) ? lang('table') . " : {$table->name} ({$waiters[$table->waiter]})" : lang('table')." : {$table->name}";
+                            if(!empty($waiters) && $table->waiter != null ){
+                                if($table->waiter == 0 && $table->status != 0){
+                                    $table_name = lang('table') . " : {$table->name} (" . lang('no_waiter') . ")";
+                                }else if($table->waiter != 0){
+                                    $table_name = lang('table') . " : {$table->name} ({$waiters[$table->waiter]})";
+                                }else{
+                                    $table_name = lang('table')." : {$table->name}";
+                                }
+                            }
+                            else{
+                                $table_name = lang('table')." : {$table->name}";
+                            }
+//                            $data[$table->id] = (!empty($waiters) && !empty($table->waiter)) ? lang('table') . " : {$table->name} ({$waiters[$table->waiter]})" : lang('table')." : {$table->name}";
+                            $data[$table->id] = $table_name;
                         }
                     }
                 }

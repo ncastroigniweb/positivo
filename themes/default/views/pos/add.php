@@ -1142,7 +1142,18 @@
                     <?=lang("reference_note", "reference_note");?>
 <?php echo form_input('reference_note', $reference_note, 'class="form-control kb-text" id="reference_note"'); ?>
                 </div>
-
+                <div class="form-group">
+                    <label class="control-label" for="waiter"><?= lang("waiter"); ?></label>
+                    <?php
+                        $waiters = array("No asignar");
+                        if(!empty($all_waiters)){
+                            foreach ($all_waiters as $waiter){
+                                $waiters[$waiter->id] = $waiter->first_name . " " . $waiter->last_name;
+                            }
+                        }
+                        echo form_dropdown('waiter', $waiters, !empty($suspend_sale) ? $suspend_sale->id_waiter : $this->pos_settings->default_waiter, 'id="waiter" class="form-control" required="required" style="width:100%;" form="pos-sale-form"');
+                    ?>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" id="suspend_sale" class="btn btn-primary"><?=lang('submit')?></button>

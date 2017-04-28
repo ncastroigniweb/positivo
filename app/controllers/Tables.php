@@ -227,21 +227,22 @@ class Tables extends MY_Controller
                     
                     //only products with the categories in the toplist_subcategories
                     $counter_top = 0;
-                    foreach ($topProducts as $key => $value) {
-                        if($counter_top < 12){
-                            $product = $this->products_model->getProductByCode($value->product_code);
+                    
+                    if(!empty($topProducts)) {
+                        foreach ($topProducts as $key => $value) {
+                            if($counter_top < 12){
+                                $product = $this->products_model->getProductByCode($value->product_code);
 
-                            if(array_key_exists($product->subcategory_id, $top_list_subcategories)){
-                                $product->options = $this->Products_model->getProductOptions($product->id);
-                                $top_final_products[] = $product;
-                                $counter_top++;
+                                if(array_key_exists($product->subcategory_id, $top_list_subcategories)){
+                                    $product->options = $this->Products_model->getProductOptions($product->id);
+                                    $top_final_products[] = $product;
+                                    $counter_top++;
+                                }
+
                             }
-                            
                         }
                     }
-                    
-                    $this->data['top_10_products'] = $top_final_products;
-                    
+                    $this->data['top_10_products'] = !empty($top_final_products) ? $top_final_products : NULL;
                     
                     break;
             
