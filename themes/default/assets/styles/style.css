@@ -2239,3 +2239,32 @@ animation: blink 1s steps(2, start) infinite;
 input[id*="swipe_"], input[id*="pcc_no_"], input[id*="pcc_holder_"], div[class*="pcc_"], #sale_note, #staffnote{
     display: none !important;
 }
+
+.content_table_bill{
+    text-align: left;
+    border-bottom: 2px solid;
+}
+
+.content_table_bill_right{
+    text-align: right;
+}
+
+.title_view_bill{
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.data_title_bill{
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.row_title_bill{
+    border-top: 2px solid;border-bottom: 2px solid;
+}
+
+.table_title_bill, .content_table_bill{
+    width: 100%;
+}
