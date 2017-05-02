@@ -70,6 +70,25 @@
                                         <label for="products-barcode" class="padding05"><?= lang('print_barcodes') ?></label>
                                     </td>
                                 </tr>
+                                
+                                <tr>
+                                    <td><?= lang("categories"); ?></td>
+                                    <td class="text-center">
+                                        <input type="checkbox" value="1" class="checkbox" name="categories-index" <?php echo $p->{'categories-index'} ? "checked" : ''; ?>>
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" value="1" class="checkbox" name="categories-add" <?php echo $p->{'categories-add'} ? "checked" : ''; ?>>
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" value="1" class="checkbox" name="categories-edit" <?php echo $p->{'categories-edit'} ? "checked" : ''; ?>>
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" value="1" class="checkbox" name="categories-delete" <?php echo $p->{'categories-delete'} ? "checked" : ''; ?>>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <td><?= lang("sales"); ?></td>
@@ -320,7 +339,7 @@
                                         </span>   
                                     </td>
                                 </tr>
-
+                                
                                 </tbody>
                             </table>
                         </div>

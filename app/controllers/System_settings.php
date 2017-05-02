@@ -15,10 +15,15 @@ class system_settings extends MY_Controller
             redirect("tables");
         }
 
-        if (!$this->Owner) {
+        if (!$this->Owner && !$this->sma->is_product_admin()) {
             $this->session->set_flashdata('warning', lang('access_denied'));
             redirect('welcome');
         }
+        
+        if(!$this->sma->is_product_admin() && !$this->router->method == 'categories'){
+            redirect('welcome');
+        } 
+        
         $this->lang->load('settings', $this->Settings->user_language);
         $this->load->library('form_validation');
         $this->load->model('settings_model');
@@ -805,6 +810,10 @@ class system_settings extends MY_Controller
                 'reports-expenses' => $this->input->post('reports-expenses'),
                 'reports-daily_purchases' => $this->input->post('reports-daily_purchases'),
                 'reports-monthly_purchases' => $this->input->post('reports-monthly_purchases'),
+                'categories-index' => $this->input->post('categories-index'),
+                'categories-edit' => $this->input->post('categories-edit'),
+                'categories-add' => $this->input->post('categories-add'),
+                'categories-delete' => $this->input->post('categories-delete'),
             );
 
             if (POS) {

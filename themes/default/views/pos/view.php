@@ -113,7 +113,7 @@
     <div id="receipt-data">
         <div class="text-center">
             <img style="width: 40%;" src="<?=base_url() . 'assets/uploads/logos/' . $biller->logo;?>" alt="<?=$biller->company;?>">
-            <h3 style="font-size: 18px;">Restaurante - Musica en vivo</h3>
+            <h3 style="font-size: 18px;">Restaurante</h3>
 
             <?php
                 echo "<b>";

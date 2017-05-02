@@ -203,6 +203,8 @@ class Auth extends MY_Controller
                 $main_page = 'chef';
             }elseif($this->sma->is_barman()){
                 $main_page = 'barman';
+            }elseif($this->sma->is_product_admin()){
+                $main_page = 'welcome';
             }
             
             redirect($main_page);
@@ -241,6 +243,8 @@ class Auth extends MY_Controller
                         $main_page = 'chef';
                     }elseif($this->sma->is_barman()){
                         $main_page = 'barman';
+                    }elseif($this->sma->is_product_admin()){
+                        $main_page = 'welcome';
                     }
 
             

@@ -838,6 +838,14 @@
                                         </a>
                                     </li>
                                     <?php } ?>
+                                    
+                                    <?php if ($GP['categories-edit']) { ?>
+                                        <li id="system_settings_categories">
+                                            <a class="submenu" href="<?= site_url('system_settings/categories') ?>">
+                                                <i class="fa fa-folder-open"></i><span class="text"> <?= lang('categories'); ?></span>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <?php } ?>
