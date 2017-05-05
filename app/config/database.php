@@ -68,7 +68,7 @@ switch ($_SERVER['SERVER_NAME']) {
             $database = 'positivo_dev';
         break;
 
-    case 'positivo.co':
+    case 'positivo.co' || 'www.positivo.co':
             $username = 'positivo_live';
             $password = '(~8,AWrT7gdq';
             $database = 'positivo_live';

@@ -45,7 +45,7 @@ switch ($_SERVER['SERVER_NAME']) {
             define('ENVIRONMENT', 'development');
         break;
 
-    case 'positivo.co':
+    case 'positivo.co' || 'www.positivo.co':
             define('ENVIRONMENT', 'production');
         break;
 

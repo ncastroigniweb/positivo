@@ -26,6 +26,10 @@ switch ($_SERVER['SERVER_NAME']) {
     case 'positivo.co':
             $config['base_url'] = 'http://positivo.co/';
         break;
+    
+    case 'www.positivo.co':
+            $config['base_url'] = 'http://www.positivo.co/';
+        break;
 
    default:
             $config['base_url'] = '';
