@@ -52,7 +52,7 @@
                     echo form_open("tables/order/create/{$table->id}", $attrib);?>
 
                         <ul class="list edit">
-                            <?php if($this->sma->is_admin() || $this->sma->is_cashier()) { ?>
+                            <?php if($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_product_admin()) { ?>
                                 <li>
                                     <label class="required">
                                         <span><?= lang('waiter') ?></span>

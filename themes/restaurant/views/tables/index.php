@@ -4,7 +4,7 @@
             <div class="content">
                 <h1>
                     <ul class="title-tabs title-tables clearfix">
-                        <?php if ($Owner || $Admin) { ?>
+                        <?php if ($Owner || $Admin || $this->sma->is_product_admin()) { ?>
                             
                             <li class="totals_table_mobile">
                                 <span class="label-receivable ng-binding label-info"><i class="fa fa-caret-down" aria-hidden="true"></i> <?= lang("sales"); ?></span>

@@ -40,7 +40,7 @@
     
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav menu-main">
-            <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_waiter()) { ?>
+            <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_waiter() || $this->sma->is_product_admin()) { ?>
                 <li class="<?= ($nav['active'] == 'home') ? "active" : ""; ?>">
                     <a href="/tables">
                         <i class="fa fa-table icon-header" aria-hidden="true" title="<?= lang('tables') ?>"></i>
@@ -48,7 +48,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($this->sma->is_admin()) { ?>
+            <?php if ($this->sma->is_admin() || $this->sma->is_product_admin()) { ?>
 
                 <li class="<?= ($nav['active'] == 'clients') ? "active" : ""; ?>">
                     <a href="/customers">
@@ -57,7 +57,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_chef()) { ?>
+            <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_chef() || $this->sma->is_product_admin()) { ?>
                 <li class="<?= ($nav['active'] == 'kitchen') ? "active" : ""; ?>">
                     <a href="/chef">
                         <i class="fa fa-cutlery icon-header" aria-hidden="true" title="<?= lang('kitchen') ?>"></i>
@@ -71,7 +71,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_barman()) { ?>
+            <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_barman() || $this->sma->is_product_admin()) { ?>
                 <li class="<?= ($nav['active'] == 'barman') ? "active" : ""; ?>">
                     <a href="/barman">
                         <i class="fa fa-coffee icon-header" aria-hidden="true" title="<?= lang('drinks') ?>"></i>
@@ -85,7 +85,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($this->sma->is_admin() || $this->sma->is_cashier()) { ?>
+            <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_product_admin()) { ?>
                 <li>
                     <a href="/pos<?= $url_concat; ?>">
                         <i class="fa fa-credit-card icon-header" aria-hidden="true"
@@ -94,7 +94,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($this->sma->is_admin()) { ?>
+            <?php if ($this->sma->is_admin() || $this->sma->is_product_admin()) { ?>
                 <li class="<?= ($nav['active'] == 'admin') ? "active" : ""; ?>">
                     <a href="/system_settings">
                         <i class="fa fa-cog icon-header" aria-hidden="true" title="<?= lang('admin') ?>"></i>
@@ -147,7 +147,7 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_waiter()) { ?>
+                    <?php if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_waiter() || $this->sma->is_product_admin()) { ?>
                         <li class="divider"></li>
                     <?php } ?>
                     <li><a href="/logout"><?= lang('logout') ?></a></li>

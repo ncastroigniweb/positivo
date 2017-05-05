@@ -37,7 +37,7 @@ class Tables_model extends CI_Model
                     $data[$row->id]->available = true;
                 }
                 
-                if ($this->sma->is_admin() || $this->sma->is_cashier()){
+                if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_product_admin()){
                     $data[$row->id]->available = true;
                 }
                 
@@ -74,7 +74,7 @@ class Tables_model extends CI_Model
                         $table->available = true;
                     }
 
-                    if ($this->sma->is_admin() || $this->sma->is_cashier()){
+                    if ($this->sma->is_admin() || $this->sma->is_cashier() || $this->sma->is_product_admin()){
                         $table->available = true;
                     }
 

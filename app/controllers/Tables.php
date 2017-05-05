@@ -153,7 +153,7 @@ class Tables extends MY_Controller
                 
                     // Checking if the user has enough privileges
                     if ($this->restaurant->table->waiter != $this->session->userdata('user_id')) {
-                        if(!$this->sma->is_admin() && !$this->sma->is_cashier()){
+                        if(!$this->sma->is_admin() && !$this->sma->is_cashier() && !$this->sma->is_product_admin()){
                             redirect("tables");
                         }
                     }
@@ -297,7 +297,7 @@ class Tables extends MY_Controller
 
                 // Checking if the user has enough privileges
                 if ($this->restaurant->table->waiter != $this->session->userdata('user_id')) {
-                    if(!$this->sma->is_admin() && !$this->sma->is_cashier()){
+                    if(!$this->sma->is_admin() && !$this->sma->is_cashier() && !$this->sma->is_product_admin()){
                         redirect("tables");
                     }
                 }
@@ -319,7 +319,7 @@ class Tables extends MY_Controller
                 if($this->restaurant->table->status == 1 || $this->restaurant->table->status == 2){
                     
                     // Checking if the user has enough privileges
-                    if($this->sma->is_admin() || $this->sma->is_cashier() || $this->restaurant->table->waiter == $this->session->userdata('user_id')){
+                    if($this->sma->is_admin() || $this->sma->is_cashier() || $this->restaurant->table->waiter == $this->session->userdata('user_id') || $this->sma->is_product_admin()){
                         
                         // Update table status
                         $this->restaurant->free_table();
@@ -337,7 +337,7 @@ class Tables extends MY_Controller
                 if($this->restaurant->table->status == 1 || $this->restaurant->table->status == 2){
                     
                     // Checking if the user has enough privileges
-                    if($this->sma->is_admin() || $this->sma->is_cashier() || $this->restaurant->table->waiter == $this->session->userdata('user_id')){
+                    if($this->sma->is_admin() || $this->sma->is_cashier() || $this->restaurant->table->waiter == $this->session->userdata('user_id') || $this->sma->is_product_admin()){
                         
                         // Update table status
                         $this->restaurant->bill_table();
@@ -539,7 +539,7 @@ class Tables extends MY_Controller
         
         // Checking if the user has enough privileges
         if ($this->restaurant->table->waiter != $this->session->userdata('user_id')) {
-            if(!$this->sma->is_admin() && !$this->sma->is_cashier()){
+            if(!$this->sma->is_admin() && !$this->sma->is_cashier() && !$this->sma->is_product_admin()){
                 redirect("tables");
             }
         }
