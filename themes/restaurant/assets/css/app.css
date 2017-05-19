@@ -10928,3 +10928,15 @@ input.radio:focus ~ label:before {
     display: none;
   }
 }
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    background: #0066d0;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #0066d0;
+}
+
+.dropdown-menu {
+    border-bottom: 0.25rem solid #0066d0;
+}

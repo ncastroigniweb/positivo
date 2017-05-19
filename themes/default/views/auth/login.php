@@ -29,18 +29,18 @@
             </div>
         </div>
     </noscript>
-    <div class="page-back background-color-guitarra">
-        <div class="text-center">
-            <?php if ($Settings->logo2) {
-                echo '<img src="' . base_url('assets/uploads/logos/logo.png') .'" alt="' . $Settings->site_name . '" style="margin-bottom:10px;" />';
-            } ?>
-        </div>
+    <div class="page-back background-color-positivo">
 
         <div id="login" class="u_margin_top_20">
             <div class=" container">
 
                 <div class="login-form-div">
                     <div class="login-content">
+                        <div class="text-center">
+                            <?php if ($Settings->logo2) {
+                                echo '<img src="' . base_url('assets/uploads/logos/logo.png') .'" alt="' . $Settings->site_name . '" style="margin-bottom:10px; margin-top:10px;" />';
+                            } ?>
+                        </div>
                         <?php if ($Settings->mmode) { ?>
                             <div class="alert alert-warning">
                                 <button data-dismiss="alert" class="close" type="button">×</button>

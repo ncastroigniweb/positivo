@@ -2068,8 +2068,8 @@ animation: blink 1s steps(2, start) infinite;
 .sname { cursor: pointer; }
 
 /* New styles - restaurant POS */
-.background-color-guitarra{
-    background: url('../images/background.png') repeat !important;
+.background-color-positivo{
+    background: url('../images/background.jpg') repeat !important;
 }
 
 .text-primary {
@@ -2077,8 +2077,8 @@ animation: blink 1s steps(2, start) infinite;
 }
 .btn-restaurant {
     color: #fff;
-    background-color: #720001;
-    border-color: #5d0001;
+    background-color: #0066d0;
+    border-color: #002db0;
 }
 .btn-restaurant:hover,
 .btn-restaurant:focus,
@@ -2207,28 +2207,48 @@ animation: blink 1s steps(2, start) infinite;
 }
 
 .table > thead:first-child > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table-striped thead tr.primary:nth-child(odd) th {
-    background-color: #720001;
-    border-color: #480001;
+    background-color: #0066d0;
+    border-color: #002db0;
 }
 
 .nav.main-menu > li.active > a, #sidebar-left.minified .sidebar-nav > ul > li.active > a .text {
-    background-color: #720001;
-    border-color: #480001;
+    background-color: #0066d0;
+    border-color: #002db0;
 }
 
 .nav.main-menu > li.active > a:hover{
-    background-color: #720001;
-    border-color: #480001;
+    background-color: #0066d0;
+    border-color: #002db0;
 }
 
 .nav.main-menu > li > ul > li.active > a, .nav.main-menu > li > ul > li > ul > li.active > a, .nav.main-menu > li > ul > li > ul > li > ul > li.active > a {
-   background-color: #ff5454;
-   border-color: #480001;
+   background-color: #2f6eaf;
+   border-color: #002db0;
 }
 
 .pos-grid-nav .btn-primary, .pos-grid-nav .btn-primary.disabled, .pos-grid-nav .btn-primary[disabled], .pos-grid-nav .btn-primary.disabled:hover, .pos-grid-nav .btn-primary[disabled]:hover, .pos-grid-nav .btn-primary.disabled:focus, .pos-grid-nav .btn-primary[disabled]:focus, .pos-grid-nav .btn-primary.disabled:active, .pos-grid-nav .btn-primary[disabled]:active, .pos-grid-nav .btn-primary.disabled.active, .pos-grid-nav .btn-primary.active[disabled]{
-   background-color: #720001;
-   border-color: #480001;
+   background-color: #0066d0;
+    border-color: #002db0;
+}
+
+.bred {
+    background: #FF7B20 !important;
+}
+
+.navbar-pos {
+    background: #0066d0;
+}
+
+.text-primary {
+    color: #0066d0;
+}
+
+.text-danger {
+    color: #2f6eaf;
+}
+
+a.text-danger:hover {
+    color: #002db0;
 }
 
 .days_premium_price{
