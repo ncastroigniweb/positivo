@@ -40,56 +40,58 @@ class Chef extends MY_Controller
      * @param null $action action for table
      * @param null $id_action number (id_table, id_order_product)
      */
-    function index($action = null, $id_action)
-    {        
-        switch ($action) {
-            case 'view':
+    function index($action = null, $id_action = null)
+    {   
+        if($action != null){
+            switch ($action) {
+                case 'view':
 
-                // Load table information
-                $this->restaurant->select_table($id_action);
-                
-                //load view_right information
-                $this->data['view_right'] = $this->site->getUser()->view_right;
+                    // Load table information
+                    $this->restaurant->select_table($id_action);
 
-                // Load order information
-                $this->restaurant->select_order();
-                $this->data['table'] = $this->restaurant->table;
-                $this->data['order'] = $this->restaurant->order;
-                
-                // list chef pending products
-                foreach ($this->restaurant->getOrderItems() as $product_config){
-                    // get category info by id
-                    $category = $this->settings_model->getCategoryByID($product_config->product_category);
-                    //if category product is the same as __construct config chef
-                    if (in_array($category->name,$this->category_chef)){
-                        // if product is confirmed add to list
-                        if ($product_config->product_status == 'confirmed'){
+                    //load view_right information
+                    $this->data['view_right'] = $this->site->getUser()->view_right;
+
+                    // Load order information
+                    $this->restaurant->select_order();
+                    $this->data['table'] = $this->restaurant->table;
+                    $this->data['order'] = $this->restaurant->order;
+
+                    // list chef pending products
+                    foreach ($this->restaurant->getOrderItems() as $product_config){
+                        // get category info by id
+                        $category = $this->settings_model->getCategoryByID($product_config->product_category);
+                        //if category product is the same as __construct config chef
+                        if (in_array($category->name,$this->category_chef)){
+                            // if product is confirmed add to list
+                            if ($product_config->product_status == 'confirmed'){
 
 
-                            if ($product_config->option_id){
-                                $product_config->option_name = $this->restaurant->getProductOptionByID($product_config->option_id)->name;
+                                if ($product_config->option_id){
+                                    $product_config->option_name = $this->restaurant->getProductOptionByID($product_config->option_id)->name;
+                                }
+
+                                $this->data['products'][] = $product_config;
                             }
-
-                            $this->data['products'][] = $product_config;
                         }
                     }
-                }
 
-                break;
+                    break;
 
-            case 'dispatch':
+                case 'dispatch':
 
-                // Dispatch product by chef
-                $id = filter_var($id_action, FILTER_SANITIZE_NUMBER_INT);
-                $this->restaurant->dispatchOrderItem($id);
+                    // Dispatch product by chef
+                    $id = filter_var($id_action, FILTER_SANITIZE_NUMBER_INT);
+                    $this->restaurant->dispatchOrderItem($id);
 
-                redirect('chef');
+                    redirect('chef');
 
-                break;
+                    break;
 
-            default:
+                default:
 
-                break;
+                    break;
+            }
         }
 
         // add customize js
@@ -107,45 +109,48 @@ class Chef extends MY_Controller
         $this->data['delay_product'] = $this->settings_model->getSettings()->delay_product;
         
         // list chef pending products
-        foreach ($this->restaurant->getConfirmedItems() as $product_confirmed){
+        $confirmedItems = $this->restaurant->getConfirmedItems();
+        if(!empty($confirmedItems)){
+            foreach ($confirmedItems as $product_confirmed){
 
-            if (!$this->sma->is_cashier($this->site->getUser($product_confirmed->product_waiter)->id)){
-                // get category info by id
-                $category = $this->settings_model->getCategoryByID($product_confirmed->product_category);
+                if (!$this->sma->is_cashier($this->site->getUser($product_confirmed->product_waiter)->id)){
+                    // get category info by id
+                    $category = $this->settings_model->getCategoryByID($product_confirmed->product_category);
 
-                //if category product is the same as __construct config chef
-                if (in_array($category->name,$this->category_chef)){
+                    //if category product is the same as __construct config chef
+                    if (in_array($category->name,$this->category_chef)){
 
-                    // set table list to view chef
-                    $table = $this->restaurant->get_table($product_confirmed->product_table);
-                    $this->data['list_tables'][$table->id] = $table;
+                        // set table list to view chef
+                        $table = $this->restaurant->get_table($product_confirmed->product_table);
+                        $this->data['list_tables'][$table->id] = $table;
 
-                    $product_confirmed->table_name = $table->name;
+                        $product_confirmed->table_name = $table->name;
 
-                    // Difference minutes of orden
-                    $date1 = new DateTime(date("Y-m-d H:i:s"));
-                    $date2 = new DateTime($product_confirmed->date_confirmed);
+                        // Difference minutes of orden
+                        $date1 = new DateTime(date("Y-m-d H:i:s"));
+                        $date2 = new DateTime($product_confirmed->date_confirmed);
 
-                    $diff = $date1->diff($date2);
-                    
-                    $product_confirmed->diff_minutes = $this->restaurant->format_interval_custom($diff, $method_format_date);
-                    $product_confirmed->total_minutes = $this->restaurant->total_minutes($diff);
-                    
-                    $dateToAverage = strtotime("-5 hours");
-                    $dateToAverage = date("Y-m-d", $dateToAverage);
-                    $average_day = $this->restaurant->get_average_day($dateToAverage, "chef");
-                    $this->data['average_time'] = round($average_day->average,2) . " " . lang("minutes_res");
-                    
-                    // get image product
-                    $product = $this->Products_model->getProductByID($product_confirmed->product_id);
-                    $product_confirmed->image = $product->image;
-                    $product_confirmed->subcategory_id = $product->subcategory_id;
+                        $diff = $date1->diff($date2);
 
-                    if ($product_confirmed->option_id){
-                        $product_confirmed->option_name = $this->restaurant->getProductOptionByID($product_confirmed->option_id)->name;
+                        $product_confirmed->diff_minutes = $this->restaurant->format_interval_custom($diff, $method_format_date);
+                        $product_confirmed->total_minutes = $this->restaurant->total_minutes($diff);
+
+                        $dateToAverage = strtotime("-5 hours");
+                        $dateToAverage = date("Y-m-d", $dateToAverage);
+                        $average_day = $this->restaurant->get_average_day($dateToAverage, "chef");
+                        $this->data['average_time'] = round($average_day->average,2) . " " . lang("minutes_res");
+
+                        // get image product
+                        $product = $this->Products_model->getProductByID($product_confirmed->product_id);
+                        $product_confirmed->image = $product->image;
+                        $product_confirmed->subcategory_id = $product->subcategory_id;
+
+                        if ($product_confirmed->option_id){
+                            $product_confirmed->option_name = $this->restaurant->getProductOptionByID($product_confirmed->option_id)->name;
+                        }
+
+                        $this->data['list_products'][] = $product_confirmed;
                     }
-                    
-                    $this->data['list_products'][] = $product_confirmed;
                 }
             }
         }

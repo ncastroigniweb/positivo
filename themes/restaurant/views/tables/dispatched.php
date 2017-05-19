@@ -8,7 +8,7 @@
                             <a data-toggle="tooltip" data-placement="right">
                                 <span class="room-label ng-binding "><?= lang('orders'); ?></span>
                                 <span class="room-count status-occupied ng-binding">
-                                    <?= count($list_products); ?>
+                                    <?= !empty($list_products) ? count($list_products) : 0 ; ?>
                                 </span>
                             </a>
                         </li>
@@ -34,6 +34,7 @@
                         </tr>
                         </thead>
                         <tbody class="body-list">
+                            <?php if(!empty($list_products)) { ?>
                             <?php foreach ($list_products as $pending_dispatched) { ?>
                                 <tr id="<?= $pending_dispatched->id; ?>" class="status-in_course
                                     <?= (isset($table) && ($table->id == $pending_dispatched->product_table)) ? 'active' : ''; ?>">
@@ -71,6 +72,7 @@
                                         <span class="status-label ng-binding "><?= lang("chef_barman_dispatched"); ?></span>
                                     </td>
                                 </tr>
+                            <?php } ?>
                             <?php } ?>
                         </tbody>
                     </table>

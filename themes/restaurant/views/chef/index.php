@@ -9,13 +9,13 @@
                             <a data-toggle="tooltip" data-placement="right">
                                 <span class="room-label ng-binding "><?= lang('orders'); ?></span>
                                 <span class="room-count status-occupied ng-binding">
-                                    <?= count($list_products); ?>
+                                    <?= !empty($list_products) ? count($list_products) : 0 ; ?>
                                 </span>
                             </a>
                         </li>
                         <li class="ng-scope active average-li hidden-lg">
                             <a data-toggle="tooltip" data-placement="right">
-                                <span class="average"><?= ($average_time) ? $average_time : 0 . " " . lang('minutes_res');?></span>
+                                <span class="average"><?= (!empty($average_time)) ? $average_time : 0 . " " . lang('minutes_res');?></span>
                             </a>
                         </li>
                     </ul>
@@ -29,7 +29,7 @@
             </button>
             <?php } ?>
             <div class="average_time hidden-xs hidden-sm" onclick="hide_average()">
-                <span class="average"><?= ($average_time) ? $average_time : 0 . " " . lang('minutes_res');?></span>
+                <span class="average"><?= (!empty($average_time)) ? $average_time : 0 . " " . lang('minutes_res');?></span>
             </div>
         </div>
         <div class="wrapper table-grid-wrapper" id="div-btncantidadpersonas">
@@ -48,6 +48,7 @@
                         </tr>
                         </thead>
                         <tbody class="body-list">
+                            <?php if(!empty($list_products)) { ?>
                             <?php foreach ($list_products as $pending_product) { ?>
                                 <tr id="<?= $pending_product->id; ?>" class="status-in_course 
                                     <?= (isset($table) && ($table->id == $pending_product->product_table)) ? 'active' : ''; ?>
@@ -94,6 +95,7 @@
                                         </button>
                                     </td>
                                 </tr>
+                            <?php } ?>
                             <?php } ?>
                         </tbody>
                     </table>

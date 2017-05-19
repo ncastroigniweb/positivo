@@ -38,55 +38,57 @@ class Barman extends MY_Controller
      * @param null $action action for table
      * @param null $id_action number (id_table, id_order_product)
      */
-    function index($action = null, $id_action)
+    function index($action = null, $id_action = null)
     {
-        switch ($action) {
-            case 'view':
+        if($action != null){
+            switch ($action) {
+                case 'view':
 
-                // Load table information
-                $this->restaurant->select_table($id_action);
-                
-                //load view_right information
-                $this->data['view_right'] = $this->site->getUser()->view_right;
-            
-                // Load order information
-                $this->restaurant->select_order();
-                $this->data['table'] = $this->restaurant->table;
-                $this->data['order'] = $this->restaurant->order;
+                    // Load table information
+                    $this->restaurant->select_table($id_action);
 
-                // list barman pending products
-                foreach ($this->restaurant->getOrderItems() as $product_config){
-                    // get category info by id
-                    $category = $this->settings_model->getCategoryByID($product_config->product_category);
-                    //if category product is the same as __construct config barman
-                    if (in_array($category->name,$this->category_barman)){
-                        // if product is confirmed add to list
-                        if ($product_config->product_status == 'confirmed'){
-                            
-                            if ($product_config->option_id){
-                                $product_config->option_name = $this->restaurant->getProductOptionByID($product_config->option_id)->name;
+                    //load view_right information
+                    $this->data['view_right'] = $this->site->getUser()->view_right;
+
+                    // Load order information
+                    $this->restaurant->select_order();
+                    $this->data['table'] = $this->restaurant->table;
+                    $this->data['order'] = $this->restaurant->order;
+
+                    // list barman pending products
+                    foreach ($this->restaurant->getOrderItems() as $product_config){
+                        // get category info by id
+                        $category = $this->settings_model->getCategoryByID($product_config->product_category);
+                        //if category product is the same as __construct config barman
+                        if (in_array($category->name,$this->category_barman)){
+                            // if product is confirmed add to list
+                            if ($product_config->product_status == 'confirmed'){
+
+                                if ($product_config->option_id){
+                                    $product_config->option_name = $this->restaurant->getProductOptionByID($product_config->option_id)->name;
+                                }
+
+                                $this->data['products'][] = $product_config;
                             }
-                            
-                            $this->data['products'][] = $product_config;
                         }
                     }
-                }
 
-                break;
+                    break;
 
-            case 'dispatch':
+                case 'dispatch':
 
-                // Dispatch product by barman
-                $id = filter_var($id_action, FILTER_SANITIZE_NUMBER_INT);
-                $this->restaurant->dispatchOrderItem($id);
+                    // Dispatch product by barman
+                    $id = filter_var($id_action, FILTER_SANITIZE_NUMBER_INT);
+                    $this->restaurant->dispatchOrderItem($id);
 
-                redirect('barman');
+                    redirect('barman');
 
-                break;
+                    break;
 
-            default:
+                default:
 
-                break;
+                    break;
+            }
         }
 
         // add customize js
@@ -101,43 +103,46 @@ class Barman extends MY_Controller
         );
 
         // list barman pending products
-        foreach ($this->restaurant->getConfirmedItems() as $product_confirmed){
-            if (!$this->sma->is_cashier($this->site->getUser($product_confirmed->product_waiter)->id)){
-                // get category info by id
-                $category = $this->settings_model->getCategoryByID($product_confirmed->product_category);
+        $confirmedItems = $this->restaurant->getConfirmedItems();
+        if(!empty($confirmedItems)){
+            foreach ($confirmedItems as $product_confirmed){
+                if (!$this->sma->is_cashier($this->site->getUser($product_confirmed->product_waiter)->id)){
+                    // get category info by id
+                    $category = $this->settings_model->getCategoryByID($product_confirmed->product_category);
 
-                //if category product is the same as __construct config barman
-                if (in_array($category->name,$this->category_barman)){
+                    //if category product is the same as __construct config barman
+                    if (in_array($category->name,$this->category_barman)){
 
-                    // set table list to view barman
-                    $table = $this->restaurant->get_table($product_confirmed->product_table);
+                        // set table list to view barman
+                        $table = $this->restaurant->get_table($product_confirmed->product_table);
 
-                    $product_confirmed->table_name = $table->name;
+                        $product_confirmed->table_name = $table->name;
 
-                    $this->data['list_tables'][$table->id] = $table;
+                        $this->data['list_tables'][$table->id] = $table;
 
-                    // Difference minutes of orden
-                    $date1 = new DateTime(date("Y-m-d H:i:s"));
-                    $date2 = new DateTime($product_confirmed->date_confirmed);
-                    $diff = $date1->diff($date2);
+                        // Difference minutes of orden
+                        $date1 = new DateTime(date("Y-m-d H:i:s"));
+                        $date2 = new DateTime($product_confirmed->date_confirmed);
+                        $diff = $date1->diff($date2);
 
-                    $product_confirmed->diff_minutes = format_interval($diff);
-                    
-                    $dateToAverage = strtotime("-5 hours");
-                    $dateToAverage = date("Y-m-d", $dateToAverage);
-                    $average_day = $this->restaurant->get_average_day($dateToAverage, "barman");
-                    $this->data['average_time'] = round($average_day->average,2) . " " . lang("minutes_res");
+                        $product_confirmed->diff_minutes = format_interval($diff);
 
-                    // get image product
-                    $product = $this->Products_model->getProductByID($product_confirmed->product_id);
-                    $product_confirmed->image = $product->image;
-                    $product_confirmed->subcategory_id = $product->subcategory_id;
+                        $dateToAverage = strtotime("-5 hours");
+                        $dateToAverage = date("Y-m-d", $dateToAverage);
+                        $average_day = $this->restaurant->get_average_day($dateToAverage, "barman");
+                        $this->data['average_time'] = round($average_day->average,2) . " " . lang("minutes_res");
 
-                    if ($product_confirmed->option_id){
-                        $product_confirmed->option_name = $this->restaurant->getProductOptionByID($product_confirmed->option_id)->name;
+                        // get image product
+                        $product = $this->Products_model->getProductByID($product_confirmed->product_id);
+                        $product_confirmed->image = $product->image;
+                        $product_confirmed->subcategory_id = $product->subcategory_id;
+
+                        if ($product_confirmed->option_id){
+                            $product_confirmed->option_name = $this->restaurant->getProductOptionByID($product_confirmed->option_id)->name;
+                        }
+
+                        $this->data['list_products'][] = $product_confirmed;
                     }
-
-                    $this->data['list_products'][] = $product_confirmed;
                 }
             }
         }
