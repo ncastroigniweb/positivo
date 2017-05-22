@@ -870,35 +870,37 @@ class Sma
         $tax = "";
         $pr_item_tax = 0;
         
-        if (isset($pr_tax) && $pr_tax != 0) {
+        if (isset($pr_tax) && $pr_tax != 0 && $pr_tax != null) {
             $tax_details = $this->site->getTaxRateByID($pr_tax);
-            if ($tax_details->type == 1 && $tax_details->rate != 0) {
+            if(!empty($tax_details)){
+                if ($tax_details->type == 1 && $tax_details->rate != 0) {
 
-                if ($product_details && $product_details->tax_method == 1) {
-                    $item_tax = $this->sma->formatDecimal((($unit_price) * $tax_details->rate) / 100, 4);
-                    $tax = $tax_details->rate . "%";
-                } else {
-                    $item_tax = $this->sma->formatDecimal((($unit_price) * $tax_details->rate) / (100 + $tax_details->rate), 4);
-                    $tax = $tax_details->rate . "%";
-                    $item_net_price = $unit_price - $item_tax;
+                    if ($product_details && $product_details->tax_method == 1) {
+                        $item_tax = $this->sma->formatDecimal((($unit_price) * $tax_details->rate) / 100, 4);
+                        $tax = $tax_details->rate . "%";
+                    } else {
+                        $item_tax = $this->sma->formatDecimal((($unit_price) * $tax_details->rate) / (100 + $tax_details->rate), 4);
+                        $tax = $tax_details->rate . "%";
+                        $item_net_price = $unit_price - $item_tax;
+                    }
+
+                } elseif ($tax_details->type == 2) {
+
+                    if ($product_details && $product_details->tax_method == 1) {
+                        $item_tax = $this->sma->formatDecimal((($unit_price) * $tax_details->rate) / 100, 4);
+                        $tax = $tax_details->rate . "%";
+                    } else {
+                        $item_tax = $this->sma->formatDecimal((($unit_price) * $tax_details->rate) / (100 + $tax_details->rate), 4);
+                        $tax = $tax_details->rate . "%";
+                        $item_net_price = $unit_price - $item_tax;
+                    }
+
+                    $item_tax = $this->sma->formatDecimal($tax_details->rate);
+                    $tax = $tax_details->rate;
+
                 }
-
-            } elseif ($tax_details->type == 2) {
-
-                if ($product_details && $product_details->tax_method == 1) {
-                    $item_tax = $this->sma->formatDecimal((($unit_price) * $tax_details->rate) / 100, 4);
-                    $tax = $tax_details->rate . "%";
-                } else {
-                    $item_tax = $this->sma->formatDecimal((($unit_price) * $tax_details->rate) / (100 + $tax_details->rate), 4);
-                    $tax = $tax_details->rate . "%";
-                    $item_net_price = $unit_price - $item_tax;
-                }
-
-                $item_tax = $this->sma->formatDecimal($tax_details->rate);
-                $tax = $tax_details->rate;
-
+                $pr_item_tax = $this->sma->formatDecimal($item_tax, 4);
             }
-            $pr_item_tax = $this->sma->formatDecimal($item_tax, 4);
         }
         
         $unit_price = $item_net_price;

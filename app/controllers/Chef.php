@@ -113,7 +113,6 @@ class Chef extends MY_Controller
         if(!empty($confirmedItems)){
             foreach ($confirmedItems as $product_confirmed){
 
-                if (!$this->sma->is_cashier($this->site->getUser($product_confirmed->product_waiter)->id)){
                     // get category info by id
                     $category = $this->settings_model->getCategoryByID($product_confirmed->product_category);
 
@@ -138,7 +137,7 @@ class Chef extends MY_Controller
                         $dateToAverage = strtotime("-5 hours");
                         $dateToAverage = date("Y-m-d", $dateToAverage);
                         $average_day = $this->restaurant->get_average_day($dateToAverage, "chef");
-                        $this->data['average_time'] = round($average_day->average,2) . " " . lang("minutes_res");
+                        $this->data['average_time'] = !empty($average_day) ? round($average_day->average,2) . " " . lang("minutes_res") : "0 " . lang("minutes_res") ;
 
                         // get image product
                         $product = $this->Products_model->getProductByID($product_confirmed->product_id);
@@ -151,7 +150,6 @@ class Chef extends MY_Controller
 
                         $this->data['list_products'][] = $product_confirmed;
                     }
-                }
             }
         }
         

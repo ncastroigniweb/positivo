@@ -77,7 +77,7 @@
                                                     <?= $pending_product->product_name; ?>
                                                 </span>
                                         </strong>
-                                        <?php if($pending_product->option_name){ ?>
+                                        <?php if(!empty($pending_product->option_name)){ ?>
                                             <i>(<?= $pending_product->option_name ?>)</i>
                                         <?php } ?>
                                     </div>
@@ -179,7 +179,7 @@
                                                         <?= $product->product_name ?>
                                                     </span>
                                                     
-                                                    <?php if($product->option_name){ ?>
+                                                    <?php if(!empty($product->option_name)){ ?>
                                                         <i>(<?= $product->option_name ?>)</i>
                                                     <?php } ?>
                                                     
