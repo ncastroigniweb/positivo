@@ -387,7 +387,7 @@
 
                                 <div class="clearfix"></div>
                                 <div id="botbuttons" class="col-xs-12 text-center">
-                                    <input type="hidden" name="biller" id="biller" value="<?=($Owner || $Admin || $this->sma->is_cashier()) ? $pos_settings->default_biller : $this->session->userdata('biller_id')?>"/>
+                                    <input type="hidden" name="biller" id="biller" value="<?=($Owner || $Admin || $this->sma->is_cashier() || $this->sma->is_product_admin()) ? $pos_settings->default_biller : $this->session->userdata('biller_id')?>"/>
                                     <div class="row">
                                         <div class="col-xs-4" style="padding: 0;">
                                             <div class="btn-group-vertical btn-block">
