@@ -506,8 +506,12 @@
 <div id="brands-slider">
     <div id="brands-list">
         <?php
-            foreach ($brands as $brand) {
-                echo "<button id=\"brand-" . $brand->id . "\" type=\"button\" value='" . $brand->id . "' class=\"btn-prni brand\" ><img src=\"assets/uploads/thumbs/" . ($brand->image ? $brand->image : 'no_image.png') . "\" style='width:" . $Settings->twidth . "px;height:" . $Settings->theight . "px;' class='img-rounded img-thumbnail' /><span>" . $brand->name . "</span></button>";
+            if ($brands) {
+                foreach ($brands as $brand) {
+                    echo "<button id=\"brand-" . $brand->id . "\" type=\"button\" value='" . $brand->id . "' class=\"btn-prni brand\" ><img src=\"assets/uploads/thumbs/" . ($brand->image ? $brand->image : 'no_image.png') . "\" style='width:" . $Settings->twidth . "px;height:" . $Settings->theight . "px;' class='img-rounded img-thumbnail' /><span>" . $brand->name . "</span></button>";
+                }
+            } else {
+                echo "No hay marcas.";
             }
         ?>
     </div>
@@ -516,10 +520,13 @@
     <!--<button type="button" class="close open-category"><i class="fa fa-2x">&times;</i></button>-->
     <div id="category-list">
         <?php
-        	//for ($i = 1; $i <= 40; $i++) {
-        	foreach ($categories as $category) {
-        	    echo "<button id=\"category-" . $category->id . "\" type=\"button\" value='" . $category->id . "' class=\"btn-prni category\" ><img src=\"assets/uploads/thumbs/" . ($category->image ? $category->image : 'no_image.png') . "\" style='width:" . $Settings->twidth . "px;height:" . $Settings->theight . "px;' class='img-rounded img-thumbnail' /><span>" . $category->name . "</span></button>";
-        	}
+        	if ($brands) {
+        	    foreach ($categories as $category) {
+        	        echo "<button id=\"category-" . $category->id . "\" type=\"button\" value='" . $category->id . "' class=\"btn-prni category\" ><img src=\"assets/uploads/thumbs/" . ($category->image ? $category->image : 'no_image.png') . "\" style='width:" . $Settings->twidth . "px;height:" . $Settings->theight . "px;' class='img-rounded img-thumbnail' /><span>" . $category->name . "</span></button>";
+                }
+            } else {
+                echo "No hay categorías.";
+            }
         	//}
         ?>
     </div>

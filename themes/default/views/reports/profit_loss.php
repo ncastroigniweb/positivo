@@ -228,7 +228,7 @@
                         </div>
                     </div>
                 </div>
-                <?php if ($enable_report_warehouses) {
+                <?php if ($warehouses_report) {
                     foreach ($warehouses_report as $warehouse_report) { ?>
                         <div class="col-sm-4">
                             <div class="small-box padding1010 bblue">

@@ -24,18 +24,20 @@
                     <tbody class="d-sales-table">
                         <?php 
                             $total_expense = 0;
-                        foreach ($expenses as $expense) { ?>
-                            <tr>
-                                <td class="col-md-3"><h4><span><?= $this->sma->hrld($expense->date); ?></span></h4></td>
-                                <td class="col-md-1"><h4><span><?= $this->sma->formatMoney($expense->amount); ?></span></h4></td>
-                                <td class="col-md-5"><h4><span><?= $expense->note; ?></span></h4></td>
-                                <td class="col-md-3"><a href="<?= base_url() . 'purchases/expense_note/' . $expense->id; ?>" title="<?= lang('view_expense'); ?>" data-toggle="modal" data-target="#myModal3"><i class="fa fa-file-text-o"></i></a>
-                                    <a href="<?= base_url() . 'purchases/edit_expense/' . $expense->id; ?>" title="<?= lang('edit_expense'); ?>" data-toggle="modal" data-target="#myModal3"><i class="fa fa-edit"></i></a>
-                                </td>
-                            </tr>
-                        <?php 
-                            $total_expense += $expense->amount;
-                        } ?>
+                            if ($expenses) {
+                                foreach ($expenses as $expense) { ?>
+                                    <tr>
+                                        <td class="col-md-3"><h4><span><?= $this->sma->hrld($expense->date); ?></span></h4></td>
+                                        <td class="col-md-1"><h4><span><?= $this->sma->formatMoney($expense->amount); ?></span></h4></td>
+                                        <td class="col-md-5"><h4><span><?= $expense->note; ?></span></h4></td>
+                                        <td class="col-md-3"><a href="<?= base_url() . 'purchases/expense_note/' . $expense->id; ?>" title="<?= lang('view_expense'); ?>" data-toggle="modal" data-target="#myModal3"><i class="fa fa-file-text-o"></i></a>
+                                            <a href="<?= base_url() . 'purchases/edit_expense/' . $expense->id; ?>" title="<?= lang('edit_expense'); ?>" data-toggle="modal" data-target="#myModal3"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php 
+                                $total_expense += $expense->amount;
+                                }
+                            } ?>
                             <tr class="total_bills">
                                 <td class="col-md-3"><h4><span class="lang-total-paying"><?= lang('total_expenses'); ?></span></h4></td>
                                 <td class="col-md-1"><h4><span><?= $this->sma->formatMoney($total_expense); ?></span></h4></td>

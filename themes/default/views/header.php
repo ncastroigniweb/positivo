@@ -61,7 +61,7 @@
                 <ul class="nav navbar-nav pull-right">
                     <li class="dropdown">
                         <a class="btn account dropdown-toggle" data-toggle="dropdown" href="#">
-                            <img alt="" src="<?= $this->session->userdata('avatar') ? site_url() . 'assets/uploads/avatars/thumbs/' . $this->session->userdata('avatar') : base_url('assets/images/' . $this->session->userdata('gender') . '.png'); ?>" class="mini_avatar img-rounded">
+                            <img alt="" src="<?= $this->session->userdata('avatar') ? site_url() . 'assets/uploads/avatars/thumbs/' . $this->session->userdata('avatar') : site_url().'themes/default/assets/images/' . $this->session->userdata('gender') . '.png'; ?>" class="mini_avatar img-rounded">
 
                             <div class="user">
                                 <span><?= lang('welcome') ?> <?= $this->session->userdata('username'); ?></span>

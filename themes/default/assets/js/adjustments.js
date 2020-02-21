@@ -156,7 +156,7 @@ function loadItems() {
             var newTr = $('<tr id="row_' + row_no + '" class="row_' + item_id + '" data-item-id="' + item_id + '"></tr>');
             tr_html = '<td><input name="product_id[]" type="hidden" class="rid" value="' + product_id + '"><span class="sname" id="name_' + row_no + '">' + item_code +' - ' + item_name +'</span></td>';
             tr_html += '<td>'+(opt.get(0).outerHTML)+'</td>';
-            tr_html += '<td><select name="type[]" class="form-contol select"><option value="addition">'+type_opt.addition+'</option><option value="subtraction" selected>'+type_opt.subtraction+'</option></select></td>';
+            tr_html += '<td><select name="type[]" class="form-contol select"><option value="addition">'+type_opt.addition+'</option><option value="subtraction">'+type_opt.subtraction+'</option></select></td>';
             tr_html += '<td><input class="form-control text-center rquantity" tabindex="'+((site.settings.set_focus == 1) ? an : (an+1))+'" name="quantity[]" type="text" value="' + formatDecimal(item_qty) + '" data-id="' + row_no + '" data-item="' + item_id + '" id="quantity_' + row_no + '" onClick="this.select();"></td>';
             if (site.settings.product_serial == 1) {
                 tr_html += '<td class="text-right"><input class="form-control input-sm rserial" name="serial[]" type="text" id="serial_' + row_no + '" value="'+item_serial+'"></td>';

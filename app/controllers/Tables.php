@@ -18,7 +18,7 @@ class Tables extends MY_Controller
         }
        
         $this->load->helper(array('form', 'url'));
-         $this->lang->load('pos', $this->Settings->user_language);
+        $this->lang->load('pos', $this->Settings->user_language);
         $this->lang->load('restaurant', $this->Settings->user_language);
         $this->load->library('restaurant');
         $this->load->model('products_model');
@@ -243,7 +243,6 @@ class Tables extends MY_Controller
                         }
                     }
                     $this->data['top_10_products'] = !empty($top_final_products) ? $top_final_products : NULL;
-                    
                     break;
             
             case 'create' :
@@ -617,7 +616,7 @@ class Tables extends MY_Controller
         
     }
 
-    public function notifications($action = null, $id_item = null, $id_table)
+    public function notifications($action = null, $id_item = null, $id_table = null)
     {
 
         if (!$action){
@@ -631,6 +630,7 @@ class Tables extends MY_Controller
                 $this->data['title'] = lang('notifications');
                 $this->data['nav'] = array(
                     'active' => 'notify',
+                    'title_top' => lang('tables'),
                     'enable_search' => false
                 );
 
@@ -722,24 +722,26 @@ class Tables extends MY_Controller
             case "show_products" :
                 $this->db->cache_delete_all();
                 $products = $this->restaurant->getCategoryProducts($param1);
-                
-                foreach ($products as $product) {
-                    
-                    if ($this->Settings->status_premium_price && !empty($product->premium_price)) {
-                        $product->price = $product->premium_price;
+                foreach ($products as $key => $product) {
+                    if ($product->quantity > 0) {
+                        if ($this->Settings->status_premium_price && !empty($product->premium_price)) {
+                            $product->price = $product->premium_price;
+                        }
+                        if ($product->promotion) {
+                            $product->price = $product->promo_price;
+                        }
+                        
+                        $product->unit_price = $product->price;
+                        $this->sma->sum_product_tax($product->tax_rate, $product, $product->unit_price, $product->price);
+                        
+                        $product->price = $this->sma->formatDecimal($product->price);
+                        $product->symbol = $this->Settings->symbol;
+                        $product->lang_product_unavailable = lang("product-unavailable");
+                        $product->lang_unavailable = lang("unavailable");
+                        $product->options = $this->Products_model->getProductOptions($product->id);
+                    } else {
+                       unset($products[$key]); 
                     }
-                    if ($product->promotion) {
-                        $product->price = $product->promo_price;
-                    }
-                    
-                    $product->unit_price = $product->price;
-                    $this->sma->sum_product_tax($product->tax_rate, $product, $product->unit_price, $product->price);
-                    
-                    $product->price = $this->sma->formatDecimal($product->price);
-                    $product->symbol = $this->Settings->symbol;
-                    $product->lang_product_unavailable = lang("product-unavailable");
-                    $product->lang_unavailable = lang("unavailable");
-                    $product->options = $this->Products_model->getProductOptions($product->id);
                 }
                 usort($products, "compare");
                 echo json_encode($products);

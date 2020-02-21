@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<?php if ($Owner || $Admin) {
+<?php if (($Owner || $Admin) && $monthly_sales) {
     foreach ($monthly_sales as $month_sale) {
         $months[] = date('M-Y', strtotime($month_sale->month));
         $sales[] = $month_sale->sales;

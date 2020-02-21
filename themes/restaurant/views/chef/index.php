@@ -108,28 +108,31 @@
                            class="ace-icon fa bigger-110 icon-only fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="tables-content">
-                        <?php foreach ($list_tables as $list_table) { ?>
-                            <div class="table-grid modal-chef-barman-tables">
-                                <div class="table-placeholder status-occupied container-table">
-                                    <a class="table" href="chef/view/<?= $list_table->id; ?>">
-                                        <div class="table-indicators">
-                                            <div class="table-number">
-                                                <span class="ng-binding"><?= $list_table->name; ?></span>
+                        <?php 
+                        if ($list_tables) {
+                            foreach ($list_tables as $list_table) { ?>
+                                <div class="table-grid modal-chef-barman-tables">
+                                    <div class="table-placeholder status-occupied container-table">
+                                        <a class="table" href="chef/view/<?= $list_table->id; ?>">
+                                            <div class="table-indicators">
+                                                <div class="table-number">
+                                                    <span class="ng-binding"><?= $list_table->name; ?></span>
+                                                </div>
+                                                <div class="table-waiter">
+                                                    <span class="ng-binding ng-hide">
+                                                        <?= $this->site->getUser($list_table->waiter)->first_name ?>
+                                                    </span>
+                                                </div>
+                                                <div class="table-count">
+                                                    <span class="ng-binding ng-hide"><?= $list_table->guests; ?></span>
+                                                    <span class="table-count-reservation ng-binding ng-hide"></span>
+                                                </div>
                                             </div>
-                                            <div class="table-waiter">
-                                                <span class="ng-binding ng-hide">
-                                                    <?= $this->site->getUser($list_table->waiter)->first_name ?>
-                                                </span>
-                                            </div>
-                                            <div class="table-count">
-                                                <span class="ng-binding ng-hide"><?= $list_table->guests; ?></span>
-                                                <span class="table-count-reservation ng-binding ng-hide"></span>
-                                            </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php } ?>
+                        <?php }
+                        } ?>
                     </div>
                     <button class="btn btn-inverse btn-app btn-xs ace-settings-btn aside-trigger slide-down responsive"
                             data-target="#top-menu" data-toggle="modal" type="button">

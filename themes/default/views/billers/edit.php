@@ -17,8 +17,10 @@
                         <?= lang("logo", "biller_logo"); ?>
                         <?php
                         $biller_logos[''] = '';
-                        foreach ($logos as $key => $value) {
-                            $biller_logos[$value] = $value;
+                        if ($logos) {
+                            foreach ($logos as $key => $value) {
+                                $biller_logos[$value] = $value;
+                            }
                         }
                         echo form_dropdown('logo', $biller_logos, $biller->logo, 'class="form-control select" id="biller_logo" required="required" '); ?>
                     </div>
@@ -81,30 +83,30 @@
                         <?php echo form_input('country', $biller->country, 'class="form-control" id="country"'); ?>
                     </div>
                     <div class="form-group">
-                        <?= lang("bcf1", "cf1"); ?>
+                        <?= lang("nit", "cf1"); ?>
                         <?php echo form_input('cf1', $biller->cf1, 'class="form-control" id="cf1"'); ?>
                     </div>
                     <div class="form-group">
-                        <?= lang("bcf2", "cf2"); ?>
+                        <?= lang("id_cash_register", "cf2"); ?>
                         <?php echo form_input('cf2', $biller->cf2, 'class="form-control" id="cf2"'); ?>
 
                     </div>
                     <div class="form-group">
-                        <?= lang("bcf3", "cf3"); ?>
+                        <?= lang("simplified_regimen", "cf3"); ?>
                         <?php echo form_input('cf3', $biller->cf3, 'class="form-control" id="cf3"'); ?>
                     </div>
                     <div class="form-group">
-                        <?= lang("bcf4", "cf4"); ?>
+                        <?= lang("invoice_prefix", "cf4"); ?>
                         <?php echo form_input('cf4', $biller->cf4, 'class="form-control" id="cf4"'); ?>
 
                     </div>
                     <div class="form-group">
-                        <?= lang("bcf5", "cf5"); ?>
+                        <?= lang("bcf1", "cf5"); ?>
                         <?php echo form_input('cf5', $biller->cf5, 'class="form-control" id="cf5"'); ?>
 
                     </div>
                     <div class="form-group">
-                        <?= lang("bcf6", "cf6"); ?>
+                        <?= lang("bcf2", "cf6"); ?>
                         <?php echo form_input('cf6', $biller->cf6, 'class="form-control" id="cf6"'); ?>
                     </div>
                 </div>

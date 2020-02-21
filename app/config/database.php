@@ -61,36 +61,16 @@
 $active_group = 'default';
 $query_builder = TRUE;
 
-switch ($_SERVER['SERVER_NAME']) {
-    case 'dev.positivo.co':
-            $username = 'positivo_dev';
-            $password = 'h^pw![$1nqd+';
-            $database = 'positivo_dev';
-        break;
-
-    case 'positivo.co' || 'www.positivo.co':
-            $username = 'positivo_live';
-            $password = '(~8,AWrT7gdq';
-            $database = 'positivo_live';
-        break;
-
-   default:
-            $username = '';
-            $password = '';
-            $database = '';
-        break;
-}
-
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => $username,
-	'password' => $password,
-	'database' => $database,
+	'username' => 'positivo_live',
+	'password' => 'h^pw![$1nqd+',
+	'database' => 'positivo_live',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'sma_',
 	'pconnect' => FALSE,
-	'db_debug' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',

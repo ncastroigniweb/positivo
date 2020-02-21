@@ -30,6 +30,10 @@ $lang['scf3']                                     = "Proveedor Campo personaliza
 $lang['scf4']                                     = "Proveedor Campo Personalizado 4";
 $lang['scf5']                                     = "Proveedor Campo Personalizado 5";
 $lang['scf6']                                     = "Proveedor Campo personalizado 6";
+$lang['nit']                                      = "NIT";
+$lang['id_cash_register']                         = "Id de máquina registradora";
+$lang['simplified_regimen']                       = "Régimen Simplificado";
+$lang['invoice_prefix']                           = "Prefijo de factura";
 
     /*  DATATABLES LANGUAGE  */
 $lang['datatables_lang']                          = array(
@@ -417,6 +421,14 @@ $lang['add_adjusment']                      = "Agregar un ajuste de cantidad";
 $lang['partial']                            = "Parcial";
 $lang['unexpected_value']                   = "Valor inesperado!";
 $lang['select_above']                       = "Por favor seleccione arriba primero";
+$lang['expiry_alerts'] 				              = "Alertas de expiración";
+$lang['quantity_alerts'] 				            = "Alertas de cantidad";
+$lang['today_profit']                       = "Ganancias de hoy";
+$lang['day_profit']                         = "Ganancias del día";
+$lang['unit_and_net_tip']                   = "Unidad y propina total";
+$lang['products_sale']                      = "Ventas de productos";
+$lang['products_cost']                      = "Costo de productos";
+$lang['profit']                             = "Ganancias";
 $lang['restaurant'] = "Restaurante";
 $lang['add_adjustment'] = "Nuevo ajuste de cantidad";
 $lang['print_barcode_label'] = "Imprimir codigos de barras";

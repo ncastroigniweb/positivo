@@ -110,6 +110,7 @@ class Chef extends MY_Controller
         
         // list chef pending products
         $confirmedItems = $this->restaurant->getConfirmedItems();
+        $this->data['list_tables'] = null;
         if(!empty($confirmedItems)){
             foreach ($confirmedItems as $product_confirmed){
 
@@ -170,7 +171,7 @@ class Chef extends MY_Controller
             case "list_products" :
                 
                 $method_format_date = $this->get_format_date_chef();
-                
+                $general_list = null;
                 // get list chef products
                 foreach ($this->restaurant->getConfirmedItems() as $product_confirmed){
 
@@ -202,16 +203,20 @@ class Chef extends MY_Controller
                             $product = $this->Products_model->getProductByID($product_confirmed->product_id);
                             $product_confirmed->image = $product->image;
                             $product_confirmed->subcategory_id = $product->subcategory_id;                            
-
-                            $product_confirmed->option_name = $this->restaurant->getProductOptionByID($product_confirmed->option_id)->name;
-
+                            $product_confirmed->option_name = null;
+                            if ($product_confirmed->option_id){
+                                $tmp = $this->restaurant->getProductOptionByID($product_confirmed->option_id);
+                                if(property_exists($tmp, "name")){
+                                    $product_confirmed->option_name->name;
+                                }
+                            }
                             $general_list[] = $product_confirmed;
                         }
                     }
                 }
-                
-                echo json_encode($general_list);
-
+                if ($general_list) {
+                    echo json_encode($general_list);
+                }
                 break;
 
             case 'dispatch':
@@ -318,6 +323,7 @@ class Chef extends MY_Controller
         $permissions = ($this->sma->is_admin() || $this->sma->is_cashier() ) ? true : false ;
 
         // list chef pending products
+        $this->data['list_products'] = null;
         foreach ($this->restaurant->getDispatchedItems(150,$this->category_id, $permissions) as $product){
             
             // set table list to view chef
@@ -332,9 +338,12 @@ class Chef extends MY_Controller
             $diff = $date1->diff($date2);
 
             $product->diff_minutes = format_interval($diff);
-
+            $product->option_name = null;
             if ($product->option_id){
-                $product->option_name = $this->restaurant->getProductOptionByID($product->option_id)->name;
+                $tmp = $this->restaurant->getProductOptionByID($product->option_id);
+                if(property_exists($tmp, "name")){
+                    $product->option_name->name;
+                }
             }
 
             $this->data['list_products'][] = $product;

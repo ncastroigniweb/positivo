@@ -39,20 +39,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-switch ($_SERVER['SERVER_NAME']) {
-    case 'dev.positivo.co':
-            define('ENVIRONMENT', 'development');
-        break;
-
-    case 'positivo.co' || 'www.positivo.co':
-            define('ENVIRONMENT', 'production');
-        break;
-
-   default:
-            define('ENVIRONMENT', 'production');
-        break;
-}
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

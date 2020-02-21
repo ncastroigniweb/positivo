@@ -17,24 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-
-switch ($_SERVER['SERVER_NAME']) {
-    case 'dev.positivo.co':
-            $config['base_url'] = 'http://dev.positivo.co/';
-        break;
-
-    case 'positivo.co':
-            $config['base_url'] = 'http://positivo.co/';
-        break;
-    
-    case 'www.positivo.co':
-            $config['base_url'] = 'http://www.positivo.co/';
-        break;
-
-   default:
-            $config['base_url'] = '';
-        break;
-}
+$config['base_url'] = (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . preg_replace('@/+$@', '', dirname($_SERVER['SCRIPT_NAME'])) . '/';
+$config['base_path'] = $_SERVER['DOCUMENT_ROOT'] . preg_replace('@/+$@', '', dirname($_SERVER['SCRIPT_NAME'])) . '/';
 
 /*
 |--------------------------------------------------------------------------
