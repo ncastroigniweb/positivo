@@ -520,7 +520,7 @@
     <!--<button type="button" class="close open-category"><i class="fa fa-2x">&times;</i></button>-->
     <div id="category-list">
         <?php
-        	if ($brands) {
+        	if ($categories) {
         	    foreach ($categories as $category) {
         	        echo "<button id=\"category-" . $category->id . "\" type=\"button\" value='" . $category->id . "' class=\"btn-prni category\" ><img src=\"assets/uploads/thumbs/" . ($category->image ? $category->image : 'no_image.png') . "\" style='width:" . $Settings->twidth . "px;height:" . $Settings->theight . "px;' class='img-rounded img-thumbnail' /><span>" . $category->name . "</span></button>";
                 }
