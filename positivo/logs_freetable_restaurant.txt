@@ -1,0 +1,173 @@
+13 07 2017 01:09:26 delete_bill id = 3483, date = 2017-07-13 00:57:58, id_table = 19, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+13 07 2017 01:09:26 add-sale venta suspendida no existente id = 3483
+13 07 2017 01:09:26 delete_bill venta suspendida no existente id = 3483
+28 07 2017 08:54:58 delete_bill id = 3478, date = 2017-06-01 22:23:26, id_table = , id_waiter = 0, count_products = 6, total = 35000.0000, created_by = 5, suspend_note = Consumo despues
+28 07 2017 08:54:58 add-sale venta suspendida no existente id = 3478
+28 07 2017 08:54:58 delete_bill venta suspendida no existente id = 3478
+28 07 2017 08:55:21 delete_bill id = 3479, date = 2017-06-06 08:28:55, id_table = , id_waiter = 0, count_products = 1, total = 42000.0000, created_by = 5, suspend_note = No existencias
+28 07 2017 08:58:52 delete_bill id = 3474, date = 2017-05-22 10:34:16, id_table = 6, id_waiter = 4, count_products = 8, total = 0.0000, created_by = 4, suspend_note = Cliente de siempre
+28 07 2017 08:58:52 add-sale venta suspendida no existente id = 3474
+28 07 2017 08:58:52 delete_bill venta suspendida no existente id = 3474
+28 07 2017 09:11:55 delete_bill id = 3484, date = 2017-07-13 10:38:49, id_table = 3, id_waiter = 4, count_products = 4, total = 0.0000, created_by = 4
+28 07 2017 09:11:55 add-sale venta suspendida no existente id = 3484
+28 07 2017 09:11:55 delete_bill venta suspendida no existente id = 3484
+28 07 2017 09:13:23 delete_bill id = 3475, date = 2017-05-22 11:28:05, id_table = 7, id_waiter = 4, count_products = 3, total = 0.0000, created_by = 4
+28 07 2017 09:13:23 add-sale venta suspendida no existente id = 3475
+28 07 2017 09:13:23 delete_bill venta suspendida no existente id = 3475
+28 07 2017 11:25:38 add-sale venta suspendida no existente id = 
+16 08 2017 11:29:13 add-sale venta suspendida no existente id = 
+16 08 2017 11:31:37 add-sale venta suspendida no existente id = 
+16 08 2017 11:31:57 add-sale venta suspendida no existente id = 
+16 08 2017 11:45:21 add-sale venta suspendida no existente id = 
+17 08 2017 18:35:12 add-sale venta suspendida no existente id = 
+23 08 2017 11:25:15 add-sale venta suspendida no existente id = 
+14 09 2017 15:19:02 add-sale venta suspendida no existente id = 
+01 12 2017 12:31:21 add-sale venta suspendida no existente id = 
+01 12 2017 12:33:26 add-sale venta suspendida no existente id = 
+07 12 2017 09:21:15 delete_bill id = 3499, date = 2017-12-07 09:10:05, id_table = 9, id_waiter = 4, count_products = 7, total = 0.0000, created_by = 4
+07 12 2017 09:21:15 add-sale venta suspendida no existente id = 3499
+07 12 2017 09:21:15 delete_bill venta suspendida no existente id = 3499
+22 03 2018 10:07:00 free-table id = 3491, date = 2017-08-23 11:41:30, id_table = 1, id_waiter = 4, count_products = 0, total = 0.0000, created_by = 4
+22 03 2018 10:07:00 delete_bill id = 3491, date = 2017-08-23 11:41:30, id_table = 1, id_waiter = 4, count_products = 0, total = 0.0000, created_by = 4
+22 03 2018 10:07:16 delete_bill id = 3496, date = 2017-11-19 11:22:40, id_table = 2, id_waiter = 4, count_products = 5, total = 0.0000, created_by = 4
+22 03 2018 10:07:21 delete_bill id = 3492, date = 2017-08-24 10:58:53, id_table = 3, id_waiter = 4, count_products = 4, total = 0.0000, created_by = 4
+22 03 2018 10:07:25 delete_bill id = 3498, date = 2017-12-01 12:32:07, id_table = 4, id_waiter = 0, count_products = 89, total = 178000.0000, created_by = 3, suspend_note = nuevo cliente
+22 03 2018 10:07:29 delete_bill id = 3480, date = 2017-07-12 21:12:12, id_table = 5, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+22 03 2018 10:07:37 delete_bill id = 3497, date = 2017-12-01 12:16:56, id_table = 6, id_waiter = 0, count_products = 2, total = 137000.0000, created_by = 3, suspend_note = para mañan
+22 03 2018 10:07:41 delete_bill id = 3493, date = 2017-09-14 15:16:44, id_table = 7, id_waiter = 4, count_products = 2, total = 0.0000, created_by = 4
+22 03 2018 10:07:45 delete_bill id = 3490, date = 2017-08-23 11:26:25, id_table = 10, id_waiter = 4, count_products = 5, total = 0.0000, created_by = 4
+22 03 2018 10:07:49 delete_bill id = 3482, date = 2017-07-12 23:45:28, id_table = 13, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+22 03 2018 10:07:54 delete_bill id = 3501, date = 2018-03-15 13:58:53, id_table = 16, id_waiter = 4, count_products = 4, total = 0.0000, created_by = 4
+22 03 2018 10:08:08 delete_bill id = 3486, date = 2017-07-14 10:38:32, id_table = 12, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+22 03 2018 10:08:41 delete_bill id = 3488, date = 2017-07-28 11:17:40, id_table = 15, id_waiter = 4, count_products = 4, total = 0.0000, created_by = 4
+22 03 2018 10:08:47 delete_bill id = 3487, date = 2017-07-28 11:05:48, id_table = 19, id_waiter = 4, count_products = 3, total = 0.0000, created_by = 4, suspend_note = F
+22 03 2018 10:08:51 delete_bill id = 3489, date = 2017-07-28 11:28:52, id_table = 20, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+22 03 2018 10:08:55 delete_bill id = 3500, date = 2017-12-07 09:14:05, id_table = 21, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+22 03 2018 10:09:00 delete_bill id = 3485, date = 2017-07-14 10:36:12, id_table = 23, id_waiter = 4, count_products = 0, total = 0.0000, created_by = 4
+22 03 2018 10:09:04 delete_bill id = 3477, date = 2017-05-30 15:48:24, id_table = 11, id_waiter = 4, count_products = 3, total = 0.0000, created_by = 4
+22 03 2018 10:09:08 delete_bill id = 3495, date = 2017-10-31 19:26:57, id_table = 18, id_waiter = 4, count_products = 3, total = 0.0000, created_by = 4
+22 03 2018 10:09:12 delete_bill id = 3494, date = 2017-09-14 15:20:41, id_table = 17, id_waiter = 4, count_products = 2, total = 0.0000, created_by = 4
+22 03 2018 10:09:16 delete_bill id = 3476, date = 2017-05-22 11:55:36, id_table = 8, id_waiter = 4, count_products = 4, total = 0.0000, created_by = 4
+22 03 2018 10:09:35 delete_bill id = 3481, date = 2017-07-12 23:16:34, id_table = 14, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4, suspend_note = Prueba
+16 07 2018 17:37:02 free-table id = 3, date = 2018-07-16 17:36:46, id_table = 51, id_waiter = 4, count_products = 0, total = 0.0000, created_by = 4, suspend_note = Prueba
+16 07 2018 17:37:02 delete_bill id = 3, date = 2018-07-16 17:36:46, id_table = 51, id_waiter = 4, count_products = 0, total = 0.0000, created_by = 4, suspend_note = Prueba
+16 07 2018 18:05:03 delete_bill id = 1, date = 2018-04-20 14:46:07, id_table = 20, id_waiter = 4, count_products = 7, total = 0.0000, created_by = 4, suspend_note = chuleta&NewLine;frijoles
+16 07 2018 18:05:03 add-sale venta suspendida no existente id = 1
+16 07 2018 18:05:03 delete_bill venta suspendida no existente id = 1
+21 01 2020 09:53:34 delete_bill id = 16, date = 2020-01-21 09:52:50, id_table = 9, id_waiter = 4, count_products = 2, total = 125000.0000, created_by = 2, suspend_note = Cajero
+21 01 2020 09:53:34 add-sale venta suspendida no existente id = 16
+21 01 2020 09:53:34 delete_bill venta suspendida no existente id = 16
+21 01 2020 17:20:24 delete_bill id = 8, date = 2018-11-14 14:38:30, id_table = 2, id_waiter = 4, count_products = 4, total = 0.0000, created_by = 4
+21 01 2020 17:20:24 add-sale venta suspendida no existente id = 8
+21 01 2020 17:20:24 delete_bill venta suspendida no existente id = 8
+18 02 2020 16:35:45 add-sale venta suspendida no existente id = 
+18 02 2020 16:36:19 add-sale venta suspendida no existente id = 
+18 02 2020 16:38:28 add-sale venta suspendida no existente id = 
+18 02 2020 16:43:48 add-sale venta suspendida no existente id = 
+20 02 2020 10:05:51 free-table venta suspendida no existente id = 9
+20 02 2020 10:05:51 delete_bill venta suspendida no existente id = 9
+20 02 2020 10:05:56 free-table venta suspendida no existente id = 12
+20 02 2020 10:05:56 delete_bill venta suspendida no existente id = 12
+20 02 2020 10:05:59 free-table venta suspendida no existente id = 7
+20 02 2020 10:05:59 delete_bill venta suspendida no existente id = 7
+20 02 2020 10:06:17 free-table venta suspendida no existente id = 4
+20 02 2020 10:06:17 delete_bill venta suspendida no existente id = 4
+20 02 2020 10:06:21 free-table venta suspendida no existente id = 11
+20 02 2020 10:06:21 delete_bill venta suspendida no existente id = 11
+20 02 2020 10:06:26 free-table venta suspendida no existente id = 10
+20 02 2020 10:06:26 delete_bill venta suspendida no existente id = 10
+20 02 2020 10:06:30 free-table venta suspendida no existente id = 16
+20 02 2020 10:06:30 delete_bill venta suspendida no existente id = 16
+20 02 2020 10:06:34 free-table venta suspendida no existente id = 5
+20 02 2020 10:06:34 delete_bill venta suspendida no existente id = 5
+20 02 2020 10:06:56 free-table venta suspendida no existente id = 6
+20 02 2020 10:06:56 delete_bill venta suspendida no existente id = 6
+09 06 2020 16:17:32 add-sale venta suspendida no existente id = 
+04 08 2020 15:01:45 add-sale venta suspendida no existente id = 
+10 08 2020 09:12:59 add-sale venta suspendida no existente id = 
+10 08 2020 09:15:20 add-sale venta suspendida no existente id = 
+10 08 2020 10:10:46 delete_bill id = 9, date = 2019-01-04 13:12:27, id_table = 1, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+10 08 2020 10:10:46 add-sale venta suspendida no existente id = 9
+10 08 2020 10:10:46 delete_bill venta suspendida no existente id = 9
+13 08 2020 15:40:21 add-sale venta suspendida no existente id = 
+19 08 2020 09:09:30 add-sale venta suspendida no existente id = 
+28 08 2020 12:01:01 add-sale venta suspendida no existente id = 
+28 08 2020 17:55:20 add-sale venta suspendida no existente id = 
+28 08 2020 18:11:20 add-sale venta suspendida no existente id = 
+09 09 2020 10:20:59 add-sale venta suspendida no existente id = 
+25 11 2020 17:15:56 add-sale venta suspendida no existente id = 
+24 12 2020 10:10:57 delete_bill id = 27, date = 2020-12-24 10:09:08, id_table = , id_waiter = 0, count_products = 3, total = 20500.0000, created_by = 3, suspend_note = asdasdasd
+24 12 2020 10:10:57 add-sale venta suspendida no existente id = 27
+24 12 2020 10:10:57 delete_bill venta suspendida no existente id = 27
+17 02 2021 18:40:43 delete_bill id = 12, date = 2019-01-08 20:09:18, id_table = 3, id_waiter = 4, count_products = 1, total = 3000.0000, created_by = 2, suspend_note = Mesa en espera
+17 02 2021 18:40:43 add-sale venta suspendida no existente id = 12
+17 02 2021 18:40:43 delete_bill venta suspendida no existente id = 12
+18 02 2021 07:56:14 add-sale venta suspendida no existente id = 
+23 02 2021 08:16:16 add-sale venta suspendida no existente id = 
+23 02 2021 08:17:04 add-sale venta suspendida no existente id = 
+23 02 2021 08:18:10 add-sale venta suspendida no existente id = 
+23 02 2021 08:24:11 add-sale venta suspendida no existente id = 
+24 02 2021 14:14:37 add-sale venta suspendida no existente id = 
+24 02 2021 14:46:15 delete_bill id = 20, date = 2020-02-18 16:15:13, id_table = 2, id_waiter = 0, count_products = 2, total = 84000.0000, created_by = 2, suspend_note = test
+24 02 2021 14:46:15 add-sale venta suspendida no existente id = 20
+24 02 2021 14:46:15 delete_bill venta suspendida no existente id = 20
+24 02 2021 14:48:02 add-sale venta suspendida no existente id = 
+24 02 2021 14:57:20 add-sale venta suspendida no existente id = 
+24 02 2021 14:57:41 delete_bill id = 5, date = 2018-10-24 19:29:17, id_table = 11, id_waiter = 4, count_products = 8, total = 0.0000, created_by = 4
+24 02 2021 14:57:41 add-sale venta suspendida no existente id = 5
+24 02 2021 14:57:41 delete_bill venta suspendida no existente id = 5
+01 03 2021 11:38:50 delete_bill id = 12, date = 2019-01-08 20:09:18, id_table = 3, id_waiter = 4, count_products = 1, total = 3000.0000, created_by = 2, suspend_note = Mesa en espera
+01 03 2021 11:38:50 add-sale venta suspendida no existente id = 12
+01 03 2021 11:38:50 delete_bill venta suspendida no existente id = 12
+23 03 2021 11:53:31 add-sale venta suspendida no existente id = 
+15 04 2021 08:52:02 delete_bill id = 7, date = 2018-11-07 19:48:07, id_table = 4, id_waiter = 4, count_products = 6, total = 0.0000, created_by = 4
+15 04 2021 08:52:02 add-sale venta suspendida no existente id = 7
+15 04 2021 08:52:02 delete_bill venta suspendida no existente id = 7
+14 08 2021 12:02:40 add-sale venta suspendida no existente id = 
+17 08 2021 17:39:03 add-sale venta suspendida no existente id = 
+17 08 2021 17:42:00 add-sale venta suspendida no existente id = 
+17 08 2021 17:42:26 add-sale venta suspendida no existente id = 
+18 08 2021 07:44:32 add-sale venta suspendida no existente id = 
+18 08 2021 08:58:13 add-sale venta suspendida no existente id = 
+18 08 2021 08:58:42 add-sale venta suspendida no existente id = 
+18 08 2021 09:02:37 add-sale venta suspendida no existente id = 
+22 01 2022 08:46:50 add-sale venta suspendida no existente id = 
+22 01 2022 09:03:11 add-sale venta suspendida no existente id = 
+22 01 2022 09:12:38 add-sale venta suspendida no existente id = 
+22 01 2022 09:37:21 add-sale venta suspendida no existente id = 
+02 05 2022 14:16:38 delete_bill id = 24, date = 2020-06-18 18:26:10, id_table = , id_waiter = 0, count_products = 3, total = 51500.0000, created_by = 5, suspend_note = carlos para el 20 de este mes
+02 05 2022 14:16:43 delete_bill id = 15, date = 2020-01-15 08:44:43, id_table = , id_waiter = 4, count_products = 5, total = 368200.0000, created_by = 3, suspend_note = la mesa de la esquina
+02 05 2022 14:16:49 delete_bill id = 30, date = 2022-04-30 16:38:28, id_table = 1, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+02 05 2022 14:16:55 delete_bill id = 20, date = 2021-08-18 16:28:04, id_table = 2, id_waiter = 4, count_products = 5, total = 154500.0000, created_by = 2, suspend_note = prueba
+02 05 2022 14:17:01 delete_bill id = 26, date = 2020-08-24 14:41:48, id_table = 2, id_waiter = 0, count_products = 12, total = 281900.0000, created_by = 3, suspend_note = va baño
+02 05 2022 14:17:08 delete_bill id = 14, date = 2021-03-01 11:37:55, id_table = 5, id_waiter = 0, count_products = 4, total = 141000.0000, created_by = 3, suspend_note = q
+02 05 2022 14:17:12 delete_bill id = 31, date = 2022-04-30 16:43:22, id_table = 3, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+02 05 2022 14:17:18 delete_bill id = 13, date = 2019-01-09 10:53:09, id_table = 6, id_waiter = 0, count_products = 1, total = 19000.0000, created_by = 2, suspend_note = 2
+02 05 2022 14:17:23 delete_bill id = 4, date = 2018-07-16 20:52:20, id_table = 7, id_waiter = 4, count_products = 4, total = 0.0000, created_by = 4
+02 05 2022 14:17:31 delete_bill id = 11, date = 2019-01-08 17:36:19, id_table = 8, id_waiter = 4, count_products = 0, total = 0.0000, created_by = 4
+02 05 2022 14:17:36 delete_bill id = 19, date = 2020-02-18 11:37:44, id_table = 9, id_waiter = 4, count_products = 6, total = 0.0000, created_by = 4
+02 05 2022 18:16:58 delete_bill id = 16, date = 2020-02-07 08:21:16, id_table = 10, id_waiter = 4, count_products = 3, total = 413000.0000, created_by = 2, suspend_note = MEsa T
+02 05 2022 18:17:06 delete_bill id = 5, date = 2018-10-24 19:29:17, id_table = 11, id_waiter = 4, count_products = 17, total = 0.0000, created_by = 4
+02 05 2022 18:17:12 delete_bill id = 21, date = 2020-02-19 15:14:45, id_table = 12, id_waiter = 4, count_products = 15, total = 0.0000, created_by = 4
+02 05 2022 18:17:17 delete_bill id = 22, date = 2020-02-20 08:23:38, id_table = 13, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+02 05 2022 18:17:22 delete_bill id = 23, date = 2020-06-09 16:18:33, id_table = 15, id_waiter = 4, count_products = 6, total = 0.0000, created_by = 4
+02 05 2022 18:17:26 delete_bill id = 2, date = 2018-04-20 17:54:57, id_table = 21, id_waiter = 4, count_products = 2, total = 0.0000, created_by = 4
+02 05 2022 18:17:32 delete_bill id = 10, date = 2019-01-08 16:47:40, id_table = 16, id_waiter = 4, count_products = 0, total = 0.0000, created_by = 4
+02 05 2022 18:17:37 delete_bill id = 29, date = 2021-10-22 14:34:26, id_table = 23, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+02 05 2022 18:17:41 delete_bill id = 17, date = 2020-02-17 17:20:28, id_table = 24, id_waiter = 4, count_products = 2, total = 0.0000, created_by = 4
+02 05 2022 18:17:46 delete_bill id = 6, date = 2018-10-24 19:30:41, id_table = 30, id_waiter = 4, count_products = 13, total = 0.0000, created_by = 4
+02 05 2022 18:17:51 delete_bill id = 18, date = 2020-02-18 11:03:22, id_table = 32, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+02 05 2022 18:56:18 delete_bill id = 32, date = 2022-05-02 18:51:21, id_table = 1, id_waiter = 8, count_products = 2, total = 0.0000, created_by = 8, suspend_note = Se&ntilde;ora de pelo Rojo
+02 05 2022 18:56:18 add-sale venta suspendida no existente id = 32
+02 05 2022 18:56:18 delete_bill venta suspendida no existente id = 32
+02 05 2022 18:56:36 delete_bill id = 33, date = 2022-05-02 18:52:07, id_table = 4, id_waiter = 8, count_products = 5, total = 0.0000, created_by = 8
+02 05 2022 18:56:36 add-sale venta suspendida no existente id = 33
+02 05 2022 18:56:36 delete_bill venta suspendida no existente id = 33
+02 05 2022 18:59:37 add-sale venta suspendida no existente id = 
+02 05 2022 19:01:20 add-sale venta suspendida no existente id = 
+02 05 2022 19:01:43 add-sale venta suspendida no existente id = 
+04 05 2022 11:23:27 add-sale venta suspendida no existente id = 
+05 05 2022 10:18:08 add-sale venta suspendida no existente id = 
+24 05 2022 16:41:19 add-sale venta suspendida no existente id = 
+31 05 2022 20:26:27 add-sale venta suspendida no existente id = 
+31 05 2022 20:29:22 add-sale venta suspendida no existente id = 

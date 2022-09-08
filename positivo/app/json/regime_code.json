@@ -1,0 +1,12 @@
+{
+    "regime_code": [
+        {
+            "cod": "48",
+            "Description": "Impuestos sobre la venta del IVA"
+        },
+        {
+            "cod": "49",
+            "Description": "No responsables del IVA"
+        }
+    ]
+}

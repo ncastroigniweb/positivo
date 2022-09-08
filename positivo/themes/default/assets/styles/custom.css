@@ -1,0 +1,341 @@
+/* update tables data sales and products*/
+    .data-sales tbody
+    {
+        font-size: 12px;
+        font-family: monospace;
+        color: #6f6161;
+    }
+    .tb-sales
+    {
+        border: 1px solid #fff;
+        border-radius: 2px;
+        box-shadow: 0px 6px 9px 2px #428bca87;
+        padding: 10px;
+    }
+    .tb-sales input
+    {
+        border-radius: 2px;
+        color: #6d6565d9;
+    }
+    .tb-sales button
+    {
+        background: #fff;
+        color: #78cd51;
+    }
+    .tb-sales tbody
+    {
+        font-size: 12px;
+        font-family: monospace;
+        color: #6f6161;
+    }
+    .post-dian
+    {
+        float: left;
+        padding-left: 10px;
+        margin-right: 5px;
+
+    }
+    .post-dian-m
+    {
+        color: #615a5a;
+        font-family: sans-serif;
+        padding-top: 2px;
+
+    }
+    .post-dian-m h5
+    {
+        margin: 0px;
+    }
+    .data-sales img
+    {
+        border: solid 1px #a0a59438;
+        border-radius: 2px;
+    }
+    .data-sales button
+    {
+        background: #fff;
+        color: #78cd51;
+    }
+/*modeal detalle productos*/
+
+    .btn-group>.btn-group
+    {
+        padding-right: 3px;
+    }
+    .tb-dtlle
+    {
+        border: solid 1px #fff;
+        border-radius: 10px;
+        box-shadow: 0px 5px 10px 1px #5de86866;
+    }
+    .tb-dtlle  tr
+    {
+        font-size: 12px;
+        font-family: sans-serif;
+    }
+    #pr-image
+    {
+        border-radius: 10px;
+    }
+    .menu-product ul li a
+    {
+        width: 100%;
+        border: none;
+        padding: 2px 0px 2px 10px;
+        margin-bottom: 3px;
+        text-align: left;
+    }
+     .menu-product ul li hr
+    {
+        margin: 0px;
+    }
+    .menu-product a
+    {
+        padding: 10px;
+        border-radius: 3px;
+    }
+    .menu-product ul
+    {
+        border-radius: 3px;
+    }
+    #action-pro
+    {
+        color: #e03333c4;
+        font-family: sans-serif;
+        border-top:solid;
+    }
+    /* dian */
+     .form_api
+    {
+        padding: 0px 0px 5px 0px;;
+    }
+    .post-dian
+    {
+        float: left;
+        padding-left: 10px;
+        margin-right: 5px;
+    }
+    .post-dian-m
+    {
+        color: #615a5a;
+        font-family: sans-serif;
+        padding-top: 2px;
+
+    }
+    .post-dian-m h5
+    {
+        margin: 0px;
+    }
+    .pre-dian
+    {
+        border: 1px solid #78cd51;
+        border-radius: 8px;
+        box-shadow: 0px 3px 8px 1px #d4c2c2de;
+        margin-bottom: 5px;
+    }
+    .body-d
+    {
+        color: #736b6b;
+        padding: 5px 5px 5px 10px;
+    }
+    .body-d h6
+    {
+        margin: 5px 0px 2px 0px;
+    }
+    .body-d i
+    {
+        color: #78cd51;
+        padding: 0px 15px 0px 5px;
+    }
+    .dto-d
+    {
+        padding-left: 0px;
+    }
+    .lis-api
+    {
+        margin: 5px 0px 5px 0px;
+        border-bottom: 1px solid #ff5454;
+    }
+    #state_api
+    {
+        border: 1px solid #ff5454;
+    }
+    #state_api i
+    {
+        color: #ff5454;
+    }
+    #state_api a
+    {
+        color:#fff;
+    }
+    #state_api ul li
+    {
+    list-style: none;
+    }
+    #cod-api a
+    {
+        color:#fff;
+    }
+
+    .msg-fact-api
+    {
+        margin-bottom: 10px;
+    }
+    .msg-api ul
+    {
+        font-size: 12px;
+    }
+    .msg-api ul li div
+    {
+        width: 90%;
+    }
+    #bor-api
+    {
+        border: 1px solid #fabb3d;
+    }
+    #bor-api i
+    {
+        color: #fabb3d;
+    }
+    #bor-api ul li
+    {
+    list-style: none;
+    }
+    .ws-201
+    {
+        background-color: #41ce00;
+    }
+    .btn-env
+    {
+        width: 100%;
+        background-color: #428bca;
+        color: #fff;
+        border: solid 1px;
+        border-color: #428bca;
+        border-radius: 3px;
+        padding: 10px 0 10px 0;
+        box-shadow: -1px 2px 6px 0px #8fb0cc;
+        margin-top:10px;
+    }
+    .btn-env:hover
+    {
+
+        background-color: #78cd51;
+        border: solid 1px;
+        border-color: #78cd51;
+        box-shadow: -1px 2px 6px 0px #89d666;
+    }
+    .control-label
+    {
+        font-size: 12px;
+        color: #635858;
+        font-weight: lighter;
+        font-family: sans-serif;
+    }
+    .control-label .well
+    {
+        border-radius: 5px;
+        box-shadow: 0px 4px 4px 2px #78cd5152;
+    }
+
+    .help-input
+    {
+        border: dotted 1px #25a0d7;
+        border-radius: 10px;
+        font-size: 10px;
+        margin-left: 5%;
+    }
+    .sel-dian
+    {
+        font-size: 12px;
+    }
+    .cont-dian
+    {
+        border-radius: 5px;
+        box-shadow: 0px 3px 8px 1px #b1c6cee0;
+        margin-bottom: 15px;
+    }
+    .cont-dian h6
+    {
+        font-family: sans-serif;
+        text-transform: uppercase;
+        color: #848080;
+    }
+    .border-cont
+    {
+        border: solid 1px #fff;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px 1px #c5b8b8;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .border-cont h6
+    {
+        font-family: sans-serif;
+        text-transform: uppercase;
+        color: #848080;
+    }
+    .btn-2
+    {
+        background: #ff5454bf;
+        color: #fff;
+        font-size: 12px;
+        width: 100%;
+    }
+    .btn-2:hover
+    {
+        color: #fff;
+        background: #ff5454;
+    }
+    .cont-avatar h6
+    {
+        font-size: 15px;
+        font-weight: bold;
+        color: #697078;
+    }
+    .cont-avatar kbd
+    {
+        font-size: 70%;
+    }
+
+    .rad-cont
+    {
+        border: solid 0.1px #d6d1d1;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    #logo-con img
+    {
+        width: auto;
+        max-width: 100%;
+        height: 100px;
+
+    }
+    .delete-list
+    {
+        color: #e03333c4;
+        font-family: sans-serif;
+        border-top: solid 1px #e0d2d2;
+        background: #fff;
+    }
+/*border*/
+    .br-5
+    {
+        border-radius: 5px;
+    }
+/*padding*/
+
+/*margin*/
+    .mt-10
+    {
+        margin-top:10px;
+    }
+    .mr-10
+    {
+        margin-right: 10px;
+    }
+/*color*/
+    .text-yellow
+    {
+        color: #f7c46c!important;
+    }

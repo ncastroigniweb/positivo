@@ -1,0 +1,879 @@
+{
+    "country": [
+        {
+            "common_name": "Afganistán",
+            "iso_name": "Afganistán",
+            "alfa-2": "AF",
+            "alfa-3": "AFG",
+            "numeric_code": "004"
+        },
+        {
+            "common_name": "Åland",
+            "iso_name": "Åland, Islas",
+            "alfa-2": "AX",
+            "alfa-3": "ALA",
+            "numeric_code": "248"
+        },
+        {
+            "common_name": "Albania",
+            "iso_name": "Albania",
+            "alfa-2": "AL",
+            "alfa-3": "ALB",
+            "numeric_code": "008"
+        },
+        {
+            "common_name": "Alemania",
+            "iso_name": "Alemania",
+            "alfa-2": "DE",
+            "alfa-3": "DEU",
+            "numeric_code": "276"
+        },
+        {
+            "common_name": "Andorra",
+            "iso_name": "Andorra",
+            "alfa-2": "AD",
+            "alfa-3": "AND",
+            "numeric_code": "020"
+        },
+        {
+            "common_name": "Angola",
+            "iso_name": "Angola",
+            "alfa-2": "AO",
+            "alfa-3": "AGO",
+            "numeric_code": "024"
+        },
+        {
+            "common_name": "Anguila",
+            "iso_name": "Anguila",
+            "alfa-2": "AI",
+            "alfa-3": "AIA",
+            "numeric_code": "660"
+        },
+        {
+            "common_name": "Antártida",
+            "iso_name": "Antártida",
+            "alfa-2": "AQ",
+            "alfa-3": "ATA",
+            "numeric_code": "010"
+        },
+        {
+            "common_name": "Antigua y Barbuda",
+            "iso_name": "Antigua y Barbuda",
+            "alfa-2": "AG",
+            "alfa-3": "ATG",
+            "numeric_code": "028"
+        },
+        {
+            "common_name": "Arabia Saudita",
+            "iso_name": "Arabia Saudita",
+            "alfa-2": "SA",
+            "alfa-3": "SAU",
+            "numeric_code": "682"
+        },
+        {
+            "common_name": "Argelia",
+            "iso_name": "Argelia",
+            "alfa-2": "DZ",
+            "alfa-3": "DZA",
+            "numeric_code": "012"
+        },
+        {
+            "common_name": "Argentina",
+            "iso_name": "Argentina",
+            "alfa-2": "AR",
+            "alfa-3": "ARG",
+            "numeric_code": "032"
+        },
+        {
+            "common_name": "Armenia",
+            "iso_name": "Armenia",
+            "alfa-2": "AM",
+            "alfa-3": "ARM",
+            "numeric_code": "051"
+        },
+        {
+            "common_name": "Aruba",
+            "iso_name": "Aruba",
+            "alfa-2": "AW",
+            "alfa-3": "ABW",
+            "numeric_code": "533"
+        },
+        {
+            "common_name": "Australia",
+            "iso_name": "Australia",
+            "alfa-2": "AU",
+            "alfa-3": "AUS",
+            "numeric_code": "036"
+        },
+        {
+            "common_name": "Austria",
+            "iso_name": "Austria",
+            "alfa-2": "AT",
+            "alfa-3": "AUT",
+            "numeric_code": "040"
+        },
+        {
+            "common_name": "Azerbaiyán",
+            "iso_name": "Azerbaiyán",
+            "alfa-2": "AZ",
+            "alfa-3": "AZE",
+            "numeric_code": "031"
+        },
+        {
+            "common_name": "Bahamas",
+            "iso_name": "Bahamas (las)",
+            "alfa-2": "BS",
+            "alfa-3": "BHS",
+            "numeric_code": "044"
+        },
+        {
+            "common_name": "Bangladés",
+            "iso_name": "Bangladesh",
+            "alfa-2": "BD",
+            "alfa-3": "BGD",
+            "numeric_code": "050"
+        },
+        {
+            "common_name": "Barbados",
+            "iso_name": "Barbados",
+            "alfa-2": "BB",
+            "alfa-3": "BRB",
+            "numeric_code": "052"
+        },
+        {
+            "common_name": "Baréin",
+            "iso_name": "Bahrein",
+            "alfa-2": "BH",
+            "alfa-3": "BHR",
+            "numeric_code": "048"
+        },
+        {
+            "common_name": "Bélgica",
+            "iso_name": "Bélgica",
+            "alfa-2": "BE",
+            "alfa-3": "BEL",
+            "numeric_code": "056"
+        },
+        {
+            "common_name": "Belice",
+            "iso_name": "Belice",
+            "alfa-2": "BZ",
+            "alfa-3": "BLZ",
+            "numeric_code": "084"
+        },
+        {
+            "common_name": "Benín",
+            "iso_name": "Benin",
+            "alfa-2": "BJ",
+            "alfa-3": "BEN",
+            "numeric_code": "204"
+        },
+        {
+            "common_name": "Bermudas",
+            "iso_name": "Bermudas",
+            "alfa-2": "BM",
+            "alfa-3": "BMU",
+            "numeric_code": "060"
+        },
+        {
+            "common_name": "Bielorrusia",
+            "iso_name": "Belarús",
+            "alfa-2": "BY",
+            "alfa-3": "BLR",
+            "numeric_code": "112"
+        },
+        {
+            "common_name": "Bolivia",
+            "iso_name": "Bolivia (Estado Plurinacional de)",
+            "alfa-2": "BO",
+            "alfa-3": "BOL",
+            "numeric_code": "068"
+        },
+        {
+            "common_name": "Bonaire, San Eustaquio y Saba",
+            "iso_name": "Bonaire, San Eustaquio y Saba",
+            "alfa-2": "BQ",
+            "alfa-3": "BES",
+            "numeric_code": "535"
+        },
+        {
+            "common_name": "Bosnia y Herzegovina",
+            "iso_name": "Bosnia y Herzegovina",
+            "alfa-2": "BA",
+            "alfa-3": "BIH",
+            "numeric_code": "070"
+        },
+        {
+            "common_name": "Botsuana",
+            "iso_name": "Botswana",
+            "alfa-2": "BW",
+            "alfa-3": "BWA",
+            "numeric_code": "072"
+        },
+        {
+            "common_name": "Brasil",
+            "iso_name": "Brasil",
+            "alfa-2": "BR",
+            "alfa-3": "BRA",
+            "numeric_code": "076"
+        },
+        {
+            "common_name": "Brunéi",
+            "iso_name": "Brunei Darussalam",
+            "alfa-2": "BN",
+            "alfa-3": "BRN",
+            "numeric_code": "096"
+        },
+        {
+            "common_name": "Bulgaria",
+            "iso_name": "Bulgaria",
+            "alfa-2": "BG",
+            "alfa-3": "BGR",
+            "numeric_code": "100"
+        },
+        {
+            "common_name": "Burkina Faso",
+            "iso_name": "Burkina Faso",
+            "alfa-2": "BF",
+            "alfa-3": "BFA",
+            "numeric_code": "854"
+        },
+        {
+            "common_name": "Burundi",
+            "iso_name": "Burundi",
+            "alfa-2": "BI",
+            "alfa-3": "BDI",
+            "numeric_code": "108"
+        },
+        {
+            "common_name": "Bután",
+            "iso_name": "Bhután",
+            "alfa-2": "BT",
+            "alfa-3": "BTN",
+            "numeric_code": "064"
+        },
+        {
+            "common_name": "Cabo Verde",
+            "iso_name": "Cabo Verde",
+            "alfa-2": "CV",
+            "alfa-3": "CPV",
+            "numeric_code": "132"
+        },
+        {
+            "common_name": "Camboya",
+            "iso_name": "Camboya",
+            "alfa-2": "KH",
+            "alfa-3": "KHM",
+            "numeric_code": "116"
+        },
+        {
+            "common_name": "Camerún",
+            "iso_name": "Camerún",
+            "alfa-2": "CM",
+            "alfa-3": "CMR",
+            "numeric_code": "120"
+        },
+        {
+            "common_name": "Canadá",
+            "iso_name": "Canadá",
+            "alfa-2": "CA",
+            "alfa-3": "CAN",
+            "numeric_code": "124"
+        },
+        {
+            "common_name": "Catar",
+            "iso_name": "Qatar",
+            "alfa-2": "QA",
+            "alfa-3": "QAT",
+            "numeric_code": "634"
+        },
+        {
+            "common_name": "Chad",
+            "iso_name": "Chad",
+            "alfa-2": "TD",
+            "alfa-3": "TCD",
+            "numeric_code": "148"
+        },
+        {
+            "common_name": "Chile",
+            "iso_name": "Chile",
+            "alfa-2": "CL",
+            "alfa-3": "CHL",
+            "numeric_code": "152"
+        },
+        {
+            "common_name": "China",
+            "iso_name": "China",
+            "alfa-2": "CN",
+            "alfa-3": "CHN",
+            "numeric_code": "156"
+        },
+        {
+            "common_name": "Chipre",
+            "iso_name": "Chipre",
+            "alfa-2": "CY",
+            "alfa-3": "CYP",
+            "numeric_code": "196"
+        },
+        {
+            "common_name": "Colombia",
+            "iso_name": "Colombia",
+            "alfa-2": "CO",
+            "alfa-3": "COL",
+            "numeric_code": "170"
+        },
+        {
+            "common_name": "Comoras",
+            "iso_name": "Comoras (las)",
+            "alfa-2": "KM",
+            "alfa-3": "CON",
+            "numeric_code": "174"
+        },
+        {
+            "common_name": "Corea del Norte",
+            "iso_name": "Corea (la República Popular Democrática de)",
+            "alfa-2": "KP",
+            "alfa-3": "PRK",
+            "numeric_code": "408"
+        },
+        {
+            "common_name": "Corea del Sur",
+            "iso_name": "Corea (la República de)",
+            "alfa-2": "KR",
+            "alfa-3": "KOR",
+            "numeric_code": "410"
+        },
+        {
+            "common_name": "Costa de Marfil",
+            "iso_name": "Côte d’Ivoire",
+            "alfa-2": "CI",
+            "alfa-3": "CIV",
+            "numeric_code": "384"
+        },
+        {
+            "common_name": "Costa Rica",
+            "iso_name": "Costa Rica",
+            "alfa-2": "CR",
+            "alfa-3": "CRI",
+            "numeric_code": "188"
+        },
+        {
+            "common_name": "Croacia",
+            "iso_name": "Croacia",
+            "alfa-2": "HR",
+            "alfa-3": "HRV",
+            "numeric_code": "191"
+        },
+        {
+            "common_name": "Cuba",
+            "iso_name": "Cuba",
+            "alfa-2": "CU",
+            "alfa-3": "CUB",
+            "numeric_code": "192"
+        },
+        {
+            "common_name": "Curazao",
+            "iso_name": "Curaçao",
+            "alfa-2": "CW",
+            "alfa-3": "CUW",
+            "numeric_code": "531"
+        },
+        {
+            "common_name": "Dinamarca",
+            "iso_name": "Dinamarca",
+            "alfa-2": "DK",
+            "alfa-3": "DNK",
+            "numeric_code": "208"
+        },
+        {
+            "common_name": "Dominica",
+            "iso_name": "Dominica",
+            "alfa-2": "DM",
+            "alfa-3": "DMA",
+            "numeric_code": "212"
+        },
+        {
+            "common_name": "Ecuador",
+            "iso_name": "Ecuador",
+            "alfa-2": "EC",
+            "alfa-3": "ECU",
+            "numeric_code": "218"
+        },
+        {
+            "common_name": "Egipto",
+            "iso_name": "Egipto",
+            "alfa-2": "EG",
+            "alfa-3": "EGY",
+            "numeric_code": "818"
+        },
+        {
+            "common_name": "El Salvador",
+            "iso_name": "El Salvador",
+            "alfa-2": "SV",
+            "alfa-3": "SLV",
+            "numeric_code": "222"
+        },
+        {
+            "common_name": "Emiratos Árabes Unidos",
+            "iso_name": "Emiratos Árabes Unidos (los)",
+            "alfa-2": "AE",
+            "alfa-3": "ARE",
+            "numeric_code": "784"
+        },
+        {
+            "common_name": "Eritrea",
+            "iso_name": "Eritrea",
+            "alfa-2": "ER",
+            "alfa-3": "ERI",
+            "numeric_code": "232"
+        },
+        {
+            "common_name": "Eslovaquia",
+            "iso_name": "Eslovaquia",
+            "alfa-2": "SK",
+            "alfa-3": "SVK",
+            "numeric_code": "703"
+        },
+        {
+            "common_name": "Eslovenia",
+            "iso_name": "Eslovenia",
+            "alfa-2": "SI",
+            "alfa-3": "SVN",
+            "numeric_code": "705"
+        },
+        {
+            "common_name": "España",
+            "iso_name": "España",
+            "alfa-2": "ES",
+            "alfa-3": "ESP",
+            "numeric_code": "724"
+        },
+        {
+            "common_name": "Estados Unidos",
+            "iso_name": "Estados Unidos de América (los)",
+            "alfa-2": "US",
+            "alfa-3": "USA",
+            "numeric_code": "840"
+        },
+        {
+            "common_name": "Estonia",
+            "iso_name": "Estonia",
+            "alfa-2": "EE",
+            "alfa-3": "EST",
+            "numeric_code": "233"
+        },
+        {
+            "common_name": "Etiopía",
+            "iso_name": "Etiopía",
+            "alfa-2": "ET",
+            "alfa-3": "ETH",
+            "numeric_code": "231"
+        },
+        {
+            "common_name": "Filipinas",
+            "iso_name": "Filipinas (las)",
+            "alfa-2": "PH",
+            "alfa-3": "PHL",
+            "numeric_code": "608"
+        },
+        {
+            "common_name": "Finlandia",
+            "iso_name": "Finlandia",
+            "alfa-2": "FI",
+            "alfa-3": "FIN",
+            "numeric_code": "246"
+        },
+        {
+            "common_name": "Fiyi",
+            "iso_name": "Fiji",
+            "alfa-2": "FJ",
+            "alfa-3": "FJI",
+            "numeric_code": "242"
+        },
+        {
+            "common_name": "Francia",
+            "iso_name": "Francia",
+            "alfa-2": "FR",
+            "alfa-3": "FRA",
+            "numeric_code": "250"
+        },
+        {
+            "common_name": "Gabón",
+            "iso_name": "Gabón",
+            "alfa-2": "GA",
+            "alfa-3": "GAB",
+            "numeric_code": "266"
+        },
+        {
+            "common_name": "Gambia",
+            "iso_name": "Gambia (la)",
+            "alfa-2": "GM",
+            "alfa-3": "GMB",
+            "numeric_code": "270"
+        },
+        {
+            "common_name": "Georgia",
+            "iso_name": "Georgia",
+            "alfa-2": "GE",
+            "alfa-3": "GEO",
+            "numeric_code": "268"
+        },
+        {
+            "common_name": "Ghana",
+            "iso_name": "Ghana",
+            "alfa-2": "GH",
+            "alfa-3": "GHA",
+            "numeric_code": "288"
+        },
+        {
+            "common_name": "Gibraltar",
+            "iso_name": "Gibraltar",
+            "alfa-2": "GI",
+            "alfa-3": "GIB",
+            "numeric_code": "292"
+        },
+        {
+            "common_name": "Granada",
+            "iso_name": "Granada",
+            "alfa-2": "GD",
+            "alfa-3": "GRD",
+            "numeric_code": "308"
+        },
+        {
+            "common_name": "Grecia",
+            "iso_name": "Grecia",
+            "alfa-2": "GR",
+            "alfa-3": "GRC",
+            "numeric_code": "300"
+        },
+        {
+            "common_name": "Groenlandia",
+            "iso_name": "Groenlandia",
+            "alfa-2": "GL",
+            "alfa-3": "GRL",
+            "numeric_code": "304"
+        },
+        {
+            "common_name": "Guadalupe",
+            "iso_name": "Guadeloupe",
+            "alfa-2": "GP",
+            "alfa-3": "GLP",
+            "numeric_code": "312"
+        },
+        {
+            "common_name": "Guam",
+            "iso_name": "Guam",
+            "alfa-2": "GU",
+            "alfa-3": "GUM",
+            "numeric_code": "316"
+        },
+        {
+            "common_name": "Guatemala",
+            "iso_name": "Guatemala",
+            "alfa-2": "GT",
+            "alfa-3": "GTM",
+            "numeric_code": "320"
+        },
+        {
+            "common_name": "Guayana Francesa",
+            "iso_name": "Guayana Francesa",
+            "alfa-2": "GF",
+            "alfa-3": "GUF",
+            "numeric_code": "254"
+        },
+        {
+            "common_name": "Guernsey",
+            "iso_name": "Guernsey",
+            "alfa-2": "GG",
+            "alfa-3": "GGY",
+            "numeric_code": "831"
+        },
+        {
+            "common_name": "Guinea",
+            "iso_name": "Guinea",
+            "alfa-2": "GN",
+            "alfa-3": "GIN",
+            "numeric_code": "324"
+        },
+        {
+            "common_name": "Guinea-Bisáu",
+            "iso_name": "Guinea Bissau",
+            "alfa-2": "GW",
+            "alfa-3": "GNB",
+            "numeric_code": "624"
+        },
+        {
+            "common_name": "Guinea Ecuatorial",
+            "iso_name": "Guinea Ecuatorial",
+            "alfa-2": "GQ",
+            "alfa-3": "GNQ",
+            "numeric_code": "226"
+        },
+        {
+            "common_name": "Guyana",
+            "iso_name": "Guyana",
+            "alfa-2": "GY",
+            "alfa-3": "GUY",
+            "numeric_code": "328"
+        },
+        {
+            "common_name": "Haití",
+            "iso_name": "Haití",
+            "alfa-2": "HT",
+            "alfa-3": "HTI",
+            "numeric_code": "332"
+        },
+        {
+            "common_name": "Honduras",
+            "iso_name": "Honduras",
+            "alfa-2": "HN",
+            "alfa-3": "HND",
+            "numeric_code": "340"
+        },
+        {
+            "common_name": "Hong Kong",
+            "iso_name": "Hong Kong",
+            "alfa-2": "HK",
+            "alfa-3": "HKG",
+            "numeric_code": "344"
+        },
+        {
+            "common_name": "Hungría",
+            "iso_name": "Hungría",
+            "alfa-2": "HU",
+            "alfa-3": "HUN",
+            "numeric_code": "348"
+        },
+        {
+            "common_name": "India",
+            "iso_name": "India",
+            "alfa-2": "IN",
+            "alfa-3": "IND",
+            "numeric_code": "356"
+        },
+        {
+            "common_name": "Indonesia",
+            "iso_name": "Indonesia",
+            "alfa-2": "ID",
+            "alfa-3": "IDN",
+            "numeric_code": "360"
+        },
+        {
+            "common_name": "Irak",
+            "iso_name": "Iraq",
+            "alfa-2": "IQ",
+            "alfa-3": "IRQ",
+            "numeric_code": "368"
+        },
+        {
+            "common_name": "Irán",
+            "iso_name": "Irán (República Islámica de)",
+            "alfa-2": "IR",
+            "alfa-3": "IRN",
+            "numeric_code": "364"
+        },
+        {
+            "common_name": "Irlanda",
+            "iso_name": "Irlanda",
+            "alfa-2": "IE",
+            "alfa-3": "IRL",
+            "numeric_code": "372"
+        },
+        {
+            "common_name": "Isla Bouvet",
+            "iso_name": "Bouvet, Isla",
+            "alfa-2": "BV",
+            "alfa-3": "BVT",
+            "numeric_code": "074"
+        },
+        {
+            "common_name": "Isla de Man",
+            "iso_name": "Isla de Man",
+            "alfa-2": "IM",
+            "alfa-3": "IMN",
+            "numeric_code": "833"
+        },
+        {
+            "common_name": "Isla de Navidad",
+            "iso_name": "Navidad, Isla de",
+            "alfa-2": "CX",
+            "alfa-3": "CXR",
+            "numeric_code": "162"
+        },
+        {
+            "common_name": "Islandia",
+            "iso_name": "Islandia",
+            "alfa-2": "IS",
+            "alfa-3": "ISL",
+            "numeric_code": "352"
+        },
+        {
+            "common_name": "Islas Caimán",
+            "iso_name": "Caimán, (las) Islas",
+            "alfa-2": "KY",
+            "alfa-3": "CYM",
+            "numeric_code": "136"
+        },
+        {
+            "common_name": "Islas Cocos",
+            "iso_name": "Cocos / Keeling, (las) Islas",
+            "alfa-2": "CC",
+            "alfa-3": "CCK",
+            "numeric_code": "166"
+        },
+        {
+            "common_name": "Islas Cook",
+            "iso_name": "Cook, (las) Islas",
+            "alfa-2": "CK",
+            "alfa-3": "COK",
+            "numeric_code": "184"
+        },
+        {
+            "common_name": "Islas Feroe",
+            "iso_name": "Feroe, (las) Islas",
+            "alfa-2": "FO",
+            "alfa-3": "FRO",
+            "numeric_code": "234"
+        },
+        {
+            "common_name": "Islas Georgias del Sur y Sandwich del Sur",
+            "iso_name": "Georgia del Sur (la) y las Islas Sandwich del Sur",
+            "alfa-2": "GS",
+            "alfa-3": "SGS",
+            "numeric_code": "239"
+        },
+        {
+            "common_name": "Islas Heard y McDonald",
+            "iso_name": "Heard (Isla) e Islas McDonald",
+            "alfa-2": "HM",
+            "alfa-3": "HMD",
+            "numeric_code": "334"
+        },
+        {
+            "common_name": "Islas Malvinas",
+            "iso_name": "Malvinas [Falkland], (las) Islas",
+            "alfa-2": "FK",
+            "alfa-3": "FLK",
+            "numeric_code": "238"
+        },
+        {
+            "common_name": "Islas Marianas del Norte",
+            "iso_name": "Marianas del Norte, (las) Islas",
+            "alfa-2": "MP",
+            "alfa-3": "MNP",
+            "numeric_code": "580"
+        },
+        {
+            "common_name": "Islas Marshall",
+            "iso_name": "Marshall, (las) Islas",
+            "alfa-2": "MH",
+            "alfa-3": "MHL",
+            "numeric_code": "584"
+        },
+        {
+            "common_name": "Islas Pitcairn",
+            "iso_name": "Pitcairn",
+            "alfa-2": "PN",
+            "alfa-3": "PCN",
+            "numeric_code": "612"
+        },
+        {
+            "common_name": "Islas Salomón",
+            "iso_name": "Salomón, Islas",
+            "alfa-2": "SB",
+            "alfa-3": "SLB",
+            "numeric_code": "090"
+        },
+        {
+            "common_name": "Islas Turcas y Caicos",
+            "iso_name": "Turcas y Caicos, (las) Islas",
+            "alfa-2": "TC",
+            "alfa-3": "TCA",
+            "numeric_code": "796"
+        },
+        {
+            "common_name": "Islas ultramarinas de Estados Unidos",
+            "iso_name": "Islas Ultramarinas Menores de los Estados Unidos (las)",
+            "alfa-2": "UM",
+            "alfa-3": "UMI",
+            "numeric_code": "581"
+        },
+        {
+            "common_name": "Islas Vírgenes  Británicas",
+            "iso_name": "Vírgenes británicas, Islas",
+            "alfa-2": "VG",
+            "alfa-3": "VGB",
+            "numeric_code": "092"
+        },
+        {
+            "common_name": "Islas Vírgenes de los Estados Unidos",
+            "iso_name": "Vírgenes de los Estados Unidos, Islas",
+            "alfa-2": "VI",
+            "alfa-3": "VIR",
+            "numeric_code": "850"
+        },
+        {
+            "common_name": "Israel",
+            "iso_name": "Israel",
+            "alfa-2": "IL",
+            "alfa-3": "ISR",
+            "numeric_code": "376"
+        },
+        {
+            "common_name": "Italia",
+            "iso_name": "Italia",
+            "alfa-2": "IT",
+            "alfa-3": "ITA",
+            "numeric_code": "380"
+        },
+        {
+            "common_name": "Jamaica",
+            "iso_name": "Jamaica",
+            "alfa-2": "JM",
+            "alfa-3": "JAM",
+            "numeric_code": "388"
+        },
+        {
+            "common_name": "Japón",
+            "iso_name": "Japón",
+            "alfa-2": "JP",
+            "alfa-3": "JPN",
+            "numeric_code": "392"
+        },
+        {
+            "common_name": "Jersey",
+            "iso_name": "Jersey",
+            "alfa-2": "JE",
+            "alfa-3": "JEY",
+            "numeric_code": "832"
+        },
+        {
+            "common_name": "Jordania",
+            "iso_name": "Jordania",
+            "alfa-2": "JO",
+            "alfa-3": "JOR",
+            "numeric_code": "400"
+        },
+        {
+            "common_name": "Kazajistán",
+            "iso_name": "Kazajstán",
+            "alfa-2": "KZ",
+            "alfa-3": "KAZ",
+            "numeric_code": "398"
+        },
+        {
+            "common_name": "Kenia",
+            "iso_name": "Kenya",
+            "alfa-2": "KE",
+            "alfa-3": "KEN",
+            "numeric_code": "404"
+        },
+        {
+            "common_name": "Kirguistán",
+            "iso_name": "Kirguistán",
+            "alfa-2": "KG",
+            "alfa-3": "KGZ",
+            "numeric_code": "417"
+        }
+    ]
+}

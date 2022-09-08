@@ -1,0 +1,123 @@
+#containerTitle {
+    color: white;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+    position: inherit;
+}
+
+.floating-wpp {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    font-size: 14px;
+    transition: bottom 0.2s;
+}
+
+.floating-wpp .floating-wpp-button {
+    position: relative;
+    border-radius: 80%;
+    box-shadow: 1px 1px 4px rgb(129, 129, 129);
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.floating-wpp .floating-wpp-button img,
+.floating-wpp .floating-wpp-button svg {
+    position: absolute;
+    width: 52%;
+    height: auto;
+    object-fit: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: 50%;
+}
+
+.floating-wpp:hover {
+    bottom: 10px;
+}
+
+.floating-wpp:hover .floating-wpp-button {
+    box-shadow: 1px 2px 8px rgb(154, 155, 156);
+}
+
+.floating-wpp .floating-wpp-popup {
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    overflow: hidden;
+    padding: 50px 50px;
+    box-shadow: 1px 2px 8px rgb(131, 131, 131);
+    width: 4px;
+    height: 4px;
+    bottom: 0;
+    opacity: 0;
+    transition: bottom 0.1s ease-out, opacity 0.2s ease-out;
+    transform-origin: bottom;
+}
+
+.floating-wpp .floating-wpp-popup.active {
+    padding: 0 12px 12px 12px;
+    width: 260px;
+    height: auto;
+    bottom: 78px;
+    opacity: 1;
+}
+
+.floating-wpp .floating-wpp-popup .floating-wpp-message {
+    background-color: rgb(220, 248, 198);
+    padding: 4px;
+    border-radius: 0px 5px 5px 5px;
+    box-shadow: 1px 1px 1px rgb(142, 142, 142);
+    opacity: 0;
+    transition: opacity 0.1s;
+    color: rgb(0, 0, 0);
+}
+
+.floating-wpp .floating-wpp-popup.active .floating-wpp-message {
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+
+.floating-wpp .floating-wpp-popup .floating-wpp-head {
+    background-color: rgb(186, 187, 187);
+    text-align: right;
+    color: rgb(255, 255, 255);
+    margin: 0 -15px 30px -15px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.floating-wpp .floating-wpp-input-message {
+    background-color: rgb(205, 207, 207);
+    margin: 10px -15px -15px -15px;
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.floating-wpp .floating-wpp-input-message textarea {
+    border: 1px solid rgb(157, 159, 159);
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 10px 10px;
+    margin: 1px 0;
+    width: 236px;
+    height: 47px;
+    font-family: inherit;
+    font-size: inherit;
+    resize: none;
+    background-color: white;
+    color: rgb(130, 134, 138);
+    border-radius: 35px 35px 35px 35px
+}
+
+.floating-wpp .floating-wpp-btn-send {
+    margin-left: 12px;
+    font-size: 0;
+    cursor: pointer;
+}

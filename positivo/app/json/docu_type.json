@@ -1,0 +1,44 @@
+{
+    "docu_type": [
+        {
+            "cod": "11",
+            "description": "Registro civil"
+        },
+        {
+            "cod": "12",
+            "description": "Tarjeta de identidad"
+        },
+        {
+            "cod": "13",
+            "description": "Cédula de ciudadanía"
+        },
+        {
+            "cod": "21",
+            "description": "Tarjeta de extranjería"
+        },
+        {
+            "cod": "22",
+            "description": "Cédula de extranjería"
+        },
+        {
+            "cod": "31",
+            "description": "NIT "
+        },
+        {
+            "cod": "41",
+            "description": "Pasaporte"
+        },
+        {
+            "cod": "42",
+            "description": "Documento de identificación extranjero"
+        },
+        {
+            "cod": "50",
+            "description": "Nit de otro país"
+        },
+        {
+            "cod": "91",
+            "description": "NIUP"
+        }
+    ]
+}

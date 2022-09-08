@@ -1,0 +1,25 @@
+{
+    "fiscal_respon": [
+        {
+            "cod": "R-99-PN",
+            "description": "No responsable"
+        },
+        {
+            "cod": "O-47",
+            "description": "Régimen simple de tributación"
+        },
+        {
+            "cod": "O-23",
+            "description": "Agente de retención de IVA"
+        },
+        {
+            "cod": "O-15",
+            "description": "Autorretenedor"
+        },
+        {
+            "cod": "O-13",
+            "description": "Gran contribuyente"
+        }
+
+    ]
+}
