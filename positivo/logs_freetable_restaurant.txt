@@ -171,3 +171,24 @@
 24 05 2022 16:41:19 add-sale venta suspendida no existente id = 
 31 05 2022 20:26:27 add-sale venta suspendida no existente id = 
 31 05 2022 20:29:22 add-sale venta suspendida no existente id = 
+19 01 2023 11:34:38 delete_bill id = 35, date = 2023-01-19 11:32:03, id_table = 40, id_waiter = 4, count_products = 2, total = 32300.0000, created_by = 3, suspend_note = espera1
+19 01 2023 11:34:38 add-sale venta suspendida no existente id = 35
+19 01 2023 11:34:38 delete_bill venta suspendida no existente id = 35
+19 01 2023 14:14:23 delete_bill id = 34, date = 2023-01-19 11:10:11, id_table = 6, id_waiter = 4, count_products = 1, total = 0.0000, created_by = 4
+19 01 2023 14:14:23 add-sale venta suspendida no existente id = 34
+19 01 2023 14:14:23 delete_bill venta suspendida no existente id = 34
+19 01 2023 14:58:53 free-table id = 36, date = 2023-01-19 14:58:47, id_table = 3, id_waiter = 8, count_products = 0, total = 0.0000, created_by = 8
+19 01 2023 14:58:53 delete_bill id = 36, date = 2023-01-19 14:58:47, id_table = 3, id_waiter = 8, count_products = 0, total = 0.0000, created_by = 8
+23 03 2023 17:22:59 add-sale venta suspendida no existente id = 
+23 03 2023 17:23:17 add-sale venta suspendida no existente id = 
+23 03 2023 17:23:27 add-sale venta suspendida no existente id = 
+23 03 2023 17:23:57 add-sale venta suspendida no existente id = 
+23 03 2023 17:24:30 add-sale venta suspendida no existente id = 
+23 03 2023 17:25:54 add-sale venta suspendida no existente id = 
+23 03 2023 17:26:10 add-sale venta suspendida no existente id = 
+23 03 2023 17:26:16 add-sale venta suspendida no existente id = 
+23 03 2023 17:26:26 add-sale venta suspendida no existente id = 
+23 03 2023 17:26:58 add-sale venta suspendida no existente id = 
+23 03 2023 17:28:13 add-sale venta suspendida no existente id = 
+23 03 2023 17:33:29 add-sale venta suspendida no existente id = 
+23 03 2023 17:33:37 add-sale venta suspendida no existente id = 
