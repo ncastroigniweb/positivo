@@ -1142,7 +1142,14 @@
                                             <i class="fa fa-users"></i><span class="text"> <?= lang('suppliers_report'); ?></span>
                                         </a>
                                     </li>
-                                    <?php } ?>
+                                    <?php }
+                                    if ($GP['reports-staff']) { ?>
+                                        <li id="reports_staff_report">
+                                            <a href="<?= site_url('reports/users') ?>">
+                                                <i class="fa fa-users"></i><span class="text"> <?= lang('staff_report'); ?></span>
+                                            </a>
+                                        </li>
+                                        <?php } ?>
                                 </ul>
                             </li>
                             <?php } ?>

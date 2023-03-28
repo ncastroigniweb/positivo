@@ -181,6 +181,7 @@ $lang['table_uppercase']                          = "MESA";
 $lang['products']                                 = "Productos";
 $lang['customers']                                = "Clientes";
 $lang['suppliers']                                = "Proveedores";
+$lang['stafff']                                    = "Personal";
 $lang['users']                                    = "Usuarios";
 $lang['latest_five']                              = "Últimas cinco";
 $lang['total']                                    = "Total";

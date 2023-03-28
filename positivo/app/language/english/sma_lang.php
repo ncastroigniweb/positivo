@@ -213,6 +213,7 @@ $lang['table_uppercase']                    = "TABLE";
 $lang['products']                           = "Products";
 $lang['customers']                          = "Customers";
 $lang['suppliers']                          = "Suppliers";
+$lang['staff']                              = "Staff";
 $lang['users']                              = "Users";
 $lang['latest_five']                        = "Latest Five";
 $lang['total']                              = "Total";
