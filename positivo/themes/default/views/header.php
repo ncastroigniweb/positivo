@@ -1082,12 +1082,12 @@
                                     if ($GP['reports-products']) { ?>
                                     <li id="reports_products">
                                         <a href="<?= site_url('reports/products') ?>">
-                                            <i class="fa fa-filter"></i><span class="text"> <?= lang('products_report'); ?></span>
+                                            <i class="fa fa-barcode"></i><span class="text"> <?= lang('products_report'); ?></span>
                                         </a>
                                     </li>
                                     <li id="reports_adjustments">
                                         <a href="<?= site_url('reports/adjustments') ?>">
-                                            <i class="fa fa-barcode"></i><span class="text"> <?= lang('adjustments_report'); ?></span>
+                                            <i class="fa fa-filter"></i><span class="text"> <?= lang('adjustments_report'); ?></span>
                                         </a>
                                     </li>
                                     <li id="reports_categories">
@@ -1191,6 +1191,13 @@
                                                 <i class="fa fa-users"></i><span class="text"> <?= lang('staff_report'); ?></span>
                                             </a>
                                         </li>
+                                        <?php }
+                                    if ($GP['reports-guests']) { ?>
+                                        <li id="reports_guests_report">
+                                        <a href="<?= site_url('reports/guests') ?>">
+                                            <i class="fa fa-users"></i><span class="text"> <?= lang('guests_report'); ?></span>
+                                        </a>
+                                    </li>
                                         <?php } ?>
                                 </ul>
                             </li>

@@ -354,6 +354,10 @@
                                             <input type="checkbox" value="1" class="checkbox" id="other_profits" name="reports-other_profits" <?php echo $p->{'reports-other_profits'} ? "checked" : ''; ?>>
                                             <label for="other_profits" class="padding05"><?= lang('other_profits') ?></label>
                                         </span> -->
+                                        <span style="inline-block">
+                                            <input type="checkbox" value="1" class="checkbox" id="guests" name="reports-guests" <?php echo $p->{'reports-guests'} ? "checked" : ''; ?>>
+                                            <label for="guests" class="padding05"><?= lang('guests') ?></label>
+                                        </span>
                                     </td>
                                 </tr>
 
