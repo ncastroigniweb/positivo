@@ -35,7 +35,7 @@ class Reports extends MY_Controller
 
     function index()
     {
-        $this->sma->checkPermissions();
+        // $this->sma->checkPermissions();
         $data['error'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('error');
         $this->data['monthly_sales'] = $this->reports_model->getChartData();
         $this->data['stock'] = $this->reports_model->getStockValue();
@@ -47,7 +47,7 @@ class Reports extends MY_Controller
 
     function warehouse_stock($warehouse = NULL)
     {
-        $this->sma->checkPermissions('index', TRUE);
+        // $this->sma->checkPermissions('index', TRUE);
         $data['error'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('error');
         if ($this->input->get('warehouse')) {
             $warehouse = $this->input->get('warehouse');
@@ -289,7 +289,7 @@ class Reports extends MY_Controller
 
     public function best_sellers($warehouse_id = NULL)
     {
-        $this->sma->checkPermissions('products');
+        // $this->sma->checkPermissions('products');
 
         $this->data['error'] = (validation_errors() ? validation_errors() : $this->session->flashdata('error'));
         $y1 = date('Y', strtotime('-1 month'));
