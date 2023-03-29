@@ -106,14 +106,17 @@
         <span class="col-xs-12">
             <a class="btn btn-block btn-warning" href="<?=site_url('pos');?>"><?=lang("back_to_pos");?></a>
         </span>
+        <?php
+        if($GP['restaurants-index']!=null) {?>
         <span class="col-xs-12">
             <a class="btn btn-block btn-danger tip" style="margin-bottom: 24px" href="<?=site_url('tables');?>"><?= lang("restaurant") ?></a>
         </span>
+        <?php }?>
     </div>
     <div id="receipt-data">
         <div class="text-center">
             <img style="width: 40%;" src="<?=base_url() . 'assets/uploads/logos/' . $biller->logo;?>" alt="<?=$biller->company;?>">
-            <h3 style="font-size: 18px;">Restaurante</h3>
+            <!-- <h3 style="font-size: 18px;">Restaurante</h3> -->
 
             <?php
                 echo "<b>";
@@ -282,8 +285,12 @@
                 	if ($inv->rounding) {
                     ?>
 <!--                    <tr>-->
-<!--                        <th>--><?//=lang("rounding");?><!--</th>-->
-<!--                        <th class="text-right">--><?//= $this->sma->formatMoney($inv->rounding);?><!--</th>-->
+<!--                        <th>-->
+    <?//=lang("rounding");?>
+<!--</th>-->
+<!--                        <th class="text-right">
+    //= $this->sma->formatMoney($inv->rounding);-->
+    <!--</th>-->
 <!--                    </tr>-->
                     <tr style="border-top: 2px solid;border-bottom: 2px solid;">
                         <?php 

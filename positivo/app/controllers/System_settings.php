@@ -687,7 +687,7 @@ class system_settings extends MY_Controller
 
     function edit_group($id)
     {
-
+        
         if (!$id || empty($id)) {
             redirect('system_settings/user_groups');
         }
@@ -734,10 +734,10 @@ class system_settings extends MY_Controller
 
     function permissions($id = NULL)
     {
-
+ 
         $this->form_validation->set_rules('group', lang("group"), 'is_natural_no_zero');
         if ($this->form_validation->run() == true) {
-
+   
             $data = array(
                 'products-index' => $this->input->post('products-index'),
                 'products-edit' => $this->input->post('products-edit'),
@@ -799,6 +799,10 @@ class system_settings extends MY_Controller
                 'reports-customers' => $this->input->post('reports-customers'),
                 'reports-suppliers' => $this->input->post('reports-suppliers'),
                 'reports-staff' => $this->input->post('reports-staff'),
+                'restaurants-index' => $this->input->post('restaurants-index'),
+                'restaurants-edit' => $this->input->post('restaurants-edit'),
+                'restaurants-add' => $this->input->post('restaurants-add'),
+                'restaurants-delete' => $this->input->post('restaurants-delete'),
                 'sales-payments' => $this->input->post('sales-payments'),
                 'purchases-payments' => $this->input->post('purchases-payments'),
                 'purchases-expenses' => $this->input->post('purchases-expenses'),
@@ -818,6 +822,7 @@ class system_settings extends MY_Controller
             );
 
             if (POS) {
+             
                 $data['pos-index'] = $this->input->post('pos-index');
             }
 
@@ -826,10 +831,22 @@ class system_settings extends MY_Controller
 
 
         if ($this->form_validation->run() == true && $this->settings_model->updatePermissions($id, $data)) {
+                //  var_dump($data);
+                //  Die();
+        
             $this->session->set_flashdata('message', lang("group_permissions_updated"));
             redirect($_SERVER["HTTP_REFERER"]);
         } else {
-
+            // dd($this->data);
+    //        foreach ($this->data as $key => $value) {
+    //    echo'<pre>';
+    //    print_r($value);
+    //    echo '</pre>';
+    //        }
+    //        Die();
+          
+            // var_dump( $this->data);
+            // Die();
             $this->data['error'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('error');
 
             $this->data['id'] = $id;
@@ -844,7 +861,7 @@ class system_settings extends MY_Controller
 
     function user_groups()
     {
-
+         
         if (!$this->Owner) {
             $this->session->set_flashdata('error', lang("access_denied"));
             redirect('auth');
