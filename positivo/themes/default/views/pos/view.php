@@ -143,7 +143,10 @@
                     $num = explode('/',$inv->bill_no);                    
             	    echo '<tr class="row_title_bill"><td class="title_view_bill">' . lang("reference_no_uppercase") . ': </td><td class="data_title_bill">' . (int)$num[2] . '</td></tr>';
                  }
+            
+        if($GP['restaurants-index']!=null) {
             	echo '<tr class="row_title_bill"><td class="title_view_bill">'. lang("table_uppercase") .'</td><td class="data_title_bill">#'. $inv->table_name .'</td></tr></table>';
+        }
                 echo '<table class="content_table_bill"><tr><td>'. lang("biller") . ':</td> <td class="content_table_bill_right">' . $inv->waiter_name .'</td></tr>';
                 echo '<tr><td>'. lang("waiter_name") . ':</td> <td class="content_table_bill_right">' . $userBill->first_name .' '.$userBill->last_name.'</td></tr>';
                 echo '<tr><td>' . lang("customer") . ':</td> <td class="content_table_bill_right">' . $inv->customer . "</td></tr>";
