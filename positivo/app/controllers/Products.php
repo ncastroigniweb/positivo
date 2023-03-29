@@ -1200,16 +1200,19 @@ class Products extends MY_Controller
                 $this->upload->initialize($config);
 
                 if (!$this->upload->do_upload()) {
-
+                   
                     $error = $this->upload->display_errors();
+                 
+                    
                     $this->session->set_flashdata('error', $error);
                     redirect("products/import_csv");
                 }
 
                 $csv = $this->upload->file_name;
-
+               
                 $arrResult = array();
                 $handle = fopen($this->digital_upload_path . $csv, "r");
+               
                 if ($handle) {
                     while (($row = fgetcsv($handle, 5000, ",")) !== FALSE) {
                         $arrResult[] = $row;
@@ -1225,10 +1228,11 @@ class Products extends MY_Controller
                 foreach ($arrResult as $key => $value) {
                     $final[] = array_combine($keys, $value);
                 }
-
+                // $this->sma->print_arrays($final);
+                // Die();
                 $final[0]['product_details'] = str_replace(',','&#44;',$final[0]['product_details']);
-
-                //$this->sma->print_arrays($final);
+               
+              
                 $rw = 2;
                 foreach ($final as $csv_pr) {
                     if ( ! $this->products_model->getProductByCode(trim($csv_pr['code']))) {
@@ -1277,6 +1281,7 @@ class Products extends MY_Controller
                             $cf6[] = trim($csv_pr['cf6']);
                             $pr_details[] = addslashes(trim($csv_pr['product_details']));
                         } else {
+                           
                             $this->session->set_flashdata('error', lang("check_category_code") . " (" . $csv_pr['category_code'] . "). " . lang("category_code_x_exist") . " " . lang("line_no") . " " . $rw);
                             redirect("products/import_csv");
                         }
