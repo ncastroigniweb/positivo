@@ -798,11 +798,24 @@ class system_settings extends MY_Controller
                 'reports-purchases' => $this->input->post('reports-purchases'),
                 'reports-customers' => $this->input->post('reports-customers'),
                 'reports-suppliers' => $this->input->post('reports-suppliers'),
+
                 'reports-staff' => $this->input->post('reports-staff'),
+
+
+                'reports-overview-chart' => $this->input->post('reports-overview-chart'),
+                'reports-register' => $this->input->post('reports-register'),
+                'reports-profit_loss' => $this->input->post('reports-profit_loss'),
+                'reports-warehouse_stock' => $this->input->post('reports-warehouse_stock'),
+                'reports-best_sellers' => $this->input->post('reports-best_sellers'),
+                'reports-other_profits' => $this->input->post('reports-other_profits'),
+                'reports-guests' => $this->input->post('reports-guests'),
+
+
                 'restaurants-index' => $this->input->post('restaurants-index'),
                 'restaurants-edit' => $this->input->post('restaurants-edit'),
                 'restaurants-add' => $this->input->post('restaurants-add'),
                 'restaurants-delete' => $this->input->post('restaurants-delete'),
+                
                 'sales-payments' => $this->input->post('sales-payments'),
                 'purchases-payments' => $this->input->post('purchases-payments'),
                 'purchases-expenses' => $this->input->post('purchases-expenses'),

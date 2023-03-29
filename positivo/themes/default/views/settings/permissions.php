@@ -347,6 +347,34 @@
                                             <input type="checkbox" value="1" class="checkbox" id="staff" name="reports-staff" <?php echo $p->{'reports-staff'} ? "checked" : ''; ?>>
                                             <label for="staff" class="padding05"><?= lang('stafff') ?></label>
                                         </span>
+                                        <span style="inline-block">
+                                            <input type="checkbox" value="1" class="checkbox" id="overview_chart" name="reports-overview-chart" <?php echo $p->{'reports-overview-chart'} ? "checked" : ''; ?>>
+                                            <label for="overview_chart" class="padding05"><?= lang('general_graph') ?></label>
+                                        </span>
+                                        <span style="inline-block">
+                                            <input type="checkbox" value="1" class="checkbox" id="register" name="reports-register" <?php echo $p->{'reports-register'} ? "checked" : ''; ?>>
+                                            <label for="register" class="padding05"><?= lang('register_report') ?></label>
+                                        </span>
+                                        <span style="inline-block">
+                                            <input type="checkbox" value="1" class="checkbox" id="profit_and_loss" name="reports-profit_loss" <?php echo $p->{'reports-profit_loss'} ? "checked" : ''; ?>>
+                                            <label for="profit_and_loss" class="padding05"><?= lang('profit_and_loss') ?></label>
+                                        </span>
+                                        <!-- <span style="inline-block">
+                                            <input type="checkbox" value="1" class="checkbox" id="warehouse_stock" name="reports-warehouse_stock" <?php echo $p->{'reports-warehouse_stock'} ? "checked" : ''; ?>>
+                                            <label for="warehouse_stock" class="padding05"><?= lang('warehouse_stock') ?></label>
+                                        </span> -->
+                                        <span style="inline-block">
+                                            <input type="checkbox" value="1" class="checkbox" id="best_sellers" name="reports-best_sellers" <?php echo $p->{'reports-best_sellers'} ? "checked" : ''; ?>>
+                                            <label for="best_sellers" class="padding05"><?= lang('best_sellers') ?></label>
+                                        </span>
+                                        <!-- <span style="inline-block">
+                                            <input type="checkbox" value="1" class="checkbox" id="other_profits" name="reports-other_profits" <?php echo $p->{'reports-other_profits'} ? "checked" : ''; ?>>
+                                            <label for="other_profits" class="padding05"><?= lang('other_profits') ?></label>
+                                        </span> -->
+                                        <span style="inline-block">
+                                            <input type="checkbox" value="1" class="checkbox" id="guests" name="reports-guests" <?php echo $p->{'reports-guests'} ? "checked" : ''; ?>>
+                                            <label for="guests" class="padding05"><?= lang('guests') ?></label>
+                                        </span>
                                     </td>
                                 </tr>
 
