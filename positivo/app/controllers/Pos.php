@@ -7,6 +7,7 @@ class Pos extends MY_Controller
     {
         parent::__construct();
 
+       
          if (!$this->loggedIn) {
             $this->session->set_userdata('requested_page', $this->uri->uri_string());
             redirect('login');
@@ -41,7 +42,7 @@ class Pos extends MY_Controller
         $meta = array('page_title' => lang('pos_sales'), 'bc' => $bc);*/
 
         #logica facturación manual
-
+      
         if ($this->pos_settings->after_sale_page)
         {
 
@@ -265,9 +266,11 @@ class Pos extends MY_Controller
             redirect('pos/settings');
         }
         if ($register = $this->pos_model->registerData($this->session->userdata('user_id'))) {
+         
             $register_data = array('register_id' => $register->id, 'cash_in_hand' => $register->cash_in_hand, 'register_open_time' => $register->date);
             $this->session->set_userdata($register_data);
         } else {
+          
             $this->session->set_flashdata('error', lang('register_not_open'));
             redirect('pos/open_register');
         }
@@ -281,9 +284,9 @@ class Pos extends MY_Controller
         $this->form_validation->set_rules('customer', $this->lang->line("customer"), 'trim|required');
         $this->form_validation->set_rules('warehouse', $this->lang->line("warehouse"), 'required');
         $this->form_validation->set_rules('biller', $this->lang->line("biller"), 'required');
-
+      
         if ($this->form_validation->run() == TRUE) {
-
+           
             $date = date('Y-m-d H:i:s');
             $warehouse_id = $this->input->post('warehouse');
             $customer_id = $this->input->post('customer');
@@ -598,8 +601,9 @@ class Pos extends MY_Controller
 
             // $this->sma->print_arrays($data, $products, $payment);
         }
-
+      
         if ($this->form_validation->run() == TRUE && !empty($products) && !empty($data)) {
+           
             if ($suspend) {
                 $data['suspend_note'] = $this->input->post('suspend_note');
                 if(!empty($this->input->post('waiter'))){
@@ -722,8 +726,10 @@ class Pos extends MY_Controller
                 }
             }
         } else {
+           
             $this->data['suspend_sale'] = NULL;
             if ($sid) {
+                
                 if ($suspended_sale = $this->pos_model->getOpenBillByID($sid)) {
                     $inv_items = $this->pos_model->getSuspendedSaleItems($sid);
                     ($inv_items) ? krsort($inv_items): $inv_items = array();
@@ -795,7 +801,7 @@ class Pos extends MY_Controller
 
                     $this->data['items'] = json_encode($pr);
                     $this->data['sid'] = $sid;
-
+                    
                     // set table local storage
                     $suspended_sale->table_lang = lang('table');
                     $suspended_sale->table_name = $this->restaurant->get_table($suspended_sale->id_table)->name;
@@ -823,10 +829,12 @@ class Pos extends MY_Controller
                     redirect("pos");
                 }
             } else {
+               
                 $this->data['customer'] = $this->pos_model->getCompanyByID($this->pos_settings->default_customer);
                 $this->data['reference_note'] = NULL;
+                
             }
-
+           
             $this->data['error'] = (validation_errors() ? validation_errors() : $this->session->flashdata('error'));
             $this->data['message'] = isset($this->data['message']) ? $this->data['message'] : $this->session->flashdata('message');
 
@@ -851,8 +859,10 @@ class Pos extends MY_Controller
             }
 
             if($this->data['user']->only_tables_taken){
+               
                 $tables = $this->restaurant->getTablesTaken();
             } else {
+             
                 $tables = $this->restaurant->get_tables();
             }
 
@@ -875,6 +885,7 @@ class Pos extends MY_Controller
 //                $this->data['tables'][$table->id] = (isset($this->data['waiters'][$table->waiter])) ? lang('table')." : {$table->name} ({$this->data['waiters'][$table->waiter]})" : lang('table')." : {$table->name}";
             }
             ///json payments means
+         
             $payment_means= file_get_contents('app/json/payment_means.json');
             $this->data['payment_mean']=json_decode($payment_means,true);
             $this->load->view($this->theme . 'pos/add', $this->data);
@@ -1686,13 +1697,26 @@ class Pos extends MY_Controller
                 if ($this->sma->is_admin()) {
                     $html .= '<div id="delete-sale' . $bill->id . '" onclick="delete_sale(' . $bill->id . ')"><i class="fa fa-2x delete-suspended-sale">&times;</i></div>';
                 }
+                
+                                    
+                   if( $Owner ||$Admin || $GP['restaurants-index']){ 
 
-                $html .= "<button type='button' class='btn btn-{$status} sus_sale' "
-                        . "id='{$bill->id}'>"
-                        . "<strong>".lang('table')." : {$table->name}</strong>"
-                        . "<br>".lang('date')." : {$bill->date}"
-                        . "<br>".lang('waiter')." : {$this->site->getUser($bill->id_waiter)->first_name}<br>"
-                        . "<p>{$bill->suspend_note}</p></button></li>";
+                    $html .= "<button type='button' class='btn btn-{$status} sus_sale' "
+                    . "id='{$bill->id}'>"
+                    . "<strong>".lang('table')." : {$table->name}</strong>"
+                    . "<br>".lang('date')." : {$bill->date}"
+                    . "<br>".lang('waiter')." : {$this->site->getUser($bill->id_waiter)->first_name}<br>"
+                    . "<p>{$bill->suspend_note}</p></button></li>";
+
+                }else{
+
+                     $html .= "<button type='button' class='btn btn-{$status} sus_sale' "
+                     . "id='{$bill->id}'>"
+                     . "<br>".lang('date')." : {$bill->date}"
+                     . "<br>{$this->site->getUser($bill->id_waiter)->first_name}<br>"
+                      . "<p>{$bill->suspend_note}</p></button></li>";
+                                       
+                }
             }
             $html .= '</ul>';
         } else {

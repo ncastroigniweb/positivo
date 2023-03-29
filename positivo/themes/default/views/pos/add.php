@@ -108,7 +108,7 @@
                     <?php 
                     // var_dump($GP);
                     // die();
-                    if($Owner ||$Admin ||$GP['restaurants-index']!=null ){?>
+                    ?>
                     <li class="dropdown">
                         <a class="btn blightOrange pos-tip" id="opened_bills" title="<span><?=lang('suspended_sales')?></span>" data-placement="bottom" data-html="true" href="<?=site_url('pos/opened_bills')?>" data-toggle="ajax">
                             <i class="fa fa-th"></i>
@@ -119,7 +119,7 @@
                             <i class="fa fa fa-cutlery"></i>
                         </a>
                     </li>
-                    <?php }?>
+                   
                     </li>
                     <li class="dropdown">
                         <a class="btn bdarkGreen pos-tip" id="register_details" title="<span><?=lang('register_details')?></span>" data-placement="bottom" data-html="true" href="<?=site_url('pos/register_details')?>" data-toggle="modal" data-target="#myModal">
@@ -409,21 +409,18 @@
                                     <div class="row">
                                         <div class="col-xs-4" style="padding: 0;">
                                             <div class="btn-group-vertical btn-block">
-                                            <?php if( $Owner ||$Admin || $GP['restaurants-index']){?>
+                                            
                                                 <button type="button" class="btn btn-warning btn-block btn-flat"
                                                 id="suspend">
                                                     <?=lang('suspend'); ?>
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-block btn-flat"
-                                                id="reset">
-                                                    <?= lang('cancel'); ?>
-                                                </button>
-                                                <?php }else{ ?>
+                                             
+                                               
                                                 <button type="button" class="btn btn-danger btn-flex btn-flat"
                                                 id="reset">
                                                     <?= lang('cancel'); ?>
                                                 </button>
-                                                    <?php } ?>
+                                                   
                                               
                                             </div>
 
