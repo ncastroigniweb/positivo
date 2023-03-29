@@ -246,7 +246,7 @@
                         </li>
                     <?php } ?>
                     <?php if (POS) { 
-                        if($Owner ||$Admin ||$GP['restaurants-index']!=null ){
+                        if($Owner || $Admin ||$GP['restaurants-index']!=null ){
                         ?>
 
                     <li class="dropdown hidden-xs">

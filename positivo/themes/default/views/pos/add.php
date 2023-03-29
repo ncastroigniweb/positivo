@@ -113,13 +113,13 @@
                         <a class="btn blightOrange pos-tip" id="opened_bills" title="<span><?=lang('suspended_sales')?></span>" data-placement="bottom" data-html="true" href="<?=site_url('pos/opened_bills')?>" data-toggle="ajax">
                             <i class="fa fa-th"></i>
                         </a>
-                    
+                     <?php   if( $Owner ||$Admin || $GP['restaurants-index']){ ?>
                     <li class="dropdown">
                         <a tabindex="-1" data-original-title="<span><?= lang('restaurant') ?></span>" class="btn borange pos-tip" id="id-restaurant" title="" data-placement="bottom" data-html="true" href="<?=site_url('tables')?>">
                             <i class="fa fa fa-cutlery"></i>
                         </a>
                     </li>
-                   
+                    <?php  } ?>
                     </li>
                     <li class="dropdown">
                         <a class="btn bdarkGreen pos-tip" id="register_details" title="<span><?=lang('register_details')?></span>" data-placement="bottom" data-html="true" href="<?=site_url('pos/register_details')?>" data-toggle="modal" data-target="#myModal">
