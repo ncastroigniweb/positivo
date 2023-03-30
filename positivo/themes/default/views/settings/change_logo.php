@@ -16,7 +16,7 @@
             <div class="form-group">
                 <?= lang("site_logo", "site_logo") ?>
                 <input id="site_logo" type="file" data-browse-label="<?= lang('browse'); ?>" name="site_logo" data-show-upload="false" data-show-preview="false"
-                       class="form-control file">
+                       class="form-control file" accept=".jpg, .jpeg, .png">
             </div>
             <div class="form-group">
                 <?= lang("biller_logo", "biller_logo") ?>

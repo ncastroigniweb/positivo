@@ -325,27 +325,48 @@ class system_settings extends MY_Controller
         if ($this->form_validation->run() == true) {
 
             if ($_FILES['site_logo']['size'] > 0) {
-                $this->load->library('upload');
-                $config['upload_path'] = $this->upload_path . 'logos/';
-                $config['allowed_types'] = $this->image_types;
-                $config['max_size'] = $this->allowed_file_size;
-                $config['max_width'] = 300;
-                $config['max_height'] = 80;
-                $config['overwrite'] = FALSE;
-                $config['max_filename'] = 25;
-                //$config['encrypt_name'] = TRUE;
-                $this->upload->initialize($config);
-                if (!$this->upload->do_upload('site_logo')) {
-                    $error = $this->upload->display_errors();
+                // $this->load->library('upload');
+                // $config['upload_path'] = $this->upload_path . 'logos/';
+                // $config['allowed_types'] = $this->image_types;
+                // $config['max_size'] = $this->allowed_file_size;
+                // $config['max_width'] = 300;
+                // $config['max_height'] = 80;
+                // $config['overwrite'] = FALSE;
+                // $config['max_filename'] = 25;
+                // //$config['encrypt_name'] = TRUE;
+                // $this->upload->initialize($config);
+                // if (!$this->upload->do_upload('site_logo')) { 
+                //     $error = $this->upload->display_errors();
+                //     $this->session->set_flashdata('error', $error);
+                //     redirect($_SERVER["HTTP_REFERER"]);
+                // }
+                $photo = $this->upload->file_name;
+
+                // $this->db->update('settings', array('logo2' => $photo), array('setting_id' => 1));
+
+                // $this->session->set_flashdata('message', lang('logo_uploaded'));
+                // redirect($_SERVER["HTTP_REFERER"]);
+
+                
+                $file = $_FILES["site_logo"]["name"];
+                $url_temp = $_FILES["site_logo"]["tmp_name"];
+                $url_insert = "assets/uploads/logos";
+                $url_target = str_replace('\\', '/', $url_insert) . '/' . 'logo.png';
+
+                //Si la carpeta no existe, la creamos
+                if (!file_exists($url_insert)) {
+                    mkdir($url_insert, 0777, true);
+                };
+
+                //movemos el archivo de la carpeta temporal a la carpeta objetivo y verificamos si fue exitoso
+                if (move_uploaded_file($url_temp, $url_target)) {
+                    $this->db->update('settings', array('logo2' => $photo), array('setting_id' => 1));
+                    $this->session->set_flashdata('message', lang('logo_uploaded'));
+                    redirect($_SERVER["HTTP_REFERER"]);
+                } else {
                     $this->session->set_flashdata('error', $error);
                     redirect($_SERVER["HTTP_REFERER"]);
                 }
-                $photo = $this->upload->file_name;
-
-                $this->db->update('settings', array('logo2' => $photo), array('setting_id' => 1));
-
-                $this->session->set_flashdata('message', lang('logo_uploaded'));
-                redirect($_SERVER["HTTP_REFERER"]);
             }
 
             if ($_FILES['biller_logo']['size'] > 0) {
