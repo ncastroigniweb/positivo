@@ -376,6 +376,11 @@ class Pos_model extends CI_Model
             if (!empty($payments)) {
                 $paid = 0;
                 foreach ($payments as $payment) {
+
+                    if($payment['paid_by'] === '1-Efectivo '){                    
+                        $payment['paid_by'] = 'cash';
+                    }
+                    
                     if (!empty($payment) && isset($payment['amount']) ) {
                         $payment['sale_id'] = $sale_id;
                         $payment['reference_no'] = $this->site->getReference('pay');
