@@ -24,12 +24,14 @@
                             <span><?= $this->sma->formatMoney($cashsales->paid ? $cashsales->paid : '0.00'); ?></span>
                         </h4></td>
                 </tr>
-                <tr>
-                    <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('cc_sale'); ?>:</h4></td>
-                    <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
-                            <span><?= $this->sma->formatMoney($ccsales->paid ? $ccsales->paid : '0.00'); ?></span>
-                        </h4></td>
-                </tr>
+                <?php if ($others) { for ($i=0; $i < count($others); $i++){?>
+                    <tr>
+                        <td style="border-bottom: 1px solid #EEE;"><h4>Pago Con <?= $others[$i]['name']; ?>:</h4></td>
+                        <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
+                                <span><?= $this->sma->formatMoney($others[$i]['value']); ?></span>
+                            </h4></td>
+                    </tr>
+                <?php } } ?>
                 <tr>
                     <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('discounts'); ?>:</h4></td>
                     <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>

@@ -554,7 +554,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"><i
                             class="fa fa-2x">&times;</i></span><span class="sr-only"><?=lang('close');?></span></button>
-                <h4 class="modal-title" id="payModalLabel"><?=lang('finalize_sale');?>daruin</h4>
+                <h4 class="modal-title" id="payModalLabel"><?=lang('finalize_sale');?></h4>
             </div>
             <div class="modal-body" id="payment_content">
                 <div class="row">
@@ -567,16 +567,18 @@
                                             <div class="form-group">
                                                 <?=lang("paying_by", "paid_by_1");?>
                                                 <select name="paid_by[]" id="paid_by_1" class="form-control paid_by">
-                                                    <option value="<?=$payment_mean['payment_means'][8]['code']."-".$payment_mean['payment_means'][8]['name'] ?>" selected><?= $payment_mean['payment_means'][8]['name'] ?> </option>
                                                         <?php
-                                                            for ($i=0; $i<count($payment_mean['payment_means']); $i++)
-                                                                {?>
+                                                            for ($i=0; $i<count($payment_mean['payment_means']); $i++){
+                                                                if($i ==0){?>
+
+                                                                    <option value="<?=$payment_mean['payment_means'][$i]['code']."-".$payment_mean['payment_means'][$i]['name'] ?>" selected><?= $payment_mean['payment_means'][$i]['name'] ?> </option>
+                                                                <?php }else{?>
 
                                                                     <option value='<?php echo $payment_mean['payment_means'][$i]['code']."-".$payment_mean['payment_means'][$i]['name']?>'>
                                                                         <?php echo $payment_mean['payment_means'][$i]['name']?>
                                                                     </option>
 
-                                                            <?php }?>
+                                                            <?php }}?>
 
 
 

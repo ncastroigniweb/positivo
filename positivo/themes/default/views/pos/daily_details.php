@@ -103,30 +103,14 @@
                             <span class="d-cash-sales"><?= $this->sma->formatMoney($cashsales->paid ? $cashsales->paid - $taxsalesCash->tax - $tipsales->tip : '0.00'); ?></span>
                         </h4></td>
                 </tr>
-                <tr>
-                    <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('sales_incheck'); ?>:</h4></td>
-                    <td style="text-align:right; border-bottom: 1px solid #EEE;"><h4>
-                            <span>0.00</span>
-                        </h4></td>
-                </tr>
-                <tr>
-                    <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('sales_bycard'); ?>:</h4></td>
-                    <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
-                            <span class="d-sales-bycard"><?= $this->sma->formatMoney($ccsales->paid ? $ccsales->paid - $taxsalesCC->tax - ( $cashsales->paid ? 0 : $tipsales->tip ): '0.00'); ?></span>
-                        </h4></td>
-                </tr>
-                <tr>
-                    <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('sales_tocredit'); ?>:</h4></td>
-                    <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
-                            <span>0.00</span>
-                        </h4></td>
-                </tr>
-                <tr>
-                    <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('bonds'); ?>:</h4></td>
-                    <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
-                            <span>0.00</span>
-                        </h4></td>
-                </tr>
+                <?php if ($others) { for ($i=0; $i < count($others); $i++){?>
+                    <tr>
+                        <td style="border-bottom: 1px solid #EEE;"><h4>Pago Con <?= $others[$i]['name']; ?>:</h4></td>
+                        <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
+                                <span><?= $this->sma->formatMoney($others[$i]['value']); ?></span>
+                            </h4></td>
+                    </tr>
+                <?php } } ?>
                 <tr>
                     <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('no_transactions'); ?>:</h4></td>
                     <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
@@ -155,25 +139,50 @@
                         <tr>
                             <th><h4><?= lang('invoice'); ?></h4></th>
                             <th><h4><?= lang('cash'); ?></h4></th>
-                            <th><h4><?= lang('CC'); ?></h4></th>
+                            <?php if ($others) { for ($i=0; $i < count($others); $i++){?>
+                                <th><h4><?= $others[$i]['name']; ?></h4></th>
+                            <?php } } ?>
                             <th><h4><?= lang('actions'); ?></h4></th>
                         </tr>
                     </thead>
                     <tbody class="d-sales-table">
-                        <?php foreach ($sales as $sale) { ?>
+                        <?php $totAll = array(); foreach ($sales as $sale) { ?>
                             <tr>
-                                <td><h4><span><?= (int) $sale['reference']; ?></span></h4></td>
+                                <td><h4><span><?= $sale["reference"]; ?></span></h4></td>
                                 <td><h4><span><?= (isset($sale['paymentCash'])) ? $this->sma->formatMoney($sale['paymentCash']['total']) : '-' ; ?></span></h4></td>
-                                <td><h4><span><?= (isset($sale['paymentCC'])) ? $this->sma->formatMoney($sale['paymentCC']['total']) : '-' ; ?></span></h4></td>
+                                <?php                                 
+                                        if ($others) { for ($i=0; $i < count($others); $i++){
+                                            $name1 = $others[$i]['code'].'-'.str_replace(" ", "",$others[$i]['name']);
+                                            $name1 = substr($name1, 0, 17);
+                                            $name2 = str_replace(" ", "",$sale['other']['paid_by']);
+                                            $name2 = substr($name2, 0, 17);
+                                            if($name1 == $name2){
+                                                if (!array_key_exists($name1, $totAll)) {                                                    
+                                                    $totAll[$name1] = $sale['other']['totalAll'];
+                                                }else{
+                                                    $totAll[$name1] = $totAll[$name1] + $sale['other']['totalAll'];
+                                                }                                                
+                                                echo '<td><h4><span>'. $this->sma->formatMoney($sale['other']['total']).'</span></h4></td>';
+                                            }else{
+                                                echo '<td><h4><span>-</span></h4></td>';
+                                            }
+                                        }}
+                                ?>
                                 <td><a href="<?= base_url() . 'pos/view/' . $sale['id']; ?>" target="_blank" title="<?= lang('view_receipt'); ?>"><i class="fa fa-file-text-o"></i></a>
                                     <a href="<?= base_url() . 'sales/payments/' . $sale['id']; ?>" title="<?= lang('view_payments'); ?>" data-toggle="modal" data-target="#myModal3"><i class="fa fa-money"></i></a>
                                 </td>
                             </tr>
-                        <?php } ?>
+                        <?php }?>
                             <tr class="total_bills">
                                 <td><h4><span class="lang-total-paying"><?= lang('total_paying'); ?></span></h4></td>
                                 <td><h4><span><?= $this->sma->formatMoney($total_cash); ?></span></h4></td>
-                                <td><h4><span><?= $this->sma->formatMoney($total_CC); ?></span></h4></td>
+                                <?php
+                                    if ($others) { for ($i=0; $i < count($others); $i++){
+                                        $name1 = $others[$i]['code'].'-'.str_replace(" ", "",$others[$i]['name']);
+                                        $name1 = substr($name1, 0, 17);
+                                            echo '<td><h4><span>'. $this->sma->formatMoney($totAll[$name1]).'</span></h4></td>';
+                                    }} 
+                                ?>
                             </tr>
                     </tbody>
                 </table>

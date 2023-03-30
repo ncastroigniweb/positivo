@@ -1092,6 +1092,62 @@ class Pos_model extends CI_Model
         }
         return false;
     }
+    public function getRegisterOthers($date, $user_id = NULL, $date_end = NULL)
+    {
+        $payment_means= file_get_contents('app/json/payment_means.json');
+        $codes =json_decode($payment_means,true);
+        $data = array();
+        $cont = 0;
+        if (!$date) {
+            $date = $this->session->userdata('register_open_time');
+        }
+        if (!$user_id) {
+            $user_id = $this->session->userdata('user_id');
+        }
+        
+        for ($i=0; $i < count($codes["payment_means"]); $i++){
+            
+            $datos = array();
+            if($i > 0){
+                $name = $codes["payment_means"][$i]['code'].'-'.$codes["payment_means"][$i]['name'];
+                $name1 = substr($name, 0, 20);
+
+                $this->db->select('COUNT(' . $this->db->dbprefix('payments') . '.id) as total_cc_slips, SUM( COALESCE( grand_total, 0 ) ) AS total, SUM( COALESCE( amount, 0 ) ) AS paid, order_tax', FALSE)
+                    ->join('sales', 'sales.id=payments.sale_id', 'left')
+                    ->where('type', 'received')->where('paid_by', $name1);
+
+                if ($date_end == null) {
+                    // register open time
+                    $this->db->where('payments.date >', $date);
+                } else {
+                    // filter dates
+                    $this->db->where('payments.date >', $date);
+                    $this->db->where('payments.date <', $date_end);
+                }
+
+                if ($date_end == null) {
+                    $this->db->where('payments.created_by', $user_id);
+                }
+
+                $q = $this->db->get('payments');
+                if ($q->num_rows() > 0) {                    
+                    $val = $q->row();
+                    if($val->paid != null){
+                        $datos['code'] = $codes["payment_means"][$i]['code'];
+                        $datos['name'] = $codes["payment_means"][$i]['name'];                        
+                        $datos['value'] = $val->paid;
+                        $data[$cont] = $datos;
+                        $cont = $cont + 1;
+                    }
+                }
+            }
+            
+        }
+        if(count($data) != 0){            
+            return $data;
+        }
+        return false;
+    }
 
     public function getRegisterReferences($date, $user_id = NULL, $date_end = NULL)
     {

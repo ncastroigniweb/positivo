@@ -187,6 +187,7 @@ class Pos extends MY_Controller
 
     public function getSales($warehouse_id = NULL)
     {
+        
       $this->sma->checkPermissions('index');
 
           if ((!$this->Owner || !$this->Admin) && !$warehouse_id) {
@@ -1001,6 +1002,7 @@ class Pos extends MY_Controller
             $this->data['error'] = (validation_errors() ? validation_errors() : $this->session->flashdata('error'));
             $this->data['ccsales'] = $this->pos_model->getRegisterCCSales($register_open_time, $user_id);
             $this->data['cashsales'] = $this->pos_model->getRegisterCashSales($register_open_time, $user_id);
+            $this->data['others'] = $this->pos_model->getRegisterOthers($register_open_time);
             $this->data['chsales'] = $this->pos_model->getRegisterChSales($register_open_time, $user_id);
             $this->data['pppsales'] = $this->pos_model->getRegisterPPPSales($register_open_time, $user_id);
             $this->data['taxsalesCash'] = $this->pos_model->getRegisterTaxSales($register_open_time, 'cash');
@@ -1280,6 +1282,7 @@ class Pos extends MY_Controller
         $this->data['error'] = (validation_errors() ? validation_errors() : $this->session->flashdata('error'));
         $this->data['ccsales'] = $this->pos_model->getRegisterCCSales($register_open_time);
         $this->data['cashsales'] = $this->pos_model->getRegisterCashSales($register_open_time);
+        $this->data['others'] = $this->pos_model->getRegisterOthers($register_open_time);
         $this->data['taxsalesCash'] = $this->pos_model->getRegisterTaxSales($register_open_time, 'cash');
         $this->data['taxsalesCC'] = $this->pos_model->getRegisterTaxSales($register_open_time, 'CC');
         $this->data['taxsales'] = $this->pos_model->getRegisterTaxSales($register_open_time);
@@ -1292,7 +1295,8 @@ class Pos extends MY_Controller
         $this->data['refunds'] = $this->pos_model->getRegisterRefunds($register_open_time);
         $this->data['expenses'] = $this->pos_model->getRegisterExpenses($register_open_time);
         $this->data['tipsales'] = $this->pos_model->getRegisterTipSales($register_open_time);
-
+        // var_dump ($this->data['others']);
+        // die();
         if($this->Settings->tax1){
             $this->data['products_tax'] = $this->sma->get_products_tax($register_open_time);
         }
@@ -1307,6 +1311,7 @@ class Pos extends MY_Controller
         $this->data['error'] = (validation_errors() ? validation_errors() : $this->session->flashdata('error'));
         $this->data['ccsales'] = $this->pos_model->getRegisterCCSales($register_open_time);
         $this->data['cashsales'] = $this->pos_model->getRegisterCashSales($register_open_time);
+        $this->data['others'] = $this->pos_model->getRegisterOthers($register_open_time);
         $this->data['taxsalesCash'] = $this->pos_model->getRegisterTaxSales($register_open_time, 'cash');
         $this->data['taxsalesCC'] = $this->pos_model->getRegisterTaxSales($register_open_time, 'CC');
         $this->data['taxsales'] = $this->pos_model->getRegisterTaxSales($register_open_time);
@@ -1331,13 +1336,17 @@ class Pos extends MY_Controller
         $sales = array();
         $total_cash = 0;
         $total_CC = 0;
-
+        
+                  
         if(!empty($get_references)){
             foreach ($get_references as $reference_key => $reference_value){
-                $number = str_replace("SALE/POS/","", $reference_value->reference_no);
+
+                // $number = str_replace("SALE/POS/","", $reference_value->reference_no);
+                $number = $name1 = substr($reference_value->reference_no, 9);
                 $reference_list[] = $number;
 
                 if(isset($sales[$reference_value->reference_no])){
+                    
                     if(strcmp($reference_value->paid_by, "cash") == 0){
                         $total_cash += $reference_value->amount;
 
@@ -1365,9 +1374,11 @@ class Pos extends MY_Controller
                         $total_cash += $reference_value->amount;
                         $sales[$reference_value->reference_no]['paymentCash'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
 
-                    }else if(strcmp($reference_value->paid_by, "CC") == 0){
-                        $total_CC += $reference_value->amount;
-                        $sales[$reference_value->reference_no]['paymentCC'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount);
+                    }else{
+                        $name = $cadenaConvert = str_replace(" ", "_", $reference_value->paid_by);
+                        $name = substr($name1, 0, 19);
+                        $total_.$name += $reference_value->amount;
+                        $sales[$reference_value->reference_no]['other'] = array('paid_by' => $reference_value->paid_by, 'total' => $reference_value->amount, 'totalAll' => $reference_value->amount);
 
                     }
 
