@@ -134,6 +134,7 @@
             </table>
             
             <div id="div_sales_details">
+            <div style="overflow:scroll;">
                 <table width="100%" class="stable">
                     <thead>
                         <tr>
@@ -186,6 +187,7 @@
                             </tr>
                     </tbody>
                 </table>
+            </div>
             </div>
         </div>
     </div>
