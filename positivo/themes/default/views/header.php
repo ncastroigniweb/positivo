@@ -40,17 +40,20 @@
 </noscript>
 <div id="loading"></div>
 <div id="app_wrapper">
+
     <header id="header" class="navbar">
         <div class="container">
             <a class="navbar-brand" href="<?= site_url() ?>"><span class="logo"><?= $Settings->site_name ?></span></a>
-
+           
             <div class="btn-group visible-xs pull-right btn-visible-sm">
+                
                 <button class="navbar-toggle btn" type="button" data-toggle="collapse" data-target="#sidebar_menu">
                     <span class="fa fa-bars"></span>
                 </button>
                 <a href="<?= site_url('users/profile/' . $this->session->userdata('user_id')); ?>" class="btn">
                     <span class="fa fa-user"></span>
                 </a>
+              
                 <a href="<?= site_url('tables'); ?>" class="btn">
                     <span class="fa fa-cutlery"></span>
                 </a>
@@ -242,14 +245,16 @@
                             </ul>
                         </li>
                     <?php } ?>
-                    <?php if (POS) { ?>
+                    <?php if (POS) { 
+                        if($Owner || $Admin ||$GP['restaurants-index']!=null ){
+                        ?>
 
                     <li class="dropdown hidden-xs">
                         <a class="btn bred tip" title="<?= lang('restaurant') ?>" data-placement="bottom" href="<?= site_url('tables') ?>">
                             <i class="fa fa fa-cutlery"></i> <span class="padding05"><?= lang('restaurant') ?></span>
                         </a>
                     </li>
-
+                       <?php } ?>
                     <li class="dropdown hidden-xs">
                         <a class="btn bdarkGreen tip" title="<?= lang('pos') ?>" data-placement="bottom" href="<?= site_url('pos') ?>">
                             <i class="fa fa-th-large"></i> <span class="padding05"><?= lang('pos') ?></span>
@@ -259,6 +264,7 @@
 
                     <?php } ?>
                     <?php if ($Owner) { ?>
+                     
                         <li class="dropdown">
                             <a class="btn bdarkGreen tip" id="today_profit" title="<span><?= lang('today_profit') ?></span>"
                                 data-placement="bottom" data-html="true" href="<?= site_url('reports/profit') ?>"
@@ -268,6 +274,8 @@
                         </li>
                     <?php } ?>
                     <?php if ($Owner || $Admin) { ?>
+                            
+                       
                     <?php if (POS) { ?>
                     <li class="dropdown hidden-xs">
                         <a class="btn bblue tip" title="<?= lang('list_open_registers') ?>" data-placement="bottom" href="<?= site_url('pos/registers') ?>">
@@ -301,6 +309,7 @@
 
                         <?php
                         if ($Owner || $Admin) {
+                           
                             ?>
 
                             <li class="mm_products">
@@ -540,7 +549,8 @@
                                     <i class="fa fa-info-circle"></i><span class="text"> <?= lang('notifications'); ?></span>
                                 </a>
                             </li>
-                            <?php if ($Owner) { ?>
+                            <?php if ($Owner) { 
+                                ?>
                                 <li class="mm_system_settings <?= strtolower($this->router->fetch_method()) != 'settings' ? '' : 'mm_pos' ?>">
                                     <a class="dropmenu" href="#">
                                         <i class="fa fa-cog"></i><span class="text"> <?= lang('settings'); ?> </span>
@@ -652,7 +662,9 @@
                                         </a>
                                     </li>
                                 </li>
-                            <?php } ?>
+                            <?php }
+                           ?>
+                          
                             <li class="mm_reports">
                                 <a class="dropmenu" href="#">
                                     <i class="fa fa-bar-chart-o"></i>
@@ -810,6 +822,7 @@
 
                         <?php
                         } else { // not owner and not admin
+                           
                             ?>
                             <?php if ($GP['products-index'] || $GP['products-add'] || $GP['products-barcode']) { ?>
                             <li class="mm_products">
@@ -857,7 +870,8 @@
                             </li>
                             <?php } ?>
 
-                            <?php if ($GP['sales-index'] || $GP['sales-add'] || $GP['sales-deliveries'] || $GP['sales-gift_cards']) { ?>
+                            <?php if ($GP['sales-index'] || $GP['sales-add'] || $GP['sales-deliveries'] || $GP['sales-gift_cards']) {
+                              ?>
                             <li class="mm_sales <?= strtolower($this->router->fetch_method()) == 'settings' ? '' : 'mm_pos' ?>">
                                 <a class="dropmenu" href="#">
                                     <i class="fa fa-heart"></i>
@@ -901,8 +915,9 @@
                                 </ul>
                             </li>
                             <?php } ?>
-
-                            <?php if ($GP['quotes-index'] || $GP['quotes-add']) { ?>
+                           
+                            <?php if ($GP['quotes-index'] || $GP['quotes-add']) { 
+                                ?>
                             <li class="mm_quotes">
                                 <a class="dropmenu" href="#">
                                     <i class="fa fa-heart-o"></i>

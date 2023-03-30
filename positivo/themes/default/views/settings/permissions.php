@@ -270,6 +270,23 @@
                                     <td>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td><?= lang("restaurants"); ?></td>
+                                    <td class="text-center">
+                                        <input type="checkbox" value="1" class="checkbox" name="restaurants-index" <?php echo $p->{'restaurants-index'} ? "checked" : ''; ?>>
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" value="1" class="checkbox" name="restaurants-add" <?php echo $p->{'restaurants-add'} ? "checked" : ''; ?>>
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" value="1" class="checkbox" name="restaurants-edit" <?php echo $p->{'restaurants-edit'} ? "checked" : ''; ?>>
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" value="1" class="checkbox" name="restaurants-delete" <?php echo $p->{'restaurants-delete'} ? "checked" : ''; ?>>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <td><?= lang("reports"); ?></td>

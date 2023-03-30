@@ -19,7 +19,7 @@
                                class="btn btn-primary pull-right"><i
                                     class="fa fa-download"></i> <?= lang("download_sample_file") ?></a>
                             <span class="text-warning"><?= lang("csv1"); ?></span><br/><?= lang("csv2"); ?> <span
-                                class="text-info">(<?= lang("name") . ', ' . lang("code") . ', ' . lang("barcode_symbology") . ', ' .  lang("brand") . ', ' . lang("category_code") . ', ' . lang("unit_code") . ', ' . lang("sale").' '.lang('unit_code') . ', ' . lang("purchase").' '.lang("unit_code") . ', ' .  lang("cost") . ', ' . lang("price") . ', ' . lang("alert_quantity") . ', ' . lang("tax") . ', ' . lang("tax_method") . ', ' . lang("subcategory_code") . ', ' . lang("product_variants_sep_by"); ?>
+                                class="text-info">(<?= lang("name") . ', ' . lang("code") . ', ' . lang("barcode_symbology") . ', ' .  lang("brand") . ', ' . lang("category_code") . ', ' . lang("unit_code") . ', ' . lang("sale").' '.lang('unit_code') . ', ' . lang("purchase").' '.lang("unit_code") . ', ' .  lang("cost") . ', ' . lang("price") . ', ' . lang("alert_quantity") . ', ' . lang("tax") . ', ' . lang("tax_method") . ', ' . lang("subcategory_code") . ', ' . lang("product_variants_sep_by"). ', ' . lang("personalized_fields"). ', ' . lang("product_details"); ?>
                                 )</span> <?= lang("csv3"); ?>
 
                         </div>

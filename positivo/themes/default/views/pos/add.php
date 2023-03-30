@@ -105,16 +105,21 @@
                             <i class="fa fa-key"></i>
                         </a>
                     </li>
+                    <?php 
+                    // var_dump($GP);
+                    // die();
+                    ?>
                     <li class="dropdown">
                         <a class="btn blightOrange pos-tip" id="opened_bills" title="<span><?=lang('suspended_sales')?></span>" data-placement="bottom" data-html="true" href="<?=site_url('pos/opened_bills')?>" data-toggle="ajax">
                             <i class="fa fa-th"></i>
                         </a>
-
+                     <?php   if( $Owner ||$Admin || $GP['restaurants-index']){ ?>
                     <li class="dropdown">
                         <a tabindex="-1" data-original-title="<span><?= lang('restaurant') ?></span>" class="btn borange pos-tip" id="id-restaurant" title="" data-placement="bottom" data-html="true" href="<?=site_url('tables')?>">
                             <i class="fa fa fa-cutlery"></i>
                         </a>
                     </li>
+                    <?php  } ?>
                     </li>
                     <li class="dropdown">
                         <a class="btn bdarkGreen pos-tip" id="register_details" title="<span><?=lang('register_details')?></span>" data-placement="bottom" data-html="true" href="<?=site_url('pos/register_details')?>" data-toggle="modal" data-target="#myModal">
@@ -176,6 +181,9 @@
                 </ul>
 
                 <ul class="nav navbar-nav pull-right">
+                <?php 
+                                    
+                                    if( $Owner ||$Admin || $GP['restaurants-index']){ ?>
                     <label class="tips" for="active_tips" ><?= lang("tips") ?></label>
                     <li class="dropdown">
                         <div class="onoffswitch-tips">
@@ -199,6 +207,7 @@
                             </label>
                         </div>
                     </li>
+                    <?php }?>
                 </ul>
             </div>
         </div>
@@ -283,19 +292,25 @@
                                 ?>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <?php
+                                    <?php 
+                                    
+                    if( $Owner ||$Admin || $GP['restaurants-index']){
                                             echo form_dropdown('table', $tables, (isset($_POST['table']) ? $_POST['table'] : 0), 'id="postable" class="form-control pos-input-tip" data-placeholder="" style="width:100%;" ');
                                         ?>
                                         <div class="input-group-addon div_toogle_tables" style="padding: 2px 8px;">
                                             <i class="fa <?= $user->only_tables_taken ? 'fa-toggle-on' : 'fa-toggle-off'; ?>" id="toogle-tables" title="<?= $this->lang->line("status_free_table") ?>" style="font-size: 1.1em;"></i>
                                         </div>
+                                         <?php  
+                                    }?> 
                                     </div>
                                 </div>
 
                                 <div class="form-group" id="ui">
+                             
                                     <?php if ($Owner || $Admin || $GP['products-add']) { ?>
                                     <div class="input-group">
                                     <?php } ?>
+                                   
                                     <?php echo form_input('add_item', '', 'class="form-control pos-tip" id="add_item" data-placement="top" data-trigger="focus" placeholder="' . $this->lang->line("search_product_by_name_code") . '" title="' . $this->lang->line("au_pr_name_tip") . '"'); ?>
                                     <?php if ($Owner || $Admin || $GP['products-add']) { ?>
                                         <div class="input-group-addon" style="padding: 2px 8px;">
@@ -312,6 +327,7 @@
                         <div id="print">
                             <div id="left-middle">
                                 <div id="product-list">
+                                    
                                     <table class="table items table-striped table-bordered table-condensed table-hover"
                                            id="posTable" style="margin-bottom: 0;">
                                         <thead>
@@ -365,6 +381,7 @@
                                             <span id="tds">0.00</span>
                                         </td>
                                     </tr>
+                                    <?php   if( $Owner ||$Admin || $GP['restaurants-index']){ ?>
                                     <tr>
                                         <td colspan="2" style="padding: 5px 10px;"><?=lang('order_tip');?>
                                             <a href="#" id="order_tip">
@@ -375,6 +392,7 @@
                                             <span id="tip">0.00</span>
                                         </td>
                                     </tr>
+                                    <?php } ?>
                                     <tr>
                                         <td style="padding: 5px 10px; border-top: 1px solid #666; border-bottom: 1px solid #333; font-weight:bold; background:#333; color:#FFF;" colspan="2">
                                             <?=lang('total_payable');?>
@@ -391,14 +409,19 @@
                                     <div class="row">
                                         <div class="col-xs-4" style="padding: 0;">
                                             <div class="btn-group-vertical btn-block">
+                                            
                                                 <button type="button" class="btn btn-warning btn-block btn-flat"
                                                 id="suspend">
                                                     <?=lang('suspend'); ?>
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-block btn-flat"
+                                             
+                                               
+                                                <button type="button" class="btn btn-danger btn-flex btn-flat"
                                                 id="reset">
                                                     <?= lang('cancel'); ?>
                                                 </button>
+                                                   
+                                              
                                             </div>
 
                                         </div>
@@ -1171,6 +1194,7 @@
 <?php echo form_input('reference_note', $reference_note, 'class="form-control kb-text" id="reference_note"'); ?>
                 </div>
                 <div class="form-group">
+                    <?php if( $Owner ||$Admin || $GP['restaurants-index']){?>
                     <label class="control-label" for="waiter"><?= lang("waiter"); ?></label>
                     <?php
                         $waiters = array(lang('no_waiter'));
@@ -1179,8 +1203,10 @@
                                 $waiters[$waiter->id] = $waiter->first_name . " " . $waiter->last_name;
                             }
                         }
+                        
                         echo form_dropdown('waiter', $waiters, !empty($suspend_sale) ? $suspend_sale->id_waiter : $this->pos_settings->default_waiter, 'id="waiter" class="form-control" required="required" style="width:100%;" form="pos-sale-form"');
-                    ?>
+                        }
+                   ?>
                 </div>
             </div>
             <div class="modal-footer">

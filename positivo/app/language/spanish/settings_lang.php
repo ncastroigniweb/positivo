@@ -219,6 +219,7 @@ $lang['permissions']                                                = "Permisos"
 $lang['set_permissions']                                            = "Conjunto de Permisos";
 $lang['module_name']                                                = "Nombre del Módulo";
 $lang['misc']                                                       = "Miscelaneos";
+$lang['restaurants']                                                = "Restaurantes";
 
 $lang['paypal']                                                     = "Paypal";
 $lang['paypal_settings']                                            = "Ajustes de Paypal";
