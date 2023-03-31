@@ -574,6 +574,11 @@
                                                 <i class="fa fa-upload"></i><span class="text"> <?= lang('change_logo'); ?></span>
                                             </a>
                                         </li>
+                                        <li id="system_settings_payment_method">
+                                            <a href="<?= site_url('system_settings/payment_method') ?>">
+                                                <i class="fa fa-credit-card"></i><span class="text"> <?= lang('payment_method'); ?></span>
+                                            </a>
+                                        </li>
                                         <li id="system_settings_currencies">
                                             <a href="<?= site_url('system_settings/currencies') ?>">
                                                 <i class="fa fa-money"></i><span class="text"> <?= lang('currencies'); ?></span>
