@@ -143,6 +143,7 @@ $lang['add_supplier']                             = "Añadir Proveedor";
 $lang['settings']                                 = "Ajustes";
 $lang['system_settings']                          = "Ajustes del sistema";
 $lang['change_logo']                              = "Cambiar Logo";
+$lang['payment_method']                           = "Metodo de pago";
 $lang['currencies']                               = "Monedas";
 $lang['attributes']                               = "Variaciones";
 $lang['customer_groups']                          = "Grupos de clientes";

@@ -404,7 +404,6 @@ class system_settings extends MY_Controller
             $this->load->view($this->theme . 'settings/change_logo', $this->data);
         }
     }
-
     public function write_index($timezone)
     {
 
@@ -926,7 +925,90 @@ class system_settings extends MY_Controller
             redirect("system_settings/user_groups");
         }
     }
+    function payment_method()
+    {
+        $this->data['error'] = validation_errors() ? validation_errors() : $this->session->flashdata('error');
 
+        $bc = array(array('link' => base_url(), 'page' => lang('home')), array('link' => site_url('system_settings'), 'page' => lang('system_settings')), array('link' => '#', 'page' => lang('payment_method')));
+        $meta = array('page_title' => lang('payment_method'), 'bc' => $bc);
+        $this->page_construct('settings/payment_method', $meta, $this->data);
+    }
+    function getPaymentMethod()
+    {   
+        $this->form_validation->set_rules('code', lang("payment_method"));
+        $this->form_validation->set_rules('name', lang("name"), 'required');
+        $this->form_validation->set_rules('rate', lang("exchange_rate"), 'required|numeric');
+
+        $json_file = 'app/json/payment_means.json';
+        $json_data = file_get_contents($json_file);
+        $data = json_decode($json_data, true);
+
+        $last_id = end($data['payment_means'])['code'];
+
+        $code = $last_id + 1;
+
+        $new_payment_mean = array(
+            'code' => strval($code), 
+            'name' => $this->input->post('name') 
+        );
+
+        $data['payment_means'][] = $new_payment_mean;
+
+        $new_json_data = json_encode($data);
+        file_put_contents($json_file, $new_json_data);
+
+        $this->session->set_flashdata('message','Metodo de pago guardado correctamente');
+        redirect($_SERVER["HTTP_REFERER"]);
+
+    }
+    function editPaymentMethod($id)
+    {
+        $name = $this->input->post('name');
+
+        $json_data = file_get_contents('app/json/payment_means.json');
+
+        $data = json_decode($json_data, true);
+
+
+        foreach ($data['payment_means'] as &$value) {
+            if ($value['code'] === $id) {
+                $value['name'] = $name;
+                break;
+            }
+        }
+
+        $json_data = json_encode($data);
+
+        file_put_contents('app/json/payment_means.json', $json_data);
+
+        $this->session->set_flashdata('message','Metodo de pago editado correctamente');
+        redirect($_SERVER["HTTP_REFERER"]);
+    }
+    function deletePaymentMethod($id)
+    {
+        $json_data = file_get_contents('app/json/payment_means.json');
+
+
+        $data = json_decode($json_data, true);
+
+
+        $count = 0;
+        foreach ($data['payment_means'] as $key => $value) {
+            if ($value['code'] === $id) {
+                break;
+            }
+            $count += 1;
+        }
+
+        array_splice($data['payment_means'], $count,1);
+
+        $json_data = json_encode($data);
+
+        file_put_contents('app/json/payment_means.json', $json_data);
+
+        $this->session->set_flashdata('message','Metodo de pago eliminado correctamente');
+        redirect($_SERVER["HTTP_REFERER"]);
+    }
     function currencies()
     {
 
