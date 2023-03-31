@@ -38,7 +38,7 @@
                     <div class="login-content">
                         <div class="text-center">
                             <?php //if ($Settings->logo2) {
-                                echo '<img src="' . base_url('assets/uploads/logos/logo.png') .'" alt="' . $Settings->site_name . '" style="margin-bottom:10px; margin-top:10px; max-width: 350px; max-height: 150px;" />';
+                                echo '<img src="' . base_url('assets/uploads/logos/logo.png') .'" alt="' . $Settings->site_name . '" style="margin-bottom:10px; margin-top:10px; max-width: 330px; max-height: 150px;" />';
                             //} ?>
                         </div>
                         <?php if ($Settings->mmode) { ?>
