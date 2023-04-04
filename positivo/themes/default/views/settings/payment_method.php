@@ -11,8 +11,8 @@
         <div class="box-icon">
             <ul class="btn-tasks">
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon fa fa-tasks tip"
-                                                                                  data-placement="left"></i></a>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" ><i class="icon fa fa-tasks tip"
+                                                                                  title="<?php echo lang("payment_method_add")?>"></i></a>
                     <ul class="dropdown-menu pull-right tasks-menus" role="menu" aria-labelledby="dLabel">
                         <li><a href="#" data-toggle="modal"
                                data-target="#exampleModal"><i class="fa fa-plus"></i>Añadir método de pago</a></li>
@@ -42,8 +42,16 @@
                                    <td><div class="text-center">
                                                 <?php 
                                                 if($code != 1){?>
-                                                    <a onclick="idPayment(<?php echo $code;?>,'<?php echo $name;?>');"><i class="icon fa fa-edit fa-lg"></i></a>&nbsp;
-                                                    <a href="<?php echo base_url();?>system_settings/deletePaymentMethod/<?php echo $code;?>" class="" title=""> <i class='icon fa fa-trash-o fa-lg'></i></a>
+                                                    <a onclick="idPayment(<?php echo $code;?>,'<?php echo $name;?>');"><i class="icon fa fa-edit fa-lg" title="<?php echo lang("payment_method_edit")?>"></i></a>&nbsp;
+                                                    <!-- <a href="<?php //echo base_url();?>system_settings/deletePaymentMethod/<?php //echo $code;?>" class="" title=""> <i class='icon fa fa-trash-o fa-lg'  title="<?php //echo lang("payment_method_delete")?>"></i></a> -->
+                                                    <!-- <a href="<?php // echo base_url();?>system_settings/deletePaymentMethod/<?php echo $code;?>" class="" title=""> <i class='icon fa fa-trash-o fa-lg'  title="<?php //echo lang("payment_method_delete")?>"></i></a> -->
+                                                    <a data-toggle="popover" title="Borrar Método" data-html="true" data-content='
+                                                    <p>¿Está seguro?</p>
+                                                    <div class="btn-group ">
+                                                        <a href="<?php echo base_url();?>system_settings/deletePaymentMethod/<?php echo $code;?>" class="btn btn-danger mt-1" onclick="stopDefAction(event);">Sí</a>
+                                                        <button class="cerrar-popover btn">No</button>
+                                                    </div>'>
+                                                    <i class='icon fa fa-trash-o fa-lg'  title="<?php echo lang("payment_method_delete")?>"></i></a>
                                              <?php }
                                                 ?>                                            
                                         </div>
@@ -132,4 +140,13 @@
         document.getElementById('form-name').value = name;
         $('#editModal').modal('toggle')
     }
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({
+                html: true
+            });
+            
+            $('body').on('click', '.cerrar-popover', function(){
+                $('[data-toggle="popover"]').popover('hide');
+            });
+        });
 </script>
