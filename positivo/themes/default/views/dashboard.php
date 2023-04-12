@@ -268,7 +268,8 @@ if (!function_exists('row_status')){
                                 </div>
                             </div>
 
-                            <?php } if ($Owner || $Admin || $GP['quotes-index']) { ?>
+                            <!-- <?php //} if ($Owner || $Admin || $GP['quotes-index']) { ?> -->
+                            <?php } if ($GP['quotes-index']) { ?>
 
                             <div id="quotes" class="tab-pane fade">
                                 <div class="row">
