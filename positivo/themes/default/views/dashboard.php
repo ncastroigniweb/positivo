@@ -218,7 +218,8 @@ if (!function_exists('row_status')){
                         </ul>
 
                         <div class="tab-content">
-                        <?php //if ($Owner || $Admin || $GP['sales-index']) { ?>
+                        <!-- <?php //if ($Owner || $Admin || $GP['sales-index']) { ?> -->
+                        <?php if ($GP['sales-index']) { ?>
 
                             <div id="sales" class="tab-pane fade in">
                                 <div class="row">
@@ -267,8 +268,7 @@ if (!function_exists('row_status')){
                                 </div>
                             </div>
 
-                            <?php //} 
-                            if ($Owner || $Admin || $GP['quotes-index']) { ?>
+                            <?php } if ($Owner || $Admin || $GP['quotes-index']) { ?>
 
                             <div id="quotes" class="tab-pane fade">
                                 <div class="row">
