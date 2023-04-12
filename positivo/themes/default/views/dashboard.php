@@ -20,7 +20,7 @@ if (!function_exists('row_status')){
 }
 
 ?>
-<?php if (($Owner || $Admin) && $chatData) {
+<?php //if (($Owner || $Admin) && $chatData) {
     foreach ($chatData as $month_sale) {
         $months[] = date('M-Y', strtotime($month_sale->month));
         $msales[] = $month_sale->sales - $month_sale->discount;
@@ -32,7 +32,7 @@ if (!function_exists('row_status')){
         $mtax3[] = $month_sale->ptax;
     }
     ?>
-<?php } ?>
+<?php //} ?>
 <?php if ($Owner || $Admin) { ?>
 <div class="row" style="margin-bottom: 15px;">
     <div class="col-lg-12">
@@ -523,7 +523,7 @@ if (!function_exists('row_status')){
     });
 </script>
 
-<?php if (($Owner || $Admin) && $chatData) { ?>
+<?php //if (($Owner || $Admin) && $chatData) { ?>
     <style type="text/css" media="screen">
         .tooltip-inner {
             max-width: 500px;
@@ -742,8 +742,8 @@ if (!function_exists('row_status')){
             </div>
         </div>
     </div>
-<?php } ?>
-<?php if (($Owner || $Admin) && $chatData) { ?>
+<?php //} ?>
+<?php //if (($Owner || $Admin) && $chatData) { ?>
     <div class="box" style="margin-bottom: 15px;">
         <div class="box-header">
             <h2 class="blue"><i class="fa-fw fa fa-bar-chart-o"></i><?= lang('overview_chart'); ?></h2>
@@ -759,4 +759,4 @@ if (!function_exists('row_status')){
             </div>
         </div>
     </div>
-<?php } ?>
+<?php //} ?>
