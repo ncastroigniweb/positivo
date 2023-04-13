@@ -10,9 +10,9 @@ class Db_model extends CI_Model
 
     public function getLatestSales()
     {
-        if ($this->Settings->restrict_user && !$this->Owner && !$this->Admin) {
-            $this->db->where('created_by', $this->session->userdata('user_id'));
-        }
+        // if ($this->Settings->restrict_user && !$this->Owner && !$this->Admin) {
+        //     $this->db->where('created_by', $this->session->userdata('user_id'));
+        // }
         $this->db->order_by('id', 'desc');
         $q = $this->db->get("sales", 5);
         if ($q->num_rows() > 0) {
