@@ -415,7 +415,7 @@
                 <?=$this->sma->decode_html($biller->invoice_footer);?>
             </div>
             <div class="footer-fact" style="text-align: center;font-size: 10px;">
-                Impreso por IGNIWEB POS<br>
+                Impreso por POSITIVO<br>
                 www.igniweb.com tel: 301 786 2011 - 745 1042 <br>Nit: 900518746-5
             </div>
             <div>
