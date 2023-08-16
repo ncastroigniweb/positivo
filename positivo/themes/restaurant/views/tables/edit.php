@@ -450,8 +450,8 @@ $total = 0;
                         <?= $this->sma->decode_html($biller->invoice_footer); ?>
                     </div>
                     <div class="footer-fact" style="text-align: center;font-size: 10px;">
-                        Impreso por IGNIWEB POS<br>
-                        www.igniweb.com tel: 301 786 2011 - 745 1042
+                        Impreso por POSITIVO<br>
+                        www.positivo.com tel: 301 786 2011 - 745 1042
                     </div>
                 </td>
             </tr>
@@ -591,8 +591,8 @@ Ticket para confirmación de pedido
             <tr>
                 <td colspan="2">
                     <div class="footer-fact" style="text-align: center;font-size: 10px;">
-                        Impreso por IGNIWEB POS<br>
-                        www.igniweb.com tel: 301 786 2011 - 745 1042
+                        Impreso por POSITIVO<br>
+                        www.positivo.com tel: 301 786 2011 - 745 1042
                     </div>
                 </td>
             </tr>

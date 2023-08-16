@@ -1431,7 +1431,7 @@ function loadItems() {
                         lang_total_final = (site.settings.tip != 0 && tip != 0) ? lang_total_final + " + " + lang_tip : lang_total_final ;
 			bill_totals += '<tr class="bold grand-total"><td>'+lang_total+'</td><td style="text-align:right;">'+formatMoney(gtotal)+'</td></tr>';
 			bill_totals += '<tr><td colspan="2"><div class="well well-sm" style="text-align: center">'+localStorage.getItem('posinvoicefooter')+'</div>';
-			bill_totals += '<div class="footer-fact" style="text-align: center;font-size: 10px;">Impreso por IGNIWEB POS<br>www.igniweb.com tel: 301 786 2011 - 745 1042</div></td></tr>';
+			bill_totals += '<div class="footer-fact" style="text-align: center;font-size: 10px;">Impreso por POSITIVO POS<br>www.positivo.com tel: 301 786 2011 - 745 1042</div></td></tr>';
 			$('#bill-total-table').empty();
 			$('#bill-total-table').append(bill_totals);
 		}
