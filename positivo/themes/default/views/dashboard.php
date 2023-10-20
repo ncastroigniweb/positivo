@@ -36,7 +36,7 @@ if (!function_exists('row_status')){
 <?php if ($Owner || $Admin) { ?>
 <div class="row" style="margin-bottom: 15px;">
     <div class="col-lg-12">
-        <div class="box"> 
+        <div class="box"><span>p</span>
             <div class="box-header">
                 <h2 class="blue"><i class="fa fa-th"></i><span class="break"></span><?= lang('quick_links') ?></h2>
             </div>
