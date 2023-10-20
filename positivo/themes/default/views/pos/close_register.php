@@ -28,12 +28,12 @@
                             <span><?= $this->sma->formatMoney($cashsales[0]->total_amount ? $cashsales[0]->total_amount : '0.00'); ?></span>
                         </h4></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td style="border-bottom: 1px solid #EEE;"><h4>Transferencias:</h4></td>
                     <td style="text-align:right; border-bottom: 1px solid #EEE;"><h4>
                             <span><?= $this->sma->formatMoney($salesPaymentMethods[0]->total_amount  ? $salesPaymentMethods[0]->total_amount  : '0.00'); ?></span>
                         </h4></td>
-                </tr>
+                </tr> -->
                 <?php if ($others) { for ($i=0; $i < count($others); $i++){?>
                     <tr>
                         <td style="border-bottom: 1px solid #EEE;"><h4>Pago Con <?= $others[$i]['name']; ?>:</h4></td>
