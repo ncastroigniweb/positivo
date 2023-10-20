@@ -1201,9 +1201,6 @@ class Pos_model extends CI_Model
         if (!$user_id) {
             $user_id = $this->session->userdata('user_id');
         }
-        $this->db->select('SUM( COALESCE( grand_total, 0 ) ) AS total, SUM( COALESCE( amount, 0 ) ) AS paid, order_tax', FALSE)
-            ->join('sales', 'sales.id=payments.sale_id', 'left')
-            ->where('type', 'received')->where('paid_by', 'cash');
 
         if ($date_end == null) {
             // register open time
@@ -1218,9 +1215,15 @@ class Pos_model extends CI_Model
             $this->db->where('payments.created_by', $user_id);
         }
 
+        $this->db->select('SUM(amount) as total_amount');
+        $this->db->group_start();
+        $this->db->like('paid_by', 'Efectivo');
+        $this->db->or_like('paid_by', 'cash');
+        $this->db->group_end();
+             
         $q = $this->db->get('payments');
         if ($q->num_rows() > 0) {
-            return $q->row();
+            return $q->result();
         }
         return false;
     }
@@ -1996,6 +1999,38 @@ class Pos_model extends CI_Model
         }
 
         return FALSE;
+    }
+
+    public function getMethodSales($date, $user_id = NULL, $date_end = NULL)
+    {
+        if (!$date) {
+            $date = $this->session->userdata('register_open_time');
+        }
+        if (!$user_id) {
+            $user_id = $this->session->userdata('user_id');
+        }
+
+        if ($date_end == null) {
+            // register open time
+            $this->db->where('payments.date >', $date);
+        } else {
+            // filter dates
+            $this->db->where('payments.date >', $date);
+            $this->db->where('payments.date <', $date_end);
+        }
+
+        if ($date_end == null) {
+            $this->db->where('payments.created_by', $user_id);
+        }
+
+        $this->db->select('SUM(amount) as total_amount');
+        $this->db->where('paid_by REGEXP "^[0-9]+-Transferencia"', null, false);
+
+        $q = $this->db->get('payments');
+        if ($q->num_rows() > 0) {
+            return $q->result();
+        }
+        return false;
     }
     
 }

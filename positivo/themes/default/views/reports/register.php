@@ -51,7 +51,7 @@ if ($this->input->post('end_date')) {
                 });
                 $.ajax({'dataType': 'json', 'type': 'POST', 'url': sSource, 'data': aoData, 'success': fnCallback});
             },
-            "aoColumns": [{"mRender": fld}, {"mRender": fld}, null, {"mRender": currencyFormat}, {"mRender": total_sub}, {"mRender": total_sub}, {"mRender": total_cash}, {"bSortable": false}]
+            "aoColumns": [{"mRender": fld}, {"mRender": fld}, null, {"mRender": currencyFormat}, {"mRender": total_sub}, {"mRender": total_sub}, {"mRender": total_cash}, {"bSortable": false}, null]
         }).fnSetFilteringDelay().dtFilter([
             {column_number: 0, filter_default_label: "[ yyyy-mm-dd HH:mm:ss ]", filter_type: "text", data: []},
             {column_number: 1, filter_default_label: "[ yyyy-mm-dd HH:mm:ss ]", filter_type: "text", data: []},
@@ -163,6 +163,7 @@ if ($this->input->post('end_date')) {
                             <th><?= lang('cc_slips'); ?></th>
                             <th><?= lang('Cheques'); ?></th>
                             <th><?= lang('total_cash'); ?></th>
+                            <th>Informe de cierre</th>
                             <th><?= lang('note'); ?></th>
                         </tr>
                         </thead>
@@ -173,6 +174,7 @@ if ($this->input->post('end_date')) {
                         </tbody>
                         <tfoot class="dtFilter">
                         <tr class="active">
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>

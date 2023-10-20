@@ -15,7 +15,7 @@
         ?>
         <div class="modal-body">
             <div id="alerts"></div>
-            <table width="100%" class="stable">
+            <table id="data-table" width="100%" class="stable">
                 <tr>
                     <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('cash_in_hand'); ?>:</h4></td>
                     <td style="text-align:right; border-bottom: 1px solid #EEE;"><h4>
@@ -25,17 +25,23 @@
                 <tr>
                     <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('cash_sale'); ?>:</h4></td>
                     <td style="text-align:right; border-bottom: 1px solid #EEE;"><h4>
-                            <span><?= $this->sma->formatMoney($cashsales->paid ? $cashsales->paid : '0.00'); ?></span>
+                            <span><?= $this->sma->formatMoney($cashsales[0]->total_amount ? $cashsales[0]->total_amount : '0.00'); ?></span>
                         </h4></td>
                 </tr>
-                <?php if ($others) { for ($i=0; $i < count($others); $i++){?>
+                <tr>
+                    <td style="border-bottom: 1px solid #EEE;"><h4>Transferencias:</h4></td>
+                    <td style="text-align:right; border-bottom: 1px solid #EEE;"><h4>
+                            <span><?= $this->sma->formatMoney($salesPaymentMethods[0]->total_amount  ? $salesPaymentMethods[0]->total_amount  : '0.00'); ?></span>
+                        </h4></td>
+                </tr>
+                <!-- <?php if ($others) { for ($i=0; $i < count($others); $i++){?>
                     <tr>
                         <td style="border-bottom: 1px solid #EEE;"><h4>Pago Con <?= $others[$i]['name']; ?>:</h4></td>
                         <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
                                 <span><?= $this->sma->formatMoney($others[$i]['value']); ?></span>
                             </h4></td>
                     </tr>
-                <?php } } ?>
+                <?php } } ?> -->
                 <tr>
                     <td style="border-bottom: 1px solid #EEE;"><h4><?= lang('discounts'); ?>:</h4></td>
                     <td style="text-align:right;border-bottom: 1px solid #EEE;"><h4>
@@ -135,6 +141,7 @@
                             <span><strong><?= $cashsales->paid ? $this->sma->formatMoney(($cashsales->paid + ($this->session->userdata('cash_in_hand')) - $expense) - ($refunds->returned ? $refunds->returned : 0)) : $this->sma->formatMoney($this->session->userdata('cash_in_hand') - $expense); ?></strong></span>
                         </h4></td>
                 </tr>
+                <?= form_hidden('td_data', ''); ?>
             </table>
 
             <?php
@@ -203,6 +210,47 @@
 
 </div>
 <?= $modal_js ?>
+<script type="text/javascript">
+      $(document).ready(function() {
+    $('form').submit(function(event) {
+        event.preventDefault(); // Evita el envío predeterminado del formulario
+        // Inicializa una variable para almacenar los datos en el formato deseado
+        var formattedData = '';
+
+        // Recorre las filas de la tabla
+        $('#data-table tr').each(function(index, row) {
+            var rowData = '';
+
+            // Recorre las celdas de cada fila
+            $(row).find('td').each(function() {
+                // Extrae el texto de las celdas
+                var cellText = $(this).text().trim();
+                // Agrega el texto de la celda al rowData
+                rowData += cellText;
+            });
+
+            // Verifica si rowData no está vacío
+            if (rowData.length > 0) {
+                // Formatea y agrega el rowData al resultado final
+                formattedData += '<h4>' + rowData + '</h4>';
+            }
+        });
+
+        // Agrega los datos HTML formateados a un campo oculto en el formulario
+        $('<input>').attr({
+            type: 'hidden',
+            name: 'td_data',
+            value: formattedData
+        }).appendTo('form');
+
+        // Envía el formulario con los datos HTML formateados
+        this.submit();
+    });
+});
+
+
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $(document).on('click', '.po', function (e) {

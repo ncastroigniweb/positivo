@@ -976,6 +976,7 @@ class Pos extends MY_Controller
                 $rid = $this->session->userdata('register_id');
                 $user_id = $this->session->userdata('user_id');
             }
+         
             $data = array(
                 'closed_at'                => date('Y-m-d H:i:s'),
                 'total_cash'               => $this->input->post('total_cash'),
@@ -985,10 +986,12 @@ class Pos extends MY_Controller
                 'total_cheques_submitted'  => $this->input->post('total_cheques_submitted'),
                 'total_cc_slips_submitted' => $this->input->post('total_cc_slips_submitted'),
                 'note'                     => $this->input->post('note'),
+                'json_data'                => $this->input->post('td_data'), 
                 'status'                   => 'close',
                 'transfer_opened_bills'    => $this->input->post('transfer_opened_bills'),
                 'closed_by'                => $this->session->userdata('user_id'),
                 );
+   
         } elseif ($this->input->post('close_register')) {
             $this->session->set_flashdata('error', (validation_errors() ? validation_errors() : $this->session->flashdata('error')));
             redirect("pos");
@@ -1000,6 +1003,7 @@ class Pos extends MY_Controller
             $this->session->set_userdata($register_data);
             redirect("welcome");
         } else {
+            $id_pos = $this->data['pos_settings']->default_biller ;
             if ($this->Owner || $this->Admin) {
                 $user_register = $user_id ? $this->pos_model->registerData($user_id) : NULL;
                 $register_open_time = $user_register ? $user_register->date : NULL;
@@ -1031,11 +1035,11 @@ class Pos extends MY_Controller
             $this->data['suspended_bills'] = $this->pos_model->getSuspendedsales($user_id);
             $this->data['user_id'] = $user_id;
             $this->data['modal_js'] = $this->site->modal_js();
+            $this->data['salesPaymentMethods'] = $this->pos_model->getMethodSales($register_open_time, $user_id);
 
             if($this->Settings->tax1){
                 $this->data['products_tax'] = $this->sma->get_products_tax($register_open_time, null, $user_id);
             }
-
             $this->load->view($this->theme . 'pos/close_register', $this->data);
         }
     }
